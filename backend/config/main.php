@@ -24,9 +24,9 @@ return [
         'site/logout',
         'site/index/',
         'simpel-keg/spd/*',
-        'simpel-personil/*'
+        'simpel-personil/*',
         //'debug/*',
-       // '*',
+        '*',
         //'mimin/*', // only in dev mode
         ],
     ],

@@ -120,16 +120,16 @@ class SimpelPersonilController extends Controller {
     public function actionQrcode($id) {
         $model = $this->findModel($id); //untuk membaca id daftar kegiatan
         $model2 = SimpelPersonil::find()->where('id_kegiatan=' . $id)->all();
-        $vcard = "                                              Pemberitahuan  \r\n" .
-                " Menyatakan Surat Perjalanan Dinas (SPD) sebagai berikut:\r\n" .
-                "                   \n" .
-                " Nama           : " . $nama . "\r\n" .
-                " Kota Asal     : Jakarta\r\n" .
-                " Kota Tujuan  : Steven Valley\r\n" .
-                " Selama        : 3 Hari\r\n" .
-                " Tanggal       : 10-12 juni 2015\r\n" .
-                "                    \n" .
-                "Dengan ini dinyatakan ASLI, Sesuai dari subbag. Perjalanan Dinas - Biro Umum";
+        // $vcard = "                                              Pemberitahuan  \r\n" .
+        //         " Menyatakan Surat Perjalanan Dinas (SPD) sebagai berikut:\r\n" .
+        //         "                   \n" .
+        //         " Nama           : " . $nama . "\r\n" .
+        //         " Kota Asal     : Jakarta\r\n" .
+        //         " Kota Tujuan  : Steven Valley\r\n" .
+        //         " Selama        : 3 Hari\r\n" .
+        //         " Tanggal       : 10-12 juni 2015\r\n" .
+        //         "                    \n" .
+        //         "Dengan ini dinyatakan ASLI, Sesuai dari subbag. Perjalanan Dinas - Biro Umum";
         $uri = Yii::$app->urlManagerr->createUrl(['simpel-personil/vqrcode', 'id' => $id]);
         return QRcode::png($uri);
     }

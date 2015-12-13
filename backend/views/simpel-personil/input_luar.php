@@ -86,7 +86,7 @@ Modal::end();
                             echo $form->field($model, 'pegawai_id')->widget(Select2::classname(), ['data' => $data2, 'options' => ['id' => 'data1', 'placeholder' => 'Pilih Nama Personil'], 'pluginOptions' => ['allowClear' => true], ])->label('Pilih Nama Personil');
                             ?>
                              <?php
-                            echo $form->field($model, 'tingkat_id')->widget(Select2::classname(), ['data' => ['1'=>'Tingkat A','2'=>'Tingkat B','3'=>'Tingkat C','4'=>'Tingkat D'], 'options' => ['id' => 'data3', 'placeholder' => 'Pilih Tingkat'], 'pluginOptions' => ['allowClear' => true], ])->label('Pilih Tingkat');
+                            echo $form->field($model, 'tingkat_id')->widget(Select2::classname(), ['data' => ['1'=>'Tingkat A','2'=>'Tingkat B','3'=>'Tingkat C','99'=>'Tingkat D'], 'options' => ['id' => 'data3', 'placeholder' => 'Pilih Tingkat'], 'pluginOptions' => ['allowClear' => true], ])->label('Pilih Tingkat');
                             ?>
                         </div>
                     </div>

@@ -479,7 +479,6 @@ class SimpelKegController extends Controller {
                     $mpdf->SetDisplayMode('fullpage');
                     $mpdf->AddPage('P', '', '', '', '', 5, 5, 5, 1, 5, 5);
                     
-                    $mpdf->writeHTML($stylesheet, 1);
                     
                     $mpdf->WriteHTML($content_english);
                 } else {

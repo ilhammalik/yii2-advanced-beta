@@ -7,6 +7,16 @@ use \common\components\MyHelper;
 ?>      
 
 <style type="text/css">
+.div {
+   
+    border: 2px solid black;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    
+}
+    .bold{
+        font-weight: bold;
+    }
     body{
         font-family: Times ;
     }
@@ -84,7 +94,6 @@ foreach ($model2 as $mode) {
     $cetak = \backend\models\SimpelKeg::find()->where('id_kegiatan=' . $model->id_kegiatan.' and mak like  \'%'.'524111'.'%\'')->one();
     
     ?>
-
 
 
     <h5 style="font-weight: bold;" align="left"><b>
@@ -349,309 +358,754 @@ foreach ($model2 as $mode) {
             </table>
             <pagebreak>
             <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-                <h6 align="right"><br/> </h6>
-                <table border="2" width="100%">
-                        <tr>
-                        <td width="500"> 
-                             <table >
-                                <tr>
-                                    <td  style="padding-top:-10px;" height="20" width="200"><b>I. &nbsp;&nbsp;&nbsp;&nbsp;<u>Tiba di</u> </b><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Arrival At</td>
-                                    <td width="5" >:</td>
-                                    <td><?= $model->kota_negara ?>, <?= $model->negara_tujuan ?></td>
-                                </tr>
-                                <tr>
-                                    <td style="padding-top:10px;" width="200">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<u>Pada Tanggal</u><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Date </td>
-                                <td width="5" >:</td>
-                                <td><?= Myhelper::Formattgl($mode->tgl_berangkat) ?></td>
-                        </tr>
-                    <tr>
-                        <td style="padding-top:-140px;"height="200" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<u>Kepala Kantor</u><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Head of Office</td>
-                    <td style="padding-top:-170px;" width="5" >:</td>
-                    <td style="padding-top:-170px;" align="center">.  . . . . . . . . . . . . . . . . . . . . . . . . .</td>
+            <div class="div">
+<br/>
+<br/>
+<table width="826" cellpadding="4" cellspacing="0">
+    <colgroup><col width="27">
+    <col width="126">
+    <col width="7">
+    <col width="203">
+    <col width="14">
+    <col width="34">
+    <col width="126">
+    <col width="6">
+    <col width="211">
+    </colgroup><tbody><tr valign="top">
+        <td valign="top" rowspan="5" width="27" style="border: none; padding: 0in">
+            <p ><font face="Arial, sans-serif">&nbsp;&nbsp;&nbsp;I.</font></p>
+        </td>
+        <td width="126" style="border: none; padding: 0in">
+             <p><font class="bold" face="Arial, sans-serif">Tiba di    </font>
+            </p>
+            <p><font face="Arial, sans-serif"><font size="1" style="font-size: 6pt">Arrival
+            at</font></font></p>
+        </td>
+        <td width="7" style="border: none; padding: 0in">
+            <p><br>
 
-                    </tr>
+            </p>
+            <p><font face="Arial, sans-serif">:  </font>
+            </p>
+        </td>
+        <td width="203" style="border: none; padding: 0in">
+            <p><br>
+                <?= Myhelper::Negara($model->kota_asal) ?>
+            </p>
+        </td>
+        <td rowspan="5" width="14" style="border: none; padding: 0in">
+            <p><br>
 
-                    <tr>
-                        <td  colspan="3" align="left" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<u><b>(. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .)</b></u></td>
+            </p>
+        </td>
+        <td valign="top" rowspan="5" width="34" style="border: none; padding: 0in">
+            <p align="center"><font face="Arial, sans-serif">II.</font></p>
+        </td>
+        <td width="126" style="border: none; padding: 0in">
+            <p><font class="bold" face="Arial, sans-serif">Berangkat dari</font></p>
+            <p><font face="Arial, sans-serif"><font size="1" style="font-size: 6pt">Departure
+            from</font></font></p>
+        </td>
+        <td width="6" style="border: none; padding: 0in">
+            <p><br>
 
-                    </tr>
-                      <tr>
-                        <td  style="padding-top:10px;" colspan="3" align="left" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>NIP</b></td>
+            </p>
+            <p><font face="Arial, sans-serif">:</font></p>
+        </td>
+        <td width="211" style="border: none; padding: 0in">
+            <p><br>
+                <?= Myhelper::Negara($model->negara_tujuan) ?>
+            </p>
+        </td>
+    </tr>
+    <tr valign="top">
+        <td width="126" style="border: none; padding: 0in">
+            <p><font class="bold" face="Arial, sans-serif">Pada Tanggal    </font>
+            </p>
+            <p><font face="Arial, sans-serif"><font size="1" style="font-size: 6pt">Date
+             </font></font>
+            </p>
+        </td>
+        <td width="7" style="border: none; padding: 0in">
+            <p><br>
 
-                    </tr>
-
-                </table>
-                </td>
-
-
-                <td width="500"> 
-                <table >
-                                <tr>
-                                    <td style="padding-top:-80px;"  height="20" width="200"><b>II. &nbsp;&nbsp;&nbsp;&nbsp;<u>Berangkat dari</u> </b><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Departure from</td>
-                                    <td style="padding-top:-80px;" width="5" >:</td>
-                                    <td style="padding-top:-40px;" valign="top"><?= $model->kota_negara ?>, <?= $model->negara_tujuan ?></td>
-                                </tr>
-                                <tr>
-                                    <td  style="padding-top:-40px;" height="20" width="200"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<u>Ke</u> </b><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i>To</i></td>
-                                    <td style="padding-top:-40px;" width="5" >:</td>
-                                    <td style="padding-top:-40px;" >Jakarta</td>
-                                </tr>
-                                <tr>
-                                    <td style="padding-top:-10px;" width="200">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<u>Pada Tanggal</u><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Date </td>
-                                    <td width="5" >:</td>
-                                    <td><?= Myhelper::Formattgl($mode->tgl_kembali) ?></td>
-                    </tr>
-                    <tr>
-                        <td style="padding-top:-100px;" height="150" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<u>Kepala Kantor</u><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Head of Office</td>
-                    <td style="padding-top:-120px;" width="5" >:</td>
-                    <td style="padding-top:-120px;" align="center">.  . . . . . . . . . . . . . . . . . . . . . . . . .</td>
-
-                    </tr>
-
-                    <tr>
-                        <td style="padding-top:30px;" colspan="3" align="left" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<u><b>(. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .)</b></u></td>
-
-                    </tr>
-                      <tr>
-                        <td  colspan="3" align="left" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>NIP</b></td>
-
-                    </tr>
-
-                </table>
-                </td>
-
-                </tr>
-
-
-
-    <tr>
-                        <td width="500"> 
-                             <table >
-                                <tr>
-                                    <td style="padding-top:20px;"  height="20" width="200"><b>III. &nbsp;&nbsp;&nbsp;&nbsp;<u>Tiba di</u> </b><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Arrival At</td>
-                                    <td width="5" >:</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td width="200">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<u>Pada Tanggal</u><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Date </td>
-                        <td width="5" >:</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td style="padding-top:-170px;"height="200" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<u>Kepala Kantor</u><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Head of Office</td>
-                    <td style="padding-top:-170px;" width="5" >:</td>
-                    <td style="padding-top:-170px;" align="center">.  . . . . . . . . . . . . . . . . . . . . . . . . .</td>
-
-                    </tr>
-
-                    <tr>
-                        <td style="padding-top:-70px;" colspan="3" align="left" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<u><b>(. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .)</b></u></td>
-
-                    </tr>
-                      <tr>
-                        <td  colspan="3" align="left" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>NIP</b></td>
-
-                    </tr>
-
-                </table>
-                </td>
-                <td width="500"> 
-                <table >
-                                <tr>
-                                    <td style="padding-top:-80px;"  height="20" width="200"><b>IV. &nbsp;&nbsp;&nbsp;&nbsp;<u>Berangkat dari</u> </b><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Departure from</td>
-                                    <td style="padding-top:-80px;" width="5" >:</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td  style="padding-top:-40px;" height="20" width="200"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<u>Ke</u> </b><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i>To</i></td>
-                                    <td style="padding-top:-80px;"width="5" >:</td>
-                                    <td style="padding-top:-80px;"></td>
-                                </tr>
-                                <tr>
-                                    <td style="padding-top:-10px;" width="200">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<u>Pada Tanggal</u><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Date </td>
-                        <td width="5" >:</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td style="padding-top:-120px;" height="150" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<u>Kepala Kantor</u><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Head of Office</td>
-                    <td style="padding-top:-120px;" width="5" >:</td>
-                    <td style="padding-top:-120px;" align="center">.  . . . . . . . . . . . . . . . . . . . . . . . . .</td>
-
-                    </tr>
-
-                    <tr>
-                        <td  colspan="3" align="left" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<u><b>(. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .)</b></u></td>
-
-                    </tr>
-                      <tr>
-                        <td  colspan="3" align="left" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>NIP</b></td>
-
-                    </tr>
-
-                </table>
-                </td>
-                </tr>
-
-
-                    <tr>
-                        <td width="500"> 
-                             <table >
-                                <tr>
-                                    <td  style="padding-top:20px;"  height="20" width="200"><b>V. &nbsp;&nbsp;&nbsp;&nbsp;<u>Tiba di</u> </b><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Arrival At</td>
-                                    <td width="5" >:</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td width="200">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<u>Pada Tanggal</u><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Date </td>
-                        <td width="5" >:</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td style="padding-top:-170px;"height="200" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<u>Kepala Kantor</u><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Head of Office</td>
-                    <td style="padding-top:-170px;" width="5" >:</td>
-                    <td style="padding-top:-170px;" align="center">.  . . . . . . . . . . . . . . . . . . . . . . . . .</td>
-
-                    </tr>
-
-                    <tr>
-                        <td style="padding-top:-70px;" colspan="3" align="left" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<u><b>(. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .)</b></u></td>
-
-                    </tr>
-                      <tr>
-                        <td  colspan="3" align="left" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>NIP</b></td>
-
-                    </tr>
-
-                </table>
-                </td>
-                <td width="500"> 
-                <table >
-                                <tr>
-                                    <td style="padding-top:-80px;"  height="20" width="200"><b>VI. &nbsp;&nbsp;&nbsp;&nbsp;<u>Berangkat dari</u> </b><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Departure from</td>
-                                    <td style="padding-top:-80px;" width="5" >:</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td  style="padding-top:-40px;" height="20" width="200"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<u>Ke</u> </b><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i>To</i></td>
-                                    <td style="padding-top:-80px;"width="5" >:</td>
-                                    <td style="padding-top:-80px;"></td>
-                                </tr>
-                                <tr>
-                                    <td style="padding-top:-10px;" width="200">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<u>Pada Tanggal</u><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Date </td>
-                        <td width="5" >:</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td style="padding-top:-120px;" height="150" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<u>Kepala Kantor</u><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Head of Office</td>
-                    <td style="padding-top:-120px;" width="5" >:</td>
-                    <td style="padding-top:-120px;" align="center">.  . . . . . . . . . . . . . . . . . . . . . . . . .</td>
-
-                    </tr>
-
-                    <tr>
-                        <td  colspan="3" align="left" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<u><b>(. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .)</b></u></td>
-
-                    </tr>
-                      <tr>
-                        <td  colspan="3" align="left" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>NIP</b></td>
-
-                    </tr>
-
-                </table>
-                </td>
-                </tr>
-
-
+            </p>
+            <p><font face="Arial, sans-serif">:</font></p>
+        </td>
+        <td width="203" style="border: none; padding: 0in">
+            <p><br>
+                <?= Myhelper::Formattgl($mode->tgl_berangkat) ?>
+            </p>
+        </td>
+        <td width="126" style="border: none; padding: 0in">
+            <p><font class="bold" face="Arial, sans-serif">Ke</font></p>
+            <p><font face="Arial, sans-serif"><font size="1" style="font-size: 6pt">To</font></font></p>
+        </td>
+        <td width="6" style="border: none; padding: 0in">
+            <p><br>
                
-                <tr>
-                    <td width="500"> 
-                           <table >
-                                <tr>
-                                    <td   style="padding-top:-20px; padding-left:30;"  height="20" width="250"><b>VII. <u><br/>Tiba di Tempat Kedudukan</u> </b>
-                                        <br/><span>Arrival at Departure Point</span> </td>
-                                    <td style="padding-top:80px;"> </td>
-                                </tr>
-                                <tr>
-                                    <td style="padding-top:-20px;" height="10" width="200">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<u>Pada Tanggal</u><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Date </td>
-                        <td style="padding-top:-80px;">:</td>
-                        <td style="padding-top:-80px;"><?= Myhelper::Formattgl($mode->tgl_kembali) ?></td>
-                    </tr>
-                           <tr>
-                            <td style="padding-top:-60px;" colspan="3" height="90" width="200">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<u>Pejabat Pembuat Komitmen</u><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i>Authorizing Office</i> </td>
+            </p>
+            <p><font face="Arial, sans-serif">:</font></p>
+        </td>
+        <td width="211" style="border: none; padding: 0in">
+            <p><br>
+                 <?= Myhelper::Negara($model->kota_asal) ?>
+            </p>
+        </td>
+    </tr>
+    <tr valign="top">
+        <td width="126" style="border: none; padding: 0in">
+            <p><font class="bold" face="Arial, sans-serif">Kepala Kantor</font></p>
+            <p><font face="Arial, sans-serif"><font size="1" style="font-size: 6pt">Head
+            of Office</font></font></p>
+        </td>
+        <td width="7" style="border: none; padding: 0in">
+            <p><br>
 
-                        </tr>
+            </p>
+            <p><font face="Arial, sans-serif">:</font></p>
+        </td>
+        <td width="203" style="border: none; padding: 0in">
+            <p align="center"><br>
 
-                    <tr>
-                        <td  colspan="3" align="left" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<u><b>Afrizal, ST</b></u></td>
+            </p>
+            <p align="center"><font face="Arial, sans-serif">. . . . . . . . .
+            . . . . . . . . . . . . . . . . . .</font>
+            </p>
+        </td>
+        <td width="126" style="border: none; padding: 0in">
+            <p><font class="bold" face="Arial, sans-serif">Pada Tanggal</font></p>
+            <p><font face="Arial, sans-serif"><font size="1" style="font-size: 6pt">Date</font></font></p>
+        </td>
+        <td width="6" style="border: none; padding: 0in">
+            <p><br>
 
-                    </tr>
-                      <tr>
-                        <td  colspan="3" align="left" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>NIP.197304101999111001</b></td>
+            </p>
+            <p><font face="Arial, sans-serif">:</font></p>
+        </td>
+        <td width="211" style="border: none; padding: 0in">
+            <p align="center"><br>
+                <?= Myhelper::Formattgl($mode->tgl_kembali) ?>
+            </p>
+            <p align="center"><font face="Arial, sans-serif"></font></p>
+        </td>
+    </tr>
+    <tr valign="top">
+        <td width="126" style="border: none; padding: 0in">
+            <p><br>
 
-                    </tr>
+            </p>
+        </td>
+        <td width="7" style="border: none; padding: 0in">
+            <p><br>
 
-                </table>
-                </td>
+            </p>
+        </td>
+        <td width="203" style="border: none; padding: 0in">
+            <p align="center"><br>
 
-                <td width="100"> 
-                    <table >
-                                <tr>
-                                    <td  colspan="3" style="padding-top:10px;"  >
+            </p>
+        </td>
+        <td width="126" style="border: none; padding: 0in">
+            <p><font class="bold" face="Arial, sans-serif">Kepala Kantor</font></p>
+            <p><font face="Arial, sans-serif"><font size="1" style="font-size: 6pt">Head
+            of Office</font></font></p>
+        </td>
+        <td width="6" style="border: none; padding: 0in">
+            <p><br>
 
-                                <div>Telah diperiksa dengan keterangan bahwa perjalanan
-                               tersebut atas perintahnya dan semata-mata untuk
-                                kepentingan jabatan dalam waktu yang sesingkat-singkatnya.</div>
-                                </td>
-                                </tr>
-                           
-                           <tr>
-                            <td style="padding-top:10px;" colspan="3" height="90" width="200"><u>Pejabat Pembuat Komitmen</u><br/><i>Authorizing Office</i> </td>
+            </p>
+            <p><font face="Arial, sans-serif">:</font></p>
+        </td>
+        <td width="211" style="border: none; padding: 0in">
+            <p align="center"><br>
 
-                        </tr>
+            </p>
 
-                    <tr>
-                        <td  style="padding-top:50px;" colspan="3" align="left" ><u><b><?= $model->ppk->nama ?>T</b></u></td>
+            <p align="center"><font face="Arial, sans-serif">. . . . . . . . .
+            . . . . . . . . . . . . . . . . . .</font>
+            </p>
+        </td>
+    </tr>
+    <tr valign="top">
+        <td colspan="3" width="352" style="border: none; padding: 0in">
+            <p><br>
 
-                    </tr>
-                      <tr>
-                        <td  colspan="3" align="left" ><b>NIP.<?= $model->nip_ppk ?></b></td>
+            </p>
+            <p><br>
 
-                    </tr>
+            </p>
+            <p><br>
 
-                </table>
-                </td>
+            </p>
+            <br/><br/><br/><br/><br/><p align="center"><font face="Arial, sans-serif">(. . . . . . . .
+            . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . )</font></p>
+            <p>  <font face="Arial, sans-serif"><font size="2" style="font-size: 9pt">NIP</font></font></p>
+        </td>
+        <td colspan="3" width="359" style="border: none; padding: 0in">
+            <p align="center"><br>
 
-                </tr>
-                
+            </p>
+            <p align="center"><br>
+
+            </p>
+            <p align="center"><br>
+
+            </p>
+            <br/><br/><br/><br/><br/><p align="center"><font face="Arial, sans-serif">(. . . . . . . .
+            . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . )</font></p>
+            <p>  <font face="Arial, sans-serif"><font size="2" style="font-size: 9pt">NI</font><font size="2" style="font-size: 9pt">P</font></font></p>
+        </td>
+    </tr>
+</tbody></table>
+<p style="margin-bottom: 0in; line-height: 100%"><br>
+
+</p>
+<table width="826" cellpadding="4" cellspacing="0">
+    <colgroup><col width="27">
+    <col width="126">
+    <col width="7">
+    <col width="203">
+    <col width="14">
+    <col width="34">
+    <col width="126">
+    <col width="6">
+    <col width="211">
+    </colgroup><tbody><tr valign="top">
+        <td valign="top" rowspan="5" width="27" style="border: none; padding: 0in">
+            <p align="center"><font face="Arial, sans-serif">&nbsp;&nbsp;&nbsp;III.</font></p>
+        </td>
+        <td width="126" style="border: none; padding: 0in">
+             <p><font class="bold" face="Arial, sans-serif">Tiba di    </font>
+            </p>
+            <p><font face="Arial, sans-serif"><font size="1" style="font-size: 6pt">Arrival
+            at</font></font></p>
+        </td>
+        <td width="7" style="border: none; padding: 0in">
+            <p><br>
+
+            </p>
+            <p><font face="Arial, sans-serif">:  </font>
+            </p>
+        </td>
+        <td width="203" style="border: none; padding: 0in">
+            <p><br>
+
+            </p>
+        </td>
+        <td rowspan="5" width="14" style="border: none; padding: 0in">
+            <p><br>
+
+            </p>
+        </td>
+        <td valign="top" rowspan="5" width="34" style="border: none; padding: 0in">
+            <p align="center"><font face="Arial, sans-serif">IV.</font></p>
+        </td>
+        <td width="126" style="border: none; padding: 0in">
+            <p><font class="bold" face="Arial, sans-serif">Berangkat dari</font></p>
+            <p><font face="Arial, sans-serif"><font size="1" style="font-size: 6pt">Departure
+            from</font></font></p>
+        </td>
+        <td width="6" style="border: none; padding: 0in">
+            <p><br>
+
+            </p>
+            <p><font face="Arial, sans-serif">:</font></p>
+        </td>
+        <td width="211" style="border: none; padding: 0in">
+            <p><br>
+
+            </p>
+        </td>
+    </tr>
+    <tr valign="top">
+        <td width="126" style="border: none; padding: 0in">
+            <p><font class="bold" face="Arial, sans-serif">Pada Tanggal    </font>
+            </p>
+            <p><font face="Arial, sans-serif"><font size="1" style="font-size: 6pt">Date
+             </font></font>
+            </p>
+        </td>
+        <td width="7" style="border: none; padding: 0in">
+            <p><br>
+
+            </p>
+            <p><font face="Arial, sans-serif">:</font></p>
+        </td>
+        <td width="203" style="border: none; padding: 0in">
+            <p><br>
+
+            </p>
+        </td>
+        <td width="126" style="border: none; padding: 0in">
+            <p><font class="bold" face="Arial, sans-serif">Ke</font></p>
+            <p><font face="Arial, sans-serif"><font size="1" style="font-size: 6pt">To</font></font></p>
+        </td>
+        <td width="6" style="border: none; padding: 0in">
+            <p><br>
+
+            </p>
+            <p><font face="Arial, sans-serif">:</font></p>
+        </td>
+        <td width="211" style="border: none; padding: 0in">
+            <p><br>
+
+            </p>
+        </td>
+    </tr>
+    <tr valign="top">
+        <td width="126" style="border: none; padding: 0in">
+            <p><font class="bold" face="Arial, sans-serif">Kepala Kantor</font></p>
+            <p><font face="Arial, sans-serif"><font size="1" style="font-size: 6pt">Head
+            of Office</font></font></p>
+        </td>
+        <td width="7" style="border: none; padding: 0in">
+            <p><br>
+
+            </p>
+            <p><font face="Arial, sans-serif">:</font></p>
+        </td>
+        <td width="203" style="border: none; padding: 0in">
+            <p align="center"><br>
+
+            </p>
+            <p align="center"><font face="Arial, sans-serif">. . . . . . . . .
+            . . . . . . . . . . . . . . . . . .</font>
+            </p>
+        </td>
+        <td width="126" style="border: none; padding: 0in">
+            <p><font class="bold" face="Arial, sans-serif">Pada Tanggal</font></p>
+            <p><font face="Arial, sans-serif"><font size="1" style="font-size: 6pt">Date</font></font></p>
+        </td>
+        <td width="6" style="border: none; padding: 0in">
+            <p><br>
+
+            </p>
+            <p><font face="Arial, sans-serif">:</font></p>
+        </td>
+        <td width="211" style="border: none; padding: 0in">
+            <p align="center"><br>
+
+            </p>
+            <p align="center"><font face="Arial, sans-serif"></font></p>
+        </td>
+    </tr>
+    <tr valign="top">
+        <td width="126" style="border: none; padding: 0in">
+            <p><br>
+
+            </p>
+        </td>
+        <td width="7" style="border: none; padding: 0in">
+            <p><br>
+
+            </p>
+        </td>
+        <td width="203" style="border: none; padding: 0in">
+            <p align="center"><br>
+
+            </p>
+        </td>
+        <td width="126" style="border: none; padding: 0in">
+            <p><font class="bold" face="Arial, sans-serif">Kepala Kantor</font></p>
+            <p><font face="Arial, sans-serif"><font size="1" style="font-size: 6pt">Head
+            of Office</font></font></p>
+        </td>
+        <td width="6" style="border: none; padding: 0in">
+            <p><br>
+
+            </p>
+            <p><font face="Arial, sans-serif">:</font></p>
+        </td>
+        <td width="211" style="border: none; padding: 0in">
+            <p align="center"><br>
+
+            </p>
+            <p align="center"><font face="Arial, sans-serif">. . . . . . . . .
+            . . . . . . . . . . . . . . . . . .</font>
+            </p>
+        </td>
+    </tr>
+    <tr valign="top">
+        <td colspan="3" width="352" style="border: none; padding: 0in">
+            <p><br>
+
+            </p>
+            <p><br>
+
+            </p>
+            <p><br>
+
+            </p>
+            <br/><br/><br/><br/><br/><p align="center"><font face="Arial, sans-serif">(. . . . . . . .
+            . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . )</font></p>
+            <p>  <font face="Arial, sans-serif"><font size="2" style="font-size: 9pt">NIP</font></font></p>
+        </td>
+        <td colspan="3" width="359" style="border: none; padding: 0in">
+            <p align="center"><br>
+
+            </p>
+            <p align="center"><br>
+
+            </p>
+            <p align="center"><br>
+
+            </p>
+            <br/><br/><br/><br/><br/><p align="center"><font face="Arial, sans-serif">(. . . . . . . .
+            . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . )</font></p>
+            <p>  <font face="Arial, sans-serif"><font size="2" style="font-size: 9pt">NI</font><font size="2" style="font-size: 9pt">P</font></font></p>
+        </td>
+    </tr>
+</tbody></table>
+<p style="margin-bottom: 0in; line-height: 100%"><br>
+
+</p>
+<p style="margin-bottom: 0in; line-height: 100%"><br>
+
+</p>
+<table width="826" cellpadding="4" cellspacing="0">
+    <colgroup><col width="27">
+    <col width="126">
+    <col width="7">
+    <col width="203">
+    <col width="14">
+    <col width="34">
+    <col width="126">
+    <col width="6">
+    <col width="211">
+    </colgroup><tbody><tr valign="top">
+        <td valign="top" rowspan="5" width="27" style="border: none; padding: 0in">
+            <p align="center"><font face="Arial, sans-serif">&nbsp;&nbsp;&nbsp;V.</font></p>
+        </td>
+        <td width="126" style="border: none; padding: 0in">
+             <p><font class="bold" face="Arial, sans-serif">Tiba di    </font>
+            </p>
+            <p><font face="Arial, sans-serif"><font size="1" style="font-size: 6pt">Arrival
+            at</font></font></p>
+        </td>
+        <td width="7" style="border: none; padding: 0in">
+            <p><br>
+
+            </p>
+            <p><font face="Arial, sans-serif">:  </font>
+            </p>
+        </td>
+        <td width="203" style="border: none; padding: 0in">
+            <p><br>
+
+            </p>
+        </td>
+        <td rowspan="5" width="14" style="border: none; padding: 0in">
+            <p><br>
+
+            </p>
+        </td>
+        <td valign="top" rowspan="5" width="34" style="border: none; padding: 0in">
+            <p align="center"><font face="Arial, sans-serif">VI.</font></p>
+        </td>
+        <td width="126" style="border: none; padding: 0in">
+            <p><font class="bold" face="Arial, sans-serif">Berangkat dari</font></p>
+            <p><font face="Arial, sans-serif"><font size="1" style="font-size: 6pt">Departure
+            from</font></font></p>
+        </td>
+        <td width="6" style="border: none; padding: 0in">
+            <p><br>
+
+            </p>
+            <p><font face="Arial, sans-serif">:</font></p>
+        </td>
+        <td width="211" style="border: none; padding: 0in">
+            <p><br>
+
+            </p>
+        </td>
+    </tr>
+    <tr valign="top">
+        <td width="126" style="border: none; padding: 0in">
+            <p><font class="bold" face="Arial, sans-serif">Pada Tanggal    </font>
+            </p>
+            <p><font face="Arial, sans-serif"><font size="1" style="font-size: 6pt">Date
+             </font></font>
+            </p>
+        </td>
+        <td width="7" style="border: none; padding: 0in">
+            <p><br>
+
+            </p>
+            <p><font face="Arial, sans-serif">:</font></p>
+        </td>
+        <td width="203" style="border: none; padding: 0in">
+            <p><br>
+
+            </p>
+        </td>
+        <td width="126" style="border: none; padding: 0in">
+            <p><font class="bold" face="Arial, sans-serif">Ke</font></p>
+            <p><font face="Arial, sans-serif"><font size="1" style="font-size: 6pt">To</font></font></p>
+        </td>
+        <td width="6" style="border: none; padding: 0in">
+            <p><br>
+
+            </p>
+            <p><font face="Arial, sans-serif">:</font></p>
+        </td>
+        <td width="211" style="border: none; padding: 0in">
+            <p><br>
+
+            </p>
+        </td>
+    </tr>
+    <tr valign="top">
+        <td width="126" style="border: none; padding: 0in">
+            <p><font class="bold" face="Arial, sans-serif">Kepala Kantor</font></p>
+            <p><font face="Arial, sans-serif"><font size="1" style="font-size: 6pt">Head
+            of Office</font></font></p>
+        </td>
+        <td width="7" style="border: none; padding: 0in">
+            <p><br>
+
+            </p>
+            <p><font face="Arial, sans-serif">:</font></p>
+        </td>
+        <td width="203" style="border: none; padding: 0in">
+            <p align="center"><br>
+
+            </p>
+            <p align="center"><font face="Arial, sans-serif">. . . . . . . . .
+            . . . . . . . . . . . . . . . . . .</font>
+            </p>
+        </td>
+        <td width="126" style="border: none; padding: 0in">
+            <p><font class="bold" face="Arial, sans-serif">Pada Tanggal</font></p>
+            <p><font face="Arial, sans-serif"><font size="1" style="font-size: 6pt">Date</font></font></p>
+        </td>
+        <td width="6" style="border: none; padding: 0in">
+            <p><br>
+
+            </p>
+            <p><font face="Arial, sans-serif">:</font></p>
+        </td>
+        <td width="211" style="border: none; padding: 0in">
+            <p align="center"><br>
+
+            </p>
+            <p align="center"><font face="Arial, sans-serif"></font></p>
+        </td>
+    </tr>
+    <tr valign="top">
+        <td width="126" style="border: none; padding: 0in">
+            <p><br>
+
+            </p>
+        </td>
+        <td width="7" style="border: none; padding: 0in">
+            <p><br>
+
+            </p>
+        </td>
+        <td width="203" style="border: none; padding: 0in">
+            <p align="center"><br>
+
+            </p>
+        </td>
+        <td width="126" style="border: none; padding: 0in">
+            <p><font class="bold" face="Arial, sans-serif">Kepala Kantor</font></p>
+            <p><font face="Arial, sans-serif"><font size="1" style="font-size: 6pt">Head
+            of Office</font></font></p>
+        </td>
+        <td width="6" style="border: none; padding: 0in">
+            <p><br>
+
+            </p>
+            <p><font face="Arial, sans-serif">:</font></p>
+        </td>
+        <td width="211" style="border: none; padding: 0in">
+            <p align="center"><br>
+
+            </p>
+            <p align="center"><font face="Arial, sans-serif">. . . . . . . . .
+            . . . . . . . . . . . . . . . . . .</font>
+            </p>
+        </td>
+    </tr>
+    <tr valign="top">
+        <td colspan="3" width="352" style="border: none; padding: 0in">
+            <p><br>
+
+            </p>
+            <p><br>
+
+            </p>
+            <p><br>
+
+            </p>
+            <br/><br/><br/><br/><br/><p align="center"><font face="Arial, sans-serif">(. . . . . . . .
+            . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . )</font></p>
+            <p>  <font face="Arial, sans-serif"><font size="2" style="font-size: 9pt">NIP</font></font></p>
+        </td>
+        <td colspan="3" width="359" style="border: none; padding: 0in">
+            <p align="center"><br>
+
+            </p>
+            <p align="center"><br>
+
+            </p>
+            <p align="center"><br>
+
+            </p>
+            <br/><br/><br/><br/><br/><p align="center"><font face="Arial, sans-serif">(. . . . . . . .
+            . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . )</font></p>
+            <p>  <font face="Arial, sans-serif"><font size="2" style="font-size: 9pt">NI</font><font size="2" style="font-size: 9pt">P</font></font></p>
+        </td>
+    </tr>
+</tbody></table>
+<p style="margin-bottom: 0in; line-height: 100%"><br>
+
+</p>
+<table width="826" cellpadding="4" cellspacing="0">
+    <colgroup><col width="27">
+    <col width="155">
+    <col width="13">
+    <col width="168">
+    <col width="14">
+    <col width="34">
+    <col width="359">
+    </colgroup><tbody><tr valign="top">
+        <td valign="top" rowspan="4" width="27" style="border: none; padding: 0in">
+            <p align="center"><font face="Arial, sans-serif">&nbsp;&nbsp;VII.</font></p>
+        </td>
+        <td width="155" style="border: none; padding: 0in">
+            <p><font class="bold" face="Arial, sans-serif"><font size="1" style="font-size: 8pt">Tiba
+            di Tempat Kedudukan</font></font></p>
+            <p><font face="Arial, sans-serif"><font size="1" style="font-size: 6pt">Arrival
+            at Departure Pont</font></font></p>
+        </td>
+        <td width="13" style="border: none; padding: 0in">
+            <p><br>
+
+            </p>
+            <p><font face="Arial, sans-serif">:  </font>
+            </p>
+        </td>
+        <td width="168" style="border: none; padding: 0in">
+            <p><br>
+                <?= Myhelper::Negara($model->kota_asal) ?>
+            </p>
+        </td>
+        <td rowspan="4" width="14" style="border: none; padding: 0in">
+            <p><br>
+
+            </p>
+        </td>
+        <td rowspan="4" width="34" style="border: none; padding: 0in">
+            <p align="center"><br>
+
+            </p>
+        </td>
+        <td rowspan="2" width="359" style="border: none; padding: 0in">
+            <p style="text-align: justify;text-justify: inter-word;"><font face="Arial, sans-serif"><font size="1" style="font-size: 8pt">Telah
+            diperiksa dengan keterangan bahwa perjalanan tersebut atas
+            perintahnya dan semata-mata untuk kepentingan jabatan dalam waktu
+            yang sesingkatsingkatnya.</font></font></p>
+        </td>
+    </tr>
+    <tr valign="top">
+        <td width="155" style="border: none; padding: 0in">
+            <p><font class="bold" face="Arial, sans-serif"><font size="1" style="font-size: 8pt">Pada
+            Tanggal</font>    </font>
+            </p>
+            <p><font face="Arial, sans-serif"><font size="1" style="font-size: 6pt">Date
+             </font></font>
+            </p>
+        </td>
+        <td width="13" style="border: none; padding: 0in">
+            <p><br>
+
+            </p>
+            <p><font face="Arial, sans-serif">:</font></p>
+        </td>
+        <td width="168" style="border: none; padding: 0in">
+            <p><br>
+                <?= Myhelper::Formattgl($mode->tgl_kembali) ?>
+            </p>
+        </td>
+    </tr>
+    <tr valign="top">
+        <td colspan="3" width="352" style="border: none; padding: 0in">
+            <p><font class="bold" face="Arial, sans-serif"><font size="1" style="font-size: 8pt"><u>Pejabat
+                Pembuat Komitmen </u></font></font></p>
+            <p><br>
+
+            </p>
+        </td>
+        <td width="359" style="border: none; padding: 0in">
+            <p><font class="bold" face="Arial, sans-serif"><font size="1" style="font-size: 8pt">
+             <u> Pejabat Pembuat Komitmen </u></font></font></p>
+            <p><br>
+
+            </p>
+        </td>
+    </tr>
+    <tr valign="top">
+        <td colspan="3" width="352" style="border: none; padding: 0in">
+            <p><br>
+
+            </p>
+            <p><br>
+
+            </p>
+            <p><br>
+
+            </p>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+
+            <p align="left"><font class="bold" face="Arial, sans-serif"><font size="1" style="font-size: 8pt"><u><?= $model->ppk->nama ?>
+            ST</u></font></font></p>
+            <p><font class="bold" face="Arial, sans-serif"><font size="1" style="font-size: 8pt">NIP. <?= $model->ppk->nip ?></font></font></p>
+        </td>
+        <td width="359" style="border: none; padding: 0in">
+            <p align="center"><br>
+
+            </p>
+            <p align="center"><br>
+
+            </p>
+            <p align="center"><br>
+
+            </p>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <p align="left"><font class="bold" face="Arial, sans-serif"><font size="1" style="font-size: 8pt"><u><?= $model->ppk->nama ?>
+            ST</u></font></font></p>
+            <p align="left"><font class="bold" face="Arial, sans-serif"><font size="1" style="font-size: 8pt">NIP. <?= $model->ppk->nip ?></font></font></p>
+        </td>
+    </tr>
+</tbody></table>
+<p style="margin-bottom: 0in; line-height: 100%"><br>
+
+</p>
+
+</body>
 
 
-                </table>
-    <pagebreak>
+            </div>
 
-             <!-- <img src="<?= Url::to(['daftar-keg/qrcode']) ?>" />  -->
-
-
-    <?php
-   if ($no < $hitung){
+      <?php
+ if ($no < $hitung){
 
         echo "<pagebreak>";
 
     }
     $no++;
 }
-  
+
 
 ?>
-            </body>
-<style type="text/css">
-    div {
-    text-align: justify;
-    text-justify: inter-word;
-}
-</style>
-
-
+          
