@@ -92,7 +92,16 @@ use \common\components\MyHelper;
             <td rowspan="3" width="80" align="center"><?php echo $jab; ?>  <?= MyHelper::Gole($data->pegawai->gol_id) ?> </td>
             <td rowspan="3" width="100" align="center"><?= \common\components\Myhelper::Negara($model->negara_tujuan) ?>  </td>
             <td rowspan="3" align="center"><?= substr($data->tgl_berangkat, 8, 2) ?>&nbsp;&nbsp;s/d&nbsp;&nbsp;<?= substr($data->tgl_kembali, 8, 2) ?> &nbsp; <?= \common\components\MyHelper::BacaBulan(substr($data->tgl_kembali, 6, 2)) ?> <?= substr($data->tgl_kembali, 0, 4) ?></td>
-            <td rowspan="3" align="center"><?= $data->uang_makan ?></td>
+            <td rowspan="3" align="center">
+               
+            <?php
+
+             $a = substr($data->tgl_kembali, 8,2);
+             $b = substr($data->tgl_berangkat, 8,2); 
+             echo $a-$b+1; 
+            
+            ?></td>
+        
             <td rowspan="3" align="center">
                 <?php
                 if (!empty($tiket->jml)) {
@@ -102,7 +111,7 @@ use \common\components\MyHelper;
                 }
                 ?>
             </td>
-            <td rowspan="3">
+            <td rowspan="3" align="center">
 
                 <?php
                 if (!empty($asuransi->jml)) {
@@ -112,7 +121,7 @@ use \common\components\MyHelper;
                 }
                 ?>
             </td>
-            <td rowspan="3">
+            <td rowspan="3" align="center">
 
                 <?php
                 if (!empty($tax->jml)) {

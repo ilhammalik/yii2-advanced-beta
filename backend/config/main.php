@@ -25,6 +25,7 @@ return [
         'site/index/',
         'simpel-keg/spd/*',
         'simpel-personil/*',
+        'simpel-personil/qrcod/*',
         //'debug/*',
         '*',
         //'mimin/*', // only in dev mode

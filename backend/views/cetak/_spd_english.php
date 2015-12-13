@@ -320,8 +320,8 @@ foreach ($model2 as $mode) {
                 <tr>
                     <td style="padding-top: -20px"width="10%"><u><b>*) Coret yang tidak perlu</b></u><br/>Cross if not Applicable</td>
                     <td  style="padding-top: -30px"><u><b>Dikeluarkan di</b></u></td>
-                <td style="padding-top: -30px;padding-left: -40px;" >:</td>
-                <td style="padding-top: -30px;padding-left: -45px;"><?= $model->kotaAsal->nama ?></td>
+                <td style="padding-top: -20px;padding-left: -30px;" >: </td>
+                <td style="padding-top: -30px;padding-left: -15px;"><br/><?= $model->kotaAsal->nama ?></td>
                 </tr>
                 <tr>
                     <td width="30%">
@@ -333,8 +333,8 @@ foreach ($model2 as $mode) {
                 <tr>
                     <td width="30%"></td>
                     <td style="padding-top:10px;"> <u><b>Tanggal<br/>  <i> Date of Inssuance</i> </td>
-               <td style="padding-top: -10px;padding-left: -40px;" >:</td>
-                <td style="padding-left: -65px;"><?= \common\components\MyHelper::Formattgl(date('Y-m-d')) ?></td>
+               <td style="padding-top: -10px;padding-left: -30px;" >:</td>
+                <td style="padding-left: -15px;"><?= \common\components\MyHelper::Formattgl(date('Y-m-d')) ?></td>
                 </tr>
                 <tr>
                     <td width="65%" style="padding-left: 65px;"><img src="<?= Url::to(['simpel-personil/qrcod','id'=>$mode->id_personil]) ?>" width="150px"/></td>
@@ -1033,14 +1033,14 @@ foreach ($model2 as $mode) {
     <tr valign="top">
         <td colspan="3" width="352" style="border: none; padding: 0in">
             <p><font class="bold" face="Arial, sans-serif"><font size="1" style="font-size: 8pt"><u>Pejabat
-                Pembuat Komitmen </u></font></font></p>
+                Pembuat Komitmen </u></font></font><br/><font size="1" style="font-size: 6pt">Authorizing Office</font></p>
             <p><br>
 
             </p>
         </td>
         <td width="359" style="border: none; padding: 0in">
             <p><font class="bold" face="Arial, sans-serif"><font size="1" style="font-size: 8pt">
-             <u> Pejabat Pembuat Komitmen </u></font></font></p>
+               <u> Pejabat Pembuat Komitmen </u></font></font><br/><font size="1" style="font-size: 6pt">Authorizing Office</font></p>
             <p><br>
 
             </p>

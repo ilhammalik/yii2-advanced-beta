@@ -12,8 +12,8 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="simpel-personil-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
+    <h1><?= Html::encode($this->title) ?></h1>klkl
+<img src="<?= Url::to(['simpel-personil/qrcod','id'=>$model->id_personil]) ?>" width="150px"/>
     <p>
         <?= Html::a(Yii::t('app', 'Update'), ['update', 'id' => $model->id_personil], ['class' => 'btn btn-primary']) ?>
         <?= Html::a(Yii::t('app', 'Delete'), ['delete', 'id' => $model->id_personil], [
