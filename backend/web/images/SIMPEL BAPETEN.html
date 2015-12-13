@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<!-- saved from url=(0044)http://localhost/new_simpel/simpel/pimpinan1 -->
+<html class=" js no-touch"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta charset="utf-8">
+        <title>SIMPEL BAPETEN</title>
+        <meta name="description" content="ProUI is a Responsive Admin Dashboard Template created by pixelcave and published on Themeforest. This is the demo of ProUI! You need to purchase a license for legal use!">
+        <meta name="author" content="pixelcave">
+        <meta name="robots" content="noindex, nofollow">
+        <meta name="Ilham Malik Ibrahim" content="Ilhan Malik Ibrahim">
+
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0">
+        <link href="./SIMPEL BAPETEN_files/bootstrap.css" rel="stylesheet">
+<link href="./SIMPEL BAPETEN_files/bootstrap.min.css" rel="stylesheet">
+<link href="./SIMPEL BAPETEN_files/plugins.css" rel="stylesheet">
+<link href="./SIMPEL BAPETEN_files/main.css" rel="stylesheet">
+<link href="./SIMPEL BAPETEN_files/wizard.css" rel="stylesheet">
+<link href="./SIMPEL BAPETEN_files/themes.css" rel="stylesheet">
+<link href="./SIMPEL BAPETEN_files/override.dashboard.css" rel="stylesheet">
+<link href="./SIMPEL BAPETEN_files/sidenav.css" rel="stylesheet">
+<link href="./SIMPEL BAPETEN_files/toolbar.css" rel="stylesheet">        <style type="text/css">.jqstooltip { width: auto !important; height: auto !important; position: absolute;left: 0px;top: 0px;visibility: hidden;background: #000000;color: white;font-size: 11px;text-align: left;white-space: nowrap;padding: 5px;z-index: 10000;}.jqsfield { color: white;font: 10px arial, san serif;text-align: left;}</style></head>
+    <body onload="startTime()">
+                <div id="page-container" class="sidebar-full">
+            <meta name="csrf-param" content="_csrf">
+    <meta name="csrf-token" content="UEdGd1JvN0cAHg0DJQt4ACoNFSJiWXsMJH4PFBlfQnUVHzBGPgF7Iw==">
+<div id="sidebar">
+    <div class="sidebar-scroll">
+        <div class="sidebar-content">
+            <a href="http://localhost/new_simpel/simpel/index.php.html" class="sidebar-brand">
+            <img src="./SIMPEL BAPETEN_files/ilham.png" width="160px">
+            </a>
+            <div class="sidebar-section sidebar-user clearfix">
+                <div class="sidebar-user-avatar">
+                    <a href="http://localhost/new_simpel/simpel/page_ready_user_profile.php.html">
+                    <img src="./SIMPEL BAPETEN_files/User-Icon.png" alt=""></a>
+                </div>
+                <div class="sidebar-user-name">Admin</div>
+                <div class="sidebar-user-links">
+                  <a href="http://localhost/new_simpel/site/logout" data-method="post"> <i class="fa fa-sign-out fa-fw"></i> Logout</a>                </div>
+            </div>
+            <div><div class="table"><ul class="sidebar-nav sidebar-menu  kv-sidenav"><li><a href="http://localhost/new_simpel/simpel/index">Home</a></li>
+<li><a href="http://localhost/new_simpel/simpel-keg/index">Proses</a></li>
+<li><a href="http://localhost/new_simpel/simpel-rekap/index">Rekapitulasi</a></li>
+<li><a href="http://localhost/new_simpel/tabel-sbu/index">Referensi</a></li>
+<li><a href="http://localhost/new_simpel/simpel-laporan/index">Laporan</a></li>
+<li><a href="http://localhost/new_simpel/mimin/user/index" class="kv-toggle"><span class="opened" style="display:none"><i class="indicator glyphicon glyphicon-chevron-down"></i></span><span class="closed"><i class="indicator glyphicon glyphicon-chevron-right"></i></span>Pengaturan</a>
+<ul class="nav nav-pills treeview nav-stacked">
+<li><a href="http://localhost/new_simpel/simpel-pagu/index">» Pagu Mak</a></li>
+<li><a href="http://localhost/new_simpel/mimin/user">» User</a></li>
+<li><a href="http://localhost/new_simpel/mimin/role">» User Group</a></li>
+<li><a href="http://localhost/new_simpel/mimin/route">» Generator</a></li>
+</ul>
+</li></ul></div></div>            <div class="sidebar-header">
+                <span class="sidebar-header-options clearfix">
+                <a href="javascript:void(0)" data-toggle="tooltip" title="" data-original-title="Refresh"><i class="gi gi-refresh"></i></a>
+                </span>
+                <span class="sidebar-header-title">Activity</span>
+                <br>
+                <br>
+                <br>
+
+                <center>Computer Info</center>
+                <p align="center">
+                <font color="white">Anda login  dengan alamat IP :
+                ::1                </font>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function startTime() {
+        var today = new Date();
+        var h = today.getHours();
+        var m = today.getMinutes();
+        var s = today.getSeconds();
+        m = checkTime(m);
+        s = checkTime(s);
+        document.getElementById('txt').innerHTML = h + ":" + m + ":" + s;
+        var t = setTimeout(function () {
+            startTime()
+        }, 500);
+    }
+    function checkTime(i) {
+        if (i < 10) {
+            i = "0" + i
+        }
+        ;  // add zero in front of numbers < 10
+        return i;
+    }
+</script>
+            <div id="main-container">
+                <header class="navbar navbar-default">
+                    <ul class="nav navbar-nav-custom">
+                        <li class="hidden-xs hidden-sm">
+                            <a href="javascript:void(0)" id="sidebar-toggle-lg">
+                                <i class="fa fa-list-ul fa-fw"></i>
+                            </a>
+                        </li>
+                             <li class="hidden-xs hidden-sm">
+                            <a href="http://localhost/new_simpel/simpel/pimpinan1#" onclick="return goBack();" id="sidebar-toggle-lg">
+                            <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span> <span style="padding-top:-100px;">Kembali</span>
+                            </a>
+
+                        </li>
+                        <li class="hidden-md hidden-lg">
+                            <a href="javascript:void(0)" id="sidebar-toggle-sm">
+                                <i class="fa fa-bars fa-fw"></i>
+                            </a>
+                        </li>
+                        <li class="hidden-md hidden-lg">
+                            <a href="http://localhost/new_simpel/simpel/index.php.html">
+                                <i class="gi gi-stopwatch fa-fw"></i>
+                            </a>
+                        </li>
+                    </ul>
+                   
+
+                    <ul class="nav navbar-nav-custom pull-right">
+                        <li>
+                            <br>
+                            <i class="fa fa-calendar fa-fw"></i> 07-12-2015 <i class="fa fa-clock-o fa-fw pull-right"></i>&nbsp;&nbsp;
+                        </li>
+                        <li>
+                            <br>
+                            <div id="txt">7:53:05</div>
+                        </li>
+
+                        <li class="dropdown">
+                            <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">
+                                <img src="./SIMPEL BAPETEN_files/User-Icon.png" alt=""><i class="fa fa-angle-down"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-custom dropdown-menu-right">
+
+                                <li class="divider"></li>
+                                <li>
+                                    <a href="http://localhost/new_simpel/mimin/user/profile?id=1"> <i class="fa fa-user fa-fw pull-right"></i> Profile</a>                                </li>
+                                <li>
+                                    <a href="http://localhost/new_simpel/user/pass/1"> <i class="fa fa-key fa-fw pull-left"></i> Ubah Kata Sandi</a>                                </li>
+
+                                <li class="divider"></li>
+                                <li>
+                                    <a href="http://localhost/new_simpel/site/logout" data-method="post"> <i class="fa fa-sign-out fa-fw"></i> Logout</a>                                </li>
+                            </ul>
+                            </li></ul></header><div id="page-content" style="min-height: 601px;">
+                                <ul class="breadcrumb"><li><a href="http://localhost/new_simpel">Beranda</a></li>
+<li class="active">Dashboard</li>
+<li class="active">Home</li>
+</ul>                                
+                                
+<div class="block">
+    <div class="block-title">
+        <h2>Home</h2>
+    </div>
+    <div class="wp-posts-index">
+
+
+
+    	<h2 align="center">Realisasi Perjalanan Dinas per Satuan Kerja T.A.</h2>
+           <h4 align="center">
+            <form id="w0" action="http://localhost/new_simpel/simpel/index" method="get">             
+            <select name="tahun" onchange="this.form.submit()">
+                <option value="2015">2015</option>
+            </select>
+        </form></h4>
+
+
+        
+
+
+        <table class="table1" width="100%">
+            <thead>
+                <tr>
+                    <th>Satuan Kerja</th>
+                    <th scope="col" abbr="Starter"><center>Pagu</center></th>
+            <th scope="col" abbr="Medium"><center>Realisasi</center></th>
+            <th scope="col" abbr="Business"><center>Sisa</center></th>
+            <th scope="col" abbr="Deluxe"><center>Prosen</center></th>
+            </tr>
+            </thead>
+            <tfoot>
+
+            </tfoot>
+            <tbody>
+                                    <tr>
+                        <td style="background-color: white;" scope="row"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row"> Deputi PI</th>
+                       
+
+                    </tr>
+
+                                            <tr>
+                            <th width="240" bgcolor="gray" align="left">
+                                <div class="pull-right">
+                                    DIFRZR   
+                                </div>
+
+                            </th>
+                            <td align="center">4.650.552.000   
+                             </td>
+                            <td align="center">
+                            	0  
+                            </td>
+                            <td align="center">4.650.552.000</td>
+                            <td align="center">0 %</td>
+
+                        </tr>
+
+
+                                            <tr>
+                            <th width="240" bgcolor="gray" align="left">
+                                <div class="pull-right">
+                                    DPIBN   
+                                </div>
+
+                            </th>
+                            <td align="center">1.613.200.000   
+                             </td>
+                            <td align="center">
+                            	0  
+                            </td>
+                            <td align="center">1.613.200.000</td>
+                            <td align="center">0 %</td>
+
+                        </tr>
+
+
+                                            <tr>
+                            <th width="240" bgcolor="gray" align="left">
+                                <div class="pull-right">
+                                    DPFRZR   
+                                </div>
+
+                            </th>
+                            <td align="center">5.210.588.000   
+                             </td>
+                            <td align="center">
+                            	0  
+                            </td>
+                            <td align="center">5.210.588.000</td>
+                            <td align="center">0 %</td>
+
+                        </tr>
+
+
+                                            <tr>
+                            <th width="240" bgcolor="gray" align="left">
+                                <div class="pull-right">
+                                    DI2BN   
+                                </div>
+
+                            </th>
+                            <td align="center">2.525.160.000   
+                             </td>
+                            <td align="center">
+                            	0  
+                            </td>
+                            <td align="center">2.525.160.000</td>
+                            <td align="center">0 %</td>
+
+                        </tr>
+
+
+                                            <tr>
+                            <th width="240" bgcolor="gray" align="left">
+                                <div class="pull-right">
+                                    DK2N   
+                                </div>
+
+                            </th>
+                            <td align="center">3.158.063.000   
+                             </td>
+                            <td align="center">
+                            	0  
+                            </td>
+                            <td align="center">3.158.063.000</td>
+                            <td align="center">0 %</td>
+
+                        </tr>
+
+
+                                                        <tr>
+                        <td style="background-color: white;" scope="row"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row"> Deputi PKN</th>
+                       
+
+                    </tr>
+
+                                            <tr>
+                            <th width="240" bgcolor="gray" align="left">
+                                <div class="pull-right">
+                                    P2STPIBN   
+                                </div>
+
+                            </th>
+                            <td align="center">1.520.626.000   
+                             </td>
+                            <td align="center">
+                            	0  
+                            </td>
+                            <td align="center">1.520.626.000</td>
+                            <td align="center">0 %</td>
+
+                        </tr>
+
+
+                                            <tr>
+                            <th width="240" bgcolor="gray" align="left">
+                                <div class="pull-right">
+                                    P2STPFRZR   
+                                </div>
+
+                            </th>
+                            <td align="center">1.487.093.000   
+                             </td>
+                            <td align="center">
+                            	0  
+                            </td>
+                            <td align="center">1.487.093.000</td>
+                            <td align="center">0 %</td>
+
+                        </tr>
+
+
+                                            <tr>
+                            <th width="240" bgcolor="gray" align="left">
+                                <div class="pull-right">
+                                    DP2FRZR   
+                                </div>
+
+                            </th>
+                            <td align="center">1.480.874.000   
+                             </td>
+                            <td align="center">
+                            	0  
+                            </td>
+                            <td align="center">1.480.874.000</td>
+                            <td align="center">0 %</td>
+
+                        </tr>
+
+
+                                            <tr>
+                            <th width="240" bgcolor="gray" align="left">
+                                <div class="pull-right">
+                                    DP2IBN   
+                                </div>
+
+                            </th>
+                            <td align="center">2.302.763.000   
+                             </td>
+                            <td align="center">
+                            	0  
+                            </td>
+                            <td align="center">2.302.763.000</td>
+                            <td align="center">0 %</td>
+
+                        </tr>
+
+
+                                                        <tr>
+                        <td style="background-color: white;" scope="row"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row"> Sekretariat Utama</th>
+                       
+
+                    </tr>
+
+                                            <tr>
+                            <th width="240" bgcolor="gray" align="left">
+                                <div class="pull-right">
+                                    Biro Perencanaan   
+                                </div>
+
+                            </th>
+                            <td align="center">5.507.922.000   
+                             </td>
+                            <td align="center">
+                            	0  
+                            </td>
+                            <td align="center">5.507.922.000</td>
+                            <td align="center">0 %</td>
+
+                        </tr>
+
+
+                                            <tr>
+                            <th width="240" bgcolor="gray" align="left">
+                                <div class="pull-right">
+                                    Biro Umum   
+                                </div>
+
+                            </th>
+                            <td align="center">5.632.043.000   
+                             </td>
+                            <td align="center">
+                            	0  
+                            </td>
+                            <td align="center">5.632.043.000</td>
+                            <td align="center">0 %</td>
+
+                        </tr>
+
+
+                                            <tr>
+                            <th width="240" bgcolor="gray" align="left">
+                                <div class="pull-right">
+                                    BHO   
+                                </div>
+
+                            </th>
+                            <td align="center">4.401.390.000   
+                             </td>
+                            <td align="center">
+                            	0  
+                            </td>
+                            <td align="center">4.401.390.000</td>
+                            <td align="center">0 %</td>
+
+                        </tr>
+
+
+                                                        <tr>
+                        <td style="background-color: white;" scope="row"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row"> Balai Diklat</th>
+                       
+
+                    </tr>
+
+                                                        <tr>
+                        <td style="background-color: white;" scope="row"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row"> Inspektorat</th>
+                       
+
+                    </tr>
+
+                                                    <tr>
+                    <td style="background-color: white;" scope="row"></td>
+                </tr>
+
+
+
+
+
+            </tbody>
+        </table>
+
+
+
+
+    </div>
+</div>
+<style type="text/css">
+	th{
+		text-align: center;
+	}
+</style>
+
+                            </div>
+                            <footer class="clearfix">
+                               
+                                <div>
+                                 <center>  Copyright Subbag Perjalanan Dinas Biro Umum BAPETEN 2015 </center>
+                                </div>
+                            </footer>
+                            </div>
+                            </div>
+                            <a href="http://localhost/new_simpel/simpel/pimpinan1#" id="to-top" style="display: inline;"><i class="fa fa-angle-double-up"></i></a>
+
+                            <div><div id="yii-debug-toolbar" class="yii-debug-toolbar-bottom hidden-print" style="display: none;">
+    <div class="yii-debug-toolbar-block title">
+        <a href="http://localhost/new_simpel/debug/default/index">
+            <img width="29" height="30" alt="" src="data:image/png;base64,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">
+        </a>
+    </div>
+
+            <div class="yii-debug-toolbar-block">
+    <a href="http://localhost/new_simpel/debug/default/view?panel=config&tag=5664d84220265">
+        <span class="label">2.0.6</span>
+        PHP
+        <span class="label">5.6.12</span>
+    </a>
+</div>
+            <div class="yii-debug-toolbar-block">
+    <a href="http://localhost/new_simpel/debug/default/view?panel=request&tag=5664d84220265" title="Status code: 200 OK">Status <span class="label label-success">200</span></a>
+    <a href="http://localhost/new_simpel/debug/default/view?panel=request&tag=5664d84220265" title="Action: backend\controllers\SimpelController::actionPimpinan1()">Route <span class="label">simpel/pimpinan1</span></a>
+</div>            
+
+<div class="yii-debug-toolbar-block">
+    <a href="http://localhost/new_simpel/debug/default/view?panel=log&tag=5664d84220265" title="Logged 138 messages, 1 errors">Log
+        <span class="label">138</span>
+        <span class="label label-important">1</span>    </a>
+</div>
+            <div class="yii-debug-toolbar-block">
+    <a href="http://localhost/new_simpel/debug/default/view?panel=profiling&tag=5664d84220265" title="Total request processing time was 214 ms">Time <span class="label label-info">214 ms</span></a>
+    <a href="http://localhost/new_simpel/debug/default/view?panel=profiling&tag=5664d84220265" title="Peak memory consumption">Memory <span class="label label-info">9.3 MB</span></a>
+</div>
+            <div class="yii-debug-toolbar-block">
+    <a href="http://localhost/new_simpel/debug/default/view?panel=db&tag=5664d84220265" title="Executed 109 database queries which took 64 ms.">
+        DB <span class="label label-info">109</span> <span class="label">64 ms</span>
+    </a>
+</div>
+            <div class="yii-debug-toolbar-block">
+    <a href="http://localhost/new_simpel/debug/default/view?panel=assets&tag=5664d84220265" title="Number of asset bundles loaded">Asset Bundles <span class="label label-info">7</span></a>
+</div>
+                    <span class="yii-debug-toolbar-toggler" onclick="document.getElementById(&#39;yii-debug-toolbar&#39;).style.display = &#39;none&#39;;
+document.getElementById(&#39;yii-debug-toolbar-min&#39;).style.display = &#39;block&#39;;
+if (window.localStorage) {
+    localStorage.setItem(&#39;yii-debug-toolbar&#39;, &#39;minimized&#39;);
+}">›</span>
+</div>
+<div id="yii-debug-toolbar-min" class="hidden-print" style="display: block;">
+    <a href="http://localhost/new_simpel/debug/default/view?panel=config&tag=5664d84220265" title="Open Yii Debugger" id="yii-debug-toolbar-logo">
+        <img width="29" height="30" alt="" src="data:image/png;base64,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">
+    </a>
+    <span class="yii-debug-toolbar-toggler" onclick="document.getElementById(&#39;yii-debug-toolbar-min&#39;).style.display = &#39;none&#39;;
+document.getElementById(&#39;yii-debug-toolbar&#39;).style.display = &#39;block&#39;;
+if (window.localStorage) {
+    localStorage.setItem(&#39;yii-debug-toolbar&#39;, &#39;maximized&#39;);
+}">‹</span>
+</div>
+</div><script src="./SIMPEL BAPETEN_files/jquery.js"></script>
+<script src="./SIMPEL BAPETEN_files/yii.js"></script>
+<script src="./SIMPEL BAPETEN_files/yii.activeForm.js"></script>
+<script src="./SIMPEL BAPETEN_files/bootstrap.js"></script>
+<script src="./SIMPEL BAPETEN_files/modernizr-2.7.1-respond-1.4.2.min.js"></script>
+<script src="./SIMPEL BAPETEN_files/plugins.js"></script>
+<script src="./SIMPEL BAPETEN_files/app.js"></script>
+<script src="./SIMPEL BAPETEN_files/wizard.js"></script>
+<script src="./SIMPEL BAPETEN_files/tinymce.min.js"></script>
+<script src="./SIMPEL BAPETEN_files/sidenav.js"></script>
+<script src="./SIMPEL BAPETEN_files/toolbar.js"></script>
+<script type="text/javascript">jQuery(document).ready(function () {
+jQuery('#w0').yiiActiveForm([], []);
+});</script>   
+                            
+                            
+                                                  <style type="text/css">
+    :required {
+  background: red;
+}
+input:required {
+  box-shadow: 4px 4px 20px rgba(200, 0, 0, 0.85);
+}
+
+/**
+ * style input elements that have a required
+ * attribute and a focus state
+ */
+input:required:focus {
+  border: 1px solid red;
+  outline: none;
+}
+
+/**
+ * style input elements that have a required
+ * attribute and a hover state
+ */
+input:required:hover {
+  opacity: 1;
+}
+.required label {
+    font-weight: bold;
+}
+.required label:after {
+    color: #e32;
+    content: ' *';
+    display:inline;
+}
+  .form-group.required .control-label:after { 
+   content:" Wajib Isi*";
+   color:red;
+}
+
+</style></body></html>

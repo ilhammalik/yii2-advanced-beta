@@ -1,0 +1,146 @@
+<?php
+
+use yii\helpers\Html;
+use yii\bootstrap\Nav;
+use yii\bootstrap\NavBar;
+use yii\helpers\Url;
+?>
+
+<?= Html::csrfMetaTags() ?>
+<div id="sidebar">
+    <div class="sidebar-scroll">
+        <div class="sidebar-content">
+            <a href="./index.php.html" class="sidebar-brand">
+                <img src="<?= Url::to(['/images/ilham.png']) ?>" width="160px"/>
+            </a>
+            <div class="sidebar-section sidebar-user clearfix">
+                <div class="sidebar-user-avatar">
+                    <a href="./page_ready_user_profile.php.html">
+
+                        <?= Html::img('@web/theme/img/User-Icon.png'); ?></a>
+                </div>
+
+                <div class="sidebar-user-name">Admin</div>
+                <div class="sidebar-user-links">
+
+                    <a href="./login.php.html" data-toggle="tooltip" data-placement="bottom" title="Logout"><i class="gi gi-exit"></i></a>
+                </div>
+            </div>
+
+            <?php
+            if (Yii::$app->user->isGuest) {
+                echo Nav::widget([
+                    'items' => [
+                        [
+                            'label' => 'Login',
+                            'url' => ['site/login'],
+                            'visible' => Yii::$app->user->isGuest
+                        ],
+                    ],
+                    'options' => ['class' => 'sidebar-nav'],
+                    'encodeLabels' => false, // set this to nav-tab to get tab-styled navigation
+                ]);
+            } else {
+                echo Nav::widget([
+                    'items' => [
+                        [
+                            'label' => '<i class="gi gi-home sidebar-nav-icon"></i>Home',
+                            'url' => ['/site/index'],
+                        ],
+                        [
+                            'label' => '<i class="gi gi-pencil sidebar-nav-icon"></i>Proses',
+                            'url' => ['daftar-keg/index'],
+                        ],
+                        [
+                            'label' => '<i class="gi gi-tags sidebar-nav-icon"></i>Rekapitulasi',
+                            'url' => ['wp-terms/index'],
+                        ],
+                        [
+                            'label' => '<i class="gi gi-chat sidebar-nav-icon"></i>Referensi',
+                            'url' => ['tabel-sbu/index'],
+                        ],
+                        [
+                            'label' => '<i class="gi gi-chat sidebar-nav-icon"></i>Laporan',
+                            'url' => ['tabel-sbu/index'],
+                        ],
+                        '<li><a class="sidebar-nav-menu" href="#" style="border-left: 5px solid #1bbae1;
+                            padding-left: 10px;"><i class="fa fa-angle-left sidebar-nav-indicator"></i><i class="gi gi-film sidebar-nav-icon"></i>Pengaturan</a>
+                                    <ul>
+                                    <li><a  style="border-left: 5px solid #1bbae1;
+                            padding-left: 10px;"  href="' . Url::to(['/user/index']) . '">User</a></li>
+                                    <li><a style="border-left: 5px solid #1bbae1;
+                            padding-left: 10px;" href="' . Url::to(['/gii']) . '">Generator</a></li>
+                                  <li><a  style="border-left: 5px solid #1bbae1;
+                            padding-left: 10px;"  href="' . Url::to(['/admin/route']) . '">Route</a></li>
+                                    <li><a style="border-left: 5px solid #1bbae1;
+                            padding-left: 10px;" href="' . Url::to(['/admin/menu']) . '">Menu</a></li>
+                                  <li><a  style="border-left: 5px solid #1bbae1;
+                            padding-left: 10px;"  href="' . Url::to(['/admin/permission']) . '">Permission</a></li>
+                                    <li><a style="border-left: 5px solid #1bbae1;
+                            padding-left: 10px;" href="' . Url::to(['/admin/role']) . '">Role</a></li>
+                                  <li><a  style="border-left: 5px solid #1bbae1;
+                            padding-left: 10px;"  href="' . Url::to(['/admin']) . '">Assigment</a></li>
+                                  
+                                    </ul>
+                                </li>',
+                        [
+                            'label' => 'Logout (' . Yii::$app->user->identity->username . ')',
+                            'url' => ['/site/logout'],
+                            'linkOptions' => ['data-method' => 'post']
+                        ],
+                    ],
+                    'options' => ['class' => 'sidebar-nav'],
+                    'encodeLabels' => false, // set this to nav-tab to get tab-styled navigation
+                ]);
+            }
+            ?>
+
+            <div class="sidebar-header">
+                <span class="sidebar-header-options clearfix">
+                    <a href="javascript:void(0)" data-toggle="tooltip" title="Refresh"><i class="gi gi-refresh"></i></a>
+                </span>
+                <span class="sidebar-header-title">Activity</span>
+
+                <br/>
+
+                <div class="sidebar-header">
+                    <center>Terakhir Logout</center><br/>
+                    <center><?php echo Yii::$app->user->identity->last_logout; ?></center>
+                </div>
+                <br/>
+                <br/>
+
+                <center>Computer Info</center>
+                <p align="center">
+                    <font color="white">Anda login  dengan alamat IP : 
+                    <?php echo isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : ''; ?>
+                    </font>
+                </p>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function startTime() {
+        var today = new Date();
+        var h = today.getHours();
+        var m = today.getMinutes();
+        var s = today.getSeconds();
+        m = checkTime(m);
+        s = checkTime(s);
+        document.getElementById('txt').innerHTML = h + ":" + m + ":" + s;
+        var t = setTimeout(function () {
+            startTime()
+        }, 500);
+    }
+
+    function checkTime(i) {
+        if (i < 10) {
+            i = "0" + i
+        }
+        ;  // add zero in front of numbers < 10
+        return i;
+    }
+</script>

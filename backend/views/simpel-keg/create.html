@@ -1,0 +1,444 @@
+<?php
+
+use kartik\widgets\ActiveForm;
+use kartik\builder\TabularForm;
+use kartik\grid\GridView;
+use yii\helpers\Html;
+use yii\helpers\ArrayHelper;
+use kartik\select2\Select2;
+use backend\models\Angkutan;
+use yii\helpers\Url;
+use yii\bootstrap\Modal;
+use yii\widgets\DetailView;
+
+
+$this->title = Yii::t('app', 'Daftar Personil');
+$this->params['breadcrumbs'][] = $this->title;
+?>
+<?php
+$js = <<<Modal
+$(function () {
+    $('.modalButton').click(function () {
+        $('#modal').modal('show')
+                .find('#modalContent')
+                .load($(this).attr('value'));
+    });
+
+})
+Modal;
+$this->registerJs($js);
+
+$js = <<<Modal
+$(function () {
+    $('.modalButtonn').click(function () {
+        $('#modall').modal('show')
+                .find('#modalContentt')
+                .load($(this).attr('value'));
+    });
+
+});
+
+
+
+Modal;
+$this->registerJs($js);
+?>
+
+<?php
+Modal::begin([
+    'header' => 'Tambah Perjalanan Dinas',
+    'options' => [
+        'id' => 'modal',
+        'tabindex' => false // important for Select2 to work properly
+    ],
+    'id' => 'modal',
+    'size' => 'bigModal',
+]);
+echo "<div id='modalContent'></div>";
+
+Modal::end();
+
+Modal::begin([
+    'header' => 'Data Personil',
+    'options' => [
+        //'id' => 'modall',
+        'tabindex' => false // important for Select2 to work properly
+    ],
+    'id' => 'modall',
+    'size' => 'bigModal',
+]);
+echo "<div id='modalContentt'></div>";
+
+Modal::end();
+?> 
+
+
+<div class="block">
+<div class="block-title">
+
+</div> 
+<div class="wp-posts-index"> 
+<?=
+DetailView::widget([
+    'model' => $model,
+    'attributes' => [
+       // 'nomi_id',
+        'mak',
+        'nama_keg',
+        //'dn_ln',
+        [                      // the owner name of the model
+           'label' => 'Tujuan Keberangkatan',
+           'value' =>\backend\models\SimpelKeg::Tujuan($model->negara),
+          ],
+         /* [                      // the owner name of the model
+           'label' => 'Tanggal Penugasan',
+           'value' =>\common\components\MyHelper::Formattgl($model->tgl_penugasan),
+          ],*/
+        'no_spd',
+       // 'kota.kokab_nama',
+    ],
+])
+?>
+</div>
+</div>
+<? 
+ echo '&nbsp;&nbsp;'.Html::button('Tambah Data', ['value' =>Url::to(['simpel-keg/tambah', 'id' => $model->id_kegiatan]), 'class' => 'modalButton btn btn-danger', 'title' => 'view dokumen']);
+                    ?>
+            <?php
+        $buton = \backend\models\SimpelPersonil::find()->where('id_kegiatan=' . $model->id_kegiatan)->count();
+
+if($buton > 0){ ?>
+
+   <?= Html::a(Yii::t('app', 'Kirim Cetak'), ['ce', 'id' => $model->id_kegiatan], ['class' => 'btn btn-primary','data' => [
+                            'confirm' => 'Are you sure you want move to cetak?',
+                            'method' => 'post',
+                        ],]) ?>
+<?php } ?>
+
+<br/>
+<br/>
+
+            <!-- Main content -->
+            <div class="box ">
+                <div class="box-body" style="display: block;">
+<table  style="width:100%;" class="table table-striped">
+    <thead>
+        <tr  style="background-color:#4e95f4;">
+            <th width="2%">No.</th>
+            <th width="33%">Data Personil</th>
+            <th width="33%">Data Penugasan</th>
+            <th width="27%">Pembiayaan</th>
+            <th width="5%">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        <?php
+        $no = 1;
+        $data = \backend\models\SimpelPersonil::find()->where('id_kegiatan=' . $model->id_kegiatan)->all();
+        foreach ($data as $key) {
+            ?>
+            <tr class="item-row">
+                <td valign="top"><span id="No"><?= $no ?></span></td>
+                <td style="width:5%;">
+                    <table style="width:80%;">
+                        <tbody>
+
+                            <tr>
+                                <td width="20%">Nama</td>
+                                <td valign="top">:</td>
+                                <td><?php echo $key->nama; ?></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>NIP</td>
+                                <td valign="top">:</td>
+                                <td><?php echo $key->nip; ?></td>
+                            </tr>
+                            <tr>
+                                <td>Gol</td>
+                                <td valign="top">:</td>
+                                <td><?php echo $key->gol; ?> </td>
+                            </tr>
+                            <tr>
+                                <td>Eselon</td>
+                                <td valign="top">:</td>
+                                <td><?php echo $key->eselon; ?></td>
+
+                            </tr>
+                            
+                        </tbody></table>
+                </td>
+                <td style="width:10%;">
+                    <table style="width:100%">
+                        <tbody><tr>
+                                <td style="width:40%;">No. Surat Penugasan</td>
+                                <td valign="top">:</td>
+                                <td><?php echo $key->no_sp; ?></td>
+                            </tr>
+
+                            <tr>
+                                <td>No. SPD</td>
+                                <td valign="top">:</td>
+                                <td><?php echo $key->no_spd; ?></td>
+                            </tr>
+
+
+
+
+                            <tr>
+                                <td>Angkutan</td>
+                                <td valign="top">:</td>
+                                <td><?php echo \common\components\MyHelper::Angkutan($key->angkutan); ?></td>
+                            </tr>
+
+                            <tr>
+                                <td>Berangkat Dari</td>
+                                <td valign="top">:</td>
+                                <td><?php echo \common\components\MyHelper::Kota($key->dari); ?></td>
+                            </tr>
+                            <tr>
+                                <td>Tujuan</td>
+                                <td valign="top">:</td>
+                                <td> <?php echo \common\components\MyHelper::Kota($key->tujuan); ?></td>
+                            </tr>
+                            <tr>
+                                <td>Tgl Berangkat</td>
+                                <td valign="top">:</td>
+                                <td>(<?php echo $key->pergi; ?>) - (<?php echo $key->pulang; ?>)</td>
+                            </tr>
+                            <tr>
+                                <td>Penandatangan</td>
+                                <td valign="top">:</td>
+                                <td><?php echo $key->nama_ttd; ?></td>
+                            </tr>
+                            <tr>
+                                <td>NIP Penandatangan</td>
+                                <td valign="top">:</td>
+                                <td><?php echo $key->nip_ttd; ?></td>
+                            </tr>
+                            <tr>
+                                <td>Jabatan Penandatangan</td>
+                                <td valign="top">:</td>
+                                <td><?php echo $key->jab_ttd; ?></td>
+                            </tr>
+                            <tr>
+                                <td>Jumlah DL Hari Kerja</td>
+                                <td valign="top">:</td>
+                                <td><?php echo $key->uang_makan; ?>  Hari</td>
+                            </tr>
+
+                        </tbody></table>
+
+                </td>
+                <td style="width:9000%;">
+                    <table  style="width:100%;">
+                        <tbody>
+                            <tr>
+                                <td style="width:20%;">Transport</td>
+                                <td style="width:10px;" valign="top">:</td>
+                                <td>Rp. <?php echo $key->transport; ?> </td>
+                            </tr>
+                            <tr>
+                                <td>Taksi kota asal</td>
+                                <td valign="top">:</td>
+                                <td>Rp. <?php echo $key->taksi; ?>  </td>
+                            </tr>
+                            <tr>
+                                <td>Taksi kota tujuan</td>
+                                <td valign="top">:</td>
+                                <td>Rp. <?php echo $key->taksi2; ?> </td>
+                            </tr>
+                            <tr>
+                                <td>U. Harian </td>
+                                <td valign="top">:</td>
+                                <td>Rp. <?php echo $key->uhr; ?> </td>
+                            </tr>
+                            <tr>
+                                <td valign="top">Uraian Uang Harian</td>
+                                <td valign="top">:</td>
+                                <td>
+                                <?php
+                                if ($key->uraian_uhr == ! null){ ?>
+                                <span class="label label-success" data-toggle="popover" title="Detail Uraian Uang Harian " data-content="<?php echo $key->uraian_uhr; ?>">detail</span>
+                             <?php   } else {
+                                echo '<span class="label label-success"  title="Detail Uraian Uang Harian " >detail kosong</span>';
+                                }
+                                ?>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>U. Saku Fulboard</td>
+                                <td valign="top">:</td>
+                                <td>Rp. <?php echo $key->uhr_fb; ?></td>
+                            </tr>
+                            <tr>
+                                <td valign="top">Uraian U. Saku Fboard</td>
+                                <td valign="top">:</td>
+                                <td>
+                                  <?php
+                                if ($key->uraian_uhr_fb == ! null){ ?>
+                                <span class="label label-success" data-toggle="popover" title="Detail Uraian U. Saku Fboard " data-content="<?php echo $key->uraian_uhr_fb; ?>">detail</span>
+                             <?php   } else {
+                                echo '<span class="label label-success"  title="Detail Uraian Uang Harian " >detail kosong</span>';
+                                }
+                                ?>
+                                
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>Penginapan</td>
+                                <td valign="top">:</td>
+                                <td>Rp. <?php echo $key->penginapan; ?></td>
+                            </tr>
+                            <tr>
+                                <td valign="top" width="240">Uraian Penginapan</td>
+                                <td valign="top">:</td>
+                                <td>
+                                 <?php
+                                if ($key->uraian_inap == ! null){ ?>
+                                <span class="label label-success" data-toggle="popover" title="Detail Uraian Penginapan " data-content="<?php echo $key->uraian_inap; ?>">detail</span></td>
+                               <?php } else {
+                                echo '<span class="label label-success" title="Detail Uraian Uang Harian " >detail kosong</span>';
+                                } ?>
+                            </tr>
+                            <tr>
+                                <td>Penginapan Fullboard</td>
+                                <td valign="top">:</td>
+                                <td>Rp. <?php echo $key->inap_fb; ?></td>
+                            </tr>
+
+                            <tr>
+                                <td  valign="top">Uraian Penginapan Fullboard</td>
+                                <td valign="top">:</td>
+                                 <td>
+                                  <?php
+                                if ($key->u_inap_fb == ! null){ ?>
+                                <span class="label label-success" data-toggle="popover" title="Detail Uraian Penginapan Fullboard" data-content="<?php echo $key->u_inap_fb; ?>">detail</span>
+                             <?php   } else {
+                                echo '<span class="label label-success"  title="Detail Uraian Uang Harian " >detail kosong</span>';
+                                }
+                                ?>
+                                
+                                </td>
+                            </tr>
+
+
+                            <tr>
+                                <td>Representatif</td>
+                                <td valign="top">:</td>
+                                <td>Rp. <?php echo $key->representatif; ?> </td>
+                            </tr>
+                             <tr>
+                                <td valign="top">Uraian Representatif</td>
+                                <td valign="top">:</td>
+                                <td>
+                                  <?php
+                                if ($key->uraian_representatif == ! null){ ?>
+                                <span class="label label-success" data-toggle="popover" title="Detail Uraian Representatif " data-content="<?php echo $key->uraian_representatif; ?> ">detail</span>
+                             <?php   } else {
+                                echo '<span class="label label-success"  title="Detail Uraian Uang Harian " >detail kosong</span>';
+                                }
+                                ?>
+                                
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="240">Transport Pimpinan/Expert/Inspeksi</td>
+                                <td valign="top">:</td>
+                                <td>Rp. <?php echo $key->trans_pim; ?></td>
+                            </tr>
+                            <tr>
+                                <td valign="top" width="240">Uraian Transport</td>
+                                <td valign="top">:</td>
+                                <td>
+                                         <?php
+                                if ($key->uraian_transport == ! null){ ?>
+                                <span class="label label-success" data-toggle="popover" title="Detail Uraian Transport" data-content="<?php echo $key->uraian_transport; ?>">detail</span>
+                             <?php   } else {
+                                echo '<span class="label label-success"  title="Detail Uraian Uang Harian " >detail kosong</span>';
+                                }
+                                ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Penginapan Lain 30%</td>
+                                <td valign="top">:</td>
+                                <td>Rp. <?php echo $key->inap_lain; ?></td>
+                            </tr>
+                            <tr>
+                                <td valign="top" width="240">Uraian Penginapan 30%</td>
+                                <td valign="top">:</td>
+                                <td>
+                                          <?php
+                                if ($key->uraian_penginapan == ! null){ ?>
+                                <span class="label label-success" data-toggle="popover" title="Detail Uraian Penginapan " data-content="<?php echo $key->uraian_penginapan; ?>">detail</span>
+                             <?php   } else {
+                                echo '<span class="label label-success" data-toggle="popover" title="Detail Uraian Uang Harian " >detail kosong</span>';
+                                }
+                                ?>
+                                </td>
+                            </tr>
+                            
+                        </tbody></table>
+
+                </td>
+                <td align="center">
+                    <br/><?=
+                    Html::a('<img src="' . Url::to(['/images/delete.png']) . '" alt="Hapus" title="Hapus" width="25" height="25"/>', ['/daftar-perjadin/delete', 'id' => $key->perjadin_id], [
+                        'class' => '',
+                        'data' => [
+                            'confirm' => 'Are you sure you want to delete this item?',
+                            'method' => 'post',
+                        ],
+                    ])
+                    ?><br/><br/>
+                    <?=
+                    Html::button('<img src="' . Url::to(['/images/edit.png']) . '" alt="Edit" title="Edit" width="25" height="25"/>', ['value' =>
+                        Url::to(['daftar-perjadin/tambah', 'id' => $key->perjadin_id]), 'class' => 'modalButtonn ', 'title' => 'view dokumen'])
+                    ?>
+
+                </td>
+            </tr> 
+            <?                  
+            $no++;
+            }?>
+        </tbody>
+
+        <table width="100%">
+            <tr><td colspan=4 align=center>
+        
+
+            </td></tr>
+    </table>
+</table>
+</div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+    $('[data-toggle="popover"]').popover({
+        placement : 'left',
+        trigger : 'hover',
+        width:'500px',
+    });
+});
+</script>
+<style type="text/css">
+    .bs-example{
+        margin: 150px 50px;
+        width: 1000px;
+    }
+</style>
+                                   
+<style type="text/css">
+    .bigModal{
+        width:1000px;
+    }
+    .th{
+        font-color:white;
+    }
+</style>

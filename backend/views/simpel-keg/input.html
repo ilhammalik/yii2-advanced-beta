@@ -1,0 +1,352 @@
+<?php
+
+use yii\helpers\Html;
+use yii\widgets\ActiveForm;
+use yii\helpers\ArrayHelper;
+use kartik\select2\Select2;
+use yii\helpers\Url;
+use kartik\date\DatePicker;
+use kartik\touchspin\TouchSpin;
+/* @var $this yii\web\View */
+/* @var $model backend\models\Perjadin */
+/* @var $form yii\widgets\ActiveForm */
+?>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        // Smart Wizard   
+        $('#wizard').smartWizard();
+
+        function onFinishCallback() {
+            $('#wizard').smartWizard('showMessage', 'Finish Clicked');
+        }
+    });
+</script>
+
+<table align="center" border="0" width="100%" cellpadding="0" cellspacing="0">
+    <tr><td> 
+            <?php $form = ActiveForm::begin(['id'=>'id_form']); ?>
+            <?= $form->field($model, 'id_kegiatan')->hiddenInput(['value'=>$model2->id_kegiatan])->label(false) ?>
+            <!-- Smart Wizard -->
+            <div id="wizard" class="swMain">
+                <ul>
+                    <li><a href="#step-1">
+                            <span class="stepNumber">1</span>
+                            <span class="stepDesc">
+                                Personil<br />
+                                <small>Data Personil</small>
+                            </span>
+                        </a></li>
+                    <li><a href="#step-2">
+                            <span class="stepNumber">2</span>
+                            <span class="stepDesc">
+                                Pembiyaiaan<br />
+                                <small>Data Pembiyaiaan</small>
+                            </span>
+                        </a></li>
+                   
+                   
+
+                </ul>
+
+                <div id="step-1"> 
+                 
+
+                    <!-- input penugasan -->
+                     <br/>
+                <h2 class="StepTitle">Input Data Penugasan</h2> 
+                <br/>
+                 <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                    <?php
+                    $data2 = ArrayHelper::map(\common\models\Pegawai::find()->asArray()->all(), 'nip', 'nama');
+                    echo $form->field($model, 'pegawai_id')->widget(Select2::classname(), [
+                        'data' => $data2,
+                        'options' => ['id'=>'data1','placeholder' => 'Pilih Nama Personil'],
+                                      'pluginOptions' => [
+                                          'allowClear' => true
+                                      ],
+                    ])->label('Pilih Nama Personil');
+                  
+                    ?>
+                            </div>
+                        
+                        </div>
+                        <div class="col-md-6">
+                            
+                           <div class="form-group">
+                            <?php
+                            echo $form->field($model, 'no_sp')->textInput()->label('No. Surat Penugasan');
+                            ?>
+                        </div>
+                        </div>
+                    </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                       
+                               <?php
+                            echo $form->field($model, 'tgl_berangkat')->widget(DatePicker::classname(), [
+                                'options' => ['placeholder' => 'Tanggal Keberangkatan'],
+                                'pluginOptions' => [
+                                    'autoclose' => true,
+                                    'format' => 'yyyy-m-d',
+                                ]
+                            ])->label('Tangal Keberangkatan');
+                            ?>
+                            
+                            </div>
+                        <div class="form-group">
+                            <?php
+                            $data7 = ArrayHelper::map(\common\models\MasterKokab::find()->asArray()->all(), 'kota_id', 'kokab_nama');
+                            echo $form->field($model2, 'berangkat_asal')->widget(Select2::classname(), [
+                                'data' => $data7,
+                            ])->label('Kota Keberangkatan');
+                            ?>
+                        </div>
+                           
+
+                        <div class="form-group">
+                          <?php
+                            $data9 = ArrayHelper::map(\common\models\Pegawai::find()->asArray()->all(), 'nip', 'nama');
+                            echo $form->field($model, 'pejabat')->widget(Select2::classname(), [
+                                'data' => $data9, 
+                                'options' => ['id'=>'data2',
+                                 'placeholder' => 'Pilih Nama Pejabat'],
+                                          'pluginOptions' => [
+                                              'allowClear' => true
+                                          ],
+                                      ])->label('Pilih Pejabat');
+                            ?>
+                              
+                        </div>
+                     
+                             <div class="form-group">
+                        <?php
+                            $data2 = ArrayHelper::map(\common\models\Angkutan::find()->asArray()->all(), 'angkutan_id', 'nama');
+                            echo $form->field($model, 'angkutan')->widget(Select2::classname(), [
+                                'data' => $data2, 
+                                'options' => [
+                                 'placeholder' => 'Pilih Angkutan'],
+                                          'pluginOptions' => [
+                                              'allowClear' => true
+                                          ],
+                                      ])->label('Pilih Angkutan');
+                            ?>
+                              
+                            
+                            </div>
+
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                            <?php
+                            echo $form->field($model, 'tgl_kembali')->widget(DatePicker::classname(), [
+                                'options' => ['placeholder' => 'Tanggal Kembali'],
+                                'pluginOptions' => [
+                                    'autoclose' => true,
+                                    'format' => 'yyyy-m-d',
+                                ]
+                            ])->label('Tangal Kembali');
+                            ?>
+                            
+                            </div>
+                           <div class="form-group">
+                            <?php
+                            echo $form->field($model2, 'tujuan')->widget(Select2::classname(), [
+                                'data' => $data7,
+
+                            ])->label('Kota Tujuan');
+                            ?>
+                        </div>
+                            
+                        <div class="form-group">
+                        <?php
+                            echo $form->field($model, 'tgl_penugasan')->widget(DatePicker::classname(), [
+                                'options' => ['id'=>'tglsp','placeholder' => 'Tanggal Penugasan'],
+                                'pluginOptions' => [
+                                    'autoclose' => true,
+                                    'format' => 'yyyy-m-d',
+
+                                ]
+                            ])->label('Tanggl Penugasan');
+                            ?>
+                        </div>
+                      
+                     
+                         <div class="form-group">
+                        <?php
+                              echo $form->field($model, 'uang_makan')->widget(TouchSpin::classname(), [
+                                  'options'=>['id'=>'idmakan','placeholder'=>'Masukan Jumlah Uang Makan'],
+                                  'pluginOptions' => [
+                                        'buttonup_class' => 'btn btn-primary', 
+                                        'buttondown_class' => 'btn btn-info', 
+                                        'buttonup_txt' => '<i class="glyphicon glyphicon-plus-sign"></i>', 
+                                        'buttondown_txt' => '<i class="glyphicon glyphicon-minus-sign"></i>'
+                                  ]
+                              ]);
+                              ?>
+                               
+                          
+                          
+                    </div>
+                    </div>
+                </div>
+
+                </div>
+                <div id="step-2">
+                     <br/>
+                <h2 class="StepTitle">Input Data Penugasan</h2> 
+                <br/>
+
+                 <form   method="post">
+                  <table width="1000px" class="table table-striped table-bordered">
+                    <tr >
+                      <td><input type="button" name="add_btn" value="Add" id="add_btn"></td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+                    </tr>
+                    <tr style="background-color:#4e95f4;">
+                      <td>No</td><td>Kategori Pembiayian</td><td>Volume </td><td>Harga Satuan</td><td>Jumlah</td><td>Urian Pembiyaian</td><td>&nbsp;</td>
+                    </tr>
+                    <tbody id="container">
+            <!-- nanti rows nya muncul di sini -->
+                
+                    </tbody>
+                    
+                  </table>
+                </form>
+               
+                </div>
+                
+                </div>
+                
+                <?php ActiveForm::end(); ?>
+        
+            <!-- End SmartWizard Content -->      
+
+        </td></tr>
+</table>
+<?php
+$js = <<<Modal
+//untuk javascript appen pembiyaian
+$(document).ready(function() {
+        var count = 0;
+
+        $("#add_btn").click(function(){
+          count += 1;
+          
+          $('#container').append(
+               '<tr class="records">'
+             + '<td ><div id="'+count+'">' + count + '</div></td>'
+             + '<td><select id="kat_biaya_id' + count + '"  name="kat_biaya_id' + count + '">'
+              + '<option value="1">Transport</option> '
+              + '<option value="2">Taksi Pergi</option>'
+              + '<option value="3">Taksi Kembali</option>'
+              + '<option value="3">Uang Harian</option>'
+              + '<option value="4">Uang Saku Fullboard</option>'
+              + '<option value="5">Penginapan</option>'
+              + '<option value="6">Penginapan Fullboard</option>'
+              + '<option value="7">Representatif</option>'
+              + '<option value="8">Transport Pimpinan / Expert / Inspeksi</option>'
+              + '<option value="9">Penginapan Lain 30%</option>'
+
+              + '</select></td>'
+             + '<td><input id="volume' + count + '" name="volume'+count+'" type="text"></td>'
+             + '<td><input id="jml' + count + '" name="jml'+count+'" type="text"></td>'
+             + '<td><input id="harga_satuan' + count + '" name="harga_satuan'+count+'" type="text"></td>'
+             + '<td><input id="uraian_rincian' + count + '" name="uraian_rincian'+count+'" value=""type="text"></td>'
+             + '<td><a class="remove_item" href="#" >Delete</a>'
+             + '<input id="rows_' + count + '" name="rows[]" value="'+ count +'" type="hidden"></td></tr>'
+          );
+
+          //hitung
+              $('#iduhr').on('keyup', function(){
+
+                //membuat variabel penjumlahan
+                var dat1 = parseInt($('#iduhr').val());
+                var dat2 = parseInt($('#idmakan').val());
+                var hasil = dat1*dat2;
+
+
+                $('#nameDiv').val("Selama "+$('#idmakan').val()+" hari di "+$('#select2-daftarkeg-kota_tujuan-container').html()+" tanggal "+$('#tglsp').val()+"  "+$('#iduhr').val()+"x"+$('#idmakan').val()+"hari="+hasil);
+              });
+        //selesai hitung
+          $(".remove_item").click(function () {
+          $(this).parents(".records").remove();
+        });
+
+        });
+
+        
+    });
+
+//fungsi untuk uraian harian
+$('#iduhr').on('keyup', function(){
+
+  //membuat variabel penjumlahan
+  var dat1 = parseInt($('#iduhr').val());
+  var dat2 = parseInt($('#idmakan').val());
+  var hasil = dat1*dat2;
+
+
+  $('#nameDiv').val("Selama "+$('#idmakan').val()+" hari di "+$('#select2-daftarkeg-kota_tujuan-container').html()+" tanggal "+$('#tglsp').val()+"  "+$('#iduhr').val()+"x"+$('#idmakan').val()+"hari="+hasil);
+});
+
+//fungsi U. Saku Fboard
+$('#uhrfb').on('keyup', function(){
+
+//membuat variabel penjumlahan
+  var dat1 = parseInt($('#uhrfb').val());
+  var dat2 = parseInt($('#idmakan').val());
+  var hasil = dat1*dat2;
+
+  $('#iduhrfb').val("Selama "+$('#idmakan').val()+" hari di "+$('#select2-daftarkeg-kota_tujuan-container').html()+" tanggal "+$('#tglsp').val()+"  "+$('#uhrfb').val()+"x"+$('#idmakan').val()+"hari="+hasil);
+});
+
+
+//fungsi untuk uarian penginapan Fullboard
+$('#upf').on('keyup', function(){
+  //membuat variabel penjumlahan
+  var dat1 = parseInt($('#upf').val());
+  var dat2 = parseInt($('#idmakan').val());
+  var makan = dat2-parseInt("1");
+  var hasil = dat1*makan;
+  $('#idupf').val("Selama "+makan+" hari di "+$('#select2-daftarkeg-kota_tujuan-container').html()+" tanggal "+$('#tglsp').val()+"  "+$('#upf').val()+"x"+makan+"hari="+hasil);
+});
+
+//fungsi untuk Uraian Representatif
+$('#ref').on('keyup', function(){
+  var dat1 = parseInt($('#ref').val());
+  var dat2 = parseInt($('#idmakan').val());
+  var makan = dat2-parseInt("1");
+  var hasil = dat1*makan;
+  $('#idrep').val("Selama "+makan+" hari di "+$('#select2-daftarkeg-kota_tujuan-container').html()+" tanggal "+$('#tglsp').val()+"  "+$('#ref').val()+"x"+makan+"hari="+hasil);
+});
+
+
+//fungsi untuk Uraian Transport
+$('#ut').on('keyup', function(){
+  var dat1 = parseInt($('#ut').val());
+  var dat2 = parseInt($('#idmakan').val());
+  var makan = dat2-parseInt("1");
+  var hasil = dat1*makan;
+  $('#idut').val("Selama "+makan+" hari di "+$('#select2-daftarkeg-kota_tujuan-container').html()+" tanggal "+$('#tglsp').val()+"  "+$('#ut').val()+"x"+makan+" hari ="+hasil);
+});
+
+//fungsi untuk Uraian Transport
+$('#inap').on('keyup', function(){
+  var dat1 = parseInt($('#inap').val());
+  var dat2 = parseInt($('#idmakan').val());
+  var makan = dat2-parseInt("1");
+  var hasil = dat1*makan;
+  $('#uinap').val("Selama "+makan+" hari di "+$('#select2-daftarkeg-kota_tujuan-container').html()+" tanggal "+$('#tglsp').val()+"  "+$('#inap').val()+"x"+makan+" hari ="+hasil);
+});
+
+
+
+Modal;
+$this->registerJs($js);
+
+
+                                ?>
+
