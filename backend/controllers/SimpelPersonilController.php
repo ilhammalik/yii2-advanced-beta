@@ -156,8 +156,8 @@ class SimpelPersonilController extends Controller {
         $model = $this->findModel($id);
         $model2 = \backend\models\SimpelKeg::find()->where('id_kegiatan=' . $model->id_kegiatan)->one();
         if ($_POST) {
-            // print_r($_POST);
-            // die();
+            //print_r($_POST);
+            //die();
             $model->pegawai_id = $_POST['SimpelPersonil']['pegawai_id'];
             $model->tingkat_id = $_POST['SimpelPersonil']['tingkat_id'];
             $model->tgl_penugasan = $_POST['SimpelPersonil']['tgl_penugasan'];
@@ -172,6 +172,7 @@ class SimpelPersonilController extends Controller {
                 $data = count($_POST['rows']);
                 for ($i = 1; $i <= $data; $i++) {
                     $model3 = SimpelRincianBiaya::findOne($_POST['id_rincian_biaya' . $i]);
+                   // print_r($_POST['bukti_kwitansi' . $i]);
                     $model3->id_kegiatan = $model2->id_kegiatan;
                     $model3->kat_biaya_id = $model3->kat_biaya_id;
                     $model3->harga_satuan = $_POST['satuan' . $i];
@@ -181,7 +182,7 @@ class SimpelPersonilController extends Controller {
                     $model3->uraian_rincian = $_POST['uraian_rincian' . $i];
                     $model3->save();
                 }
-                // die();
+                //die();
             }
 
             return $this->redirect(['/simpel-keg/create', 'id' => $model->id_kegiatan]);

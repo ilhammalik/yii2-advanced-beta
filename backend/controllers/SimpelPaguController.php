@@ -44,7 +44,7 @@ class SimpelPaguController extends Controller {
     public function actionGenerate() {
 
         if ($_POST['tahun']) {
-
+            
             $data = Yii::$app->db->createCommand("SELECT  a.*, b.unit_id FROM serasi2015_sql.news_sub_mak_tahun as a join serasi2015_sql.news_nas_suboutput as b on a.suboutput_id=b.suboutput_id
          where a.kode_mak in (524113,524111,524119,524114) ")->queryAll();
 
