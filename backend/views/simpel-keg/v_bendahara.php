@@ -11,16 +11,13 @@ use \common\models\DaftarUnit;
 use \common\components\HelperUnit;
 
 $this->params['breadcrumbs'][] = 'Proses';
-$this->params['breadcrumbs'][] = 'Cetak';
-
+$this->params['breadcrumbs'][] = 'Bendahara';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-
 <div class="simpel-keg-index">
     <div class="block">
         <div class="block-title">
             <ul class="nav nav-tabs ">
-
                 <li >
                     <a href="<?= Url::to(['simpel-keg/index']) ?>" >
                         Daftar Permohonan Dinas</a>
@@ -34,13 +31,13 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?php } ?>
                 <?php if ((Mimin::filterRoute($this->context->id . '/tabcetak'))) { ?>
 
-                    <li class="active">
+                    <li>
                         <a href="<?= Url::to(['simpel-keg/vcetak']) ?>" >
                             Cetak </a>
                     </li>
                 <?php } ?>
                 <?php if ((Mimin::filterRoute($this->context->id . '/tabuang'))) { ?>
-                    <li>
+                    <li class="active">
                         <a href="<?= Url::to(['simpel-keg/bendahara']) ?>" >
                             Bendahara </a>
                     </li>
@@ -71,12 +68,9 @@ js;
         ?>
         <div class="wp-posts-index">
             <div class="row">
-
-
             </div>
             <br/>
             <div id="datadinasGridview">
-
                 <table class="table1" width="100%">
                     <thead>
                         <tr>
@@ -87,7 +81,6 @@ js;
                     </tr>
                     </thead>
                     <tfoot>
-
                     </tfoot>
                     <tbody>
                         <?php

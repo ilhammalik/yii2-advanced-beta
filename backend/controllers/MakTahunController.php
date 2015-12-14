@@ -45,7 +45,8 @@ class MakTahunController extends Controller {
 
     public function actionPo($id, $unit) {
         $model = $this->findDetail($id);
-
+        $model2 = $this->findUnit($unit);
+        
         // $sql = "SELECT COUNT(DISTINCT(a.detail_id)), a.detail_id, a.nama_detail, a.renc_tgl_selesai, a.renc_tgl_mulai, 
         //        a.jenis_detail_id, b.sub_mak_id, c.*, d.suboutput_id, d.unit_id, e.unit_id, e.unit_parent_id 
         //        FROM serasi2015_sql.news_detail_keg as a
@@ -102,7 +103,7 @@ class MakTahunController extends Controller {
                 'no_spd' => $_POST['MasterSerasi']['no_spd'],
                 'random' => substr($_POST['MasterSerasi']['no_spd'], 0, 4)])->execute();
             //var_dump($_POST['MakTahun']);
-            return $this->redirect(['/simpel-keg/tabdinas']);
+            return $this->redirect(['/simpel-keg/tabdinas','unit'=>$model2->unit_parent_id]);
         } else {
             return $this->renderAjax('_form_kirim_luar', [
                         'model' => $model,
@@ -115,6 +116,7 @@ class MakTahunController extends Controller {
     public function actionDn($id, $unit) {
 
         $model = $this->findDetail($id);
+        $model2 = $this->findUnit($unit);
         // print_r($_POST);
         // die();
         $sql = "SELECT COUNT(DISTINCT(a.detail_id)), a.detail_id, a.nama_detail, a.renc_tgl_selesai, a.renc_tgl_mulai, 
@@ -129,20 +131,9 @@ class MakTahunController extends Controller {
         and e.unit_id='" . $unit . "' and a.detail_id='" . $id . "'  
         and g.detail_id IS NULL
          group by a.detail_id order by a.renc_tgl_mulai desc  ";
-        //echo $sql;
-        //exit;
-        /* "SELECT COUNT(DISTINCT(a.detail_id)), a.detail_id, a.nama_detail, a.renc_tgl_selesai, a.renc_tgl_mulai, a.jenis_detail_id, b.sub_mak_id, c.* FROM serasi2015_sql.news_detail_keg as a
-          INNER JOIN serasi2015_sql.news_detail_keg_mak as b ON a.detail_id=b.detail_id
-          LEFT JOIN serasi2015_sql.news_sub_mak_tahun as c ON b.sub_mak_id=c.sub_mak_id
-
-
-          where a.jenis_detail_id in (3,4,5) and (c.kode_mak= 524114 or c.kode_mak= 524113 or c.kode_mak= 524111 or c.kode_mak= 524119 )  and a.detail_id='".$id."'  and a.detail_id  NOT IN (SELECT detail_id FROM fix_simpel.simpel_keg)  group by a.detail_id order by a.renc_tgl_mulai desc  ");
-         */
         $command = Yii::$app->db->createCommand($sql);
         $connection = \Yii::$app->db;
         $result = $command->queryOne();
-
-
         //untuk melihat random terakhir
         $data_random = $connection->createCommand('SELECT MAX(random) FROM simpel_keg');
         $random = $data_random->queryScalar();
@@ -172,7 +163,7 @@ class MakTahunController extends Controller {
                 'no_spd' => $_POST['MasterSerasi']['no_spd'],
                 'random' => substr($_POST['MasterSerasi']['no_spd'], 0, 4)])->execute();
 
-            return $this->redirect(['/simpel-keg/tabdinas']);
+            return $this->redirect(['/simpel-keg/tabdinas','unit'=>$model2->unit_parent_id]);
         } else {
             return $this->renderAjax('_form_kirim', [
 
@@ -257,6 +248,13 @@ class MakTahunController extends Controller {
 
     protected function findDetail($id) {
         if (($model = \common\models\MasterSerasi::findOne($id)) !== null) {
+            return $model;
+        } else {
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
+    }
+       protected function findUnit($id) {
+        if (($model = \common\models\DaftarUnit::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

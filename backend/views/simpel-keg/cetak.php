@@ -25,19 +25,19 @@ $this->params['breadcrumbs'][] = $this->title;
                     Daftar Permohonan Dinas</a>
             </li>
             <li >
-                <a href="<?= Url::to(['simpel-keg/tabdinas']) ?>" >
+                <a href="<?= Url::to(['simpel-keg/dinas']) ?>" >
                     Daftar Perjalanan Dinas</a>
             </li>
             <li class="active">
-                <a href="<?= Url::to(['simpel-keg/tabcetak']) ?>" >
+                <a href="<?= Url::to(['simpel-keg/vcetak']) ?>" >
                     Cetak </a>
             </li>
             <li>
-                <a href="<?= Url::to(['simpel-keg/tabuang']) ?>" >
+                <a href="<?= Url::to(['simpel-keg/bendahara']) ?>" >
                     Bendahara </a>
             </li>
             <li >
-                <a href="<?= Url::to(['simpel-keg/tabarsip']) ?>" >
+                <a href="<?= Url::to(['simpel-keg/varsip']) ?>" >
                     Arsip </a>
             </li>
         </ul>
@@ -108,7 +108,7 @@ $this->registerJS($js);
                                             'template' => '{pass} ',
                                             'buttons' => [
                                                 'pass' => function ($url, $model) {
-                                                    return Html::a($model->nama_keg, '#',['value' =>
+                                                    return Html::a($model['nama_keg'], '#',['value' =>
                                                                 Url::to(['simpel-keg/cetak', 'id' => $model['id_kegiatan']]), 'class' => 'modalCetak ']);
                                                 },
                                                     ],
@@ -119,7 +119,7 @@ $this->registerJS($js);
                                             'format' => 'html',
                                             'contentOptions' => ['style' => 'width:30px; z-index:200;'],
                                             'value'=>function($data){
-                                                if($data->negara == 1){
+                                                if($data['negara'] == 1){
                                                     return 'Dalam Negri';
                                                 }else{
                                                     return 'Luar Negri' ;
@@ -132,7 +132,7 @@ $this->registerJS($js);
                                             'contentOptions' => ['style' => 'width:140px; z-index:200;'],
                                             'format' => 'html',
                                             'value' => function($data) {
-                                        return MyHelper::CountAng($data->id_kegiatan);
+                                        return MyHelper::CountAng($data['id_kegiatan']);
                                     }
                                         ],
         ],

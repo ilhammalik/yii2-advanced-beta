@@ -11,7 +11,7 @@ use \common\models\DaftarUnit;
 use \common\components\HelperUnit;
 
 $this->params['breadcrumbs'][] = 'Proses';
-$this->params['breadcrumbs'][] = 'Cetak';
+$this->params['breadcrumbs'][] = 'Daftar Perjalanan Dinas';
 
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -27,25 +27,25 @@ $this->params['breadcrumbs'][] = $this->title;
                 </li>
                 <?php if ((Mimin::filterRoute($this->context->id . '/dinas'))) { ?>
 
-                    <li >
+                    <li class="active">
                         <a href="<?= Url::to(['simpel-keg/dinas']) ?>" >
                             Daftar Perjalanan Dinas</a>
                     </li>
                 <?php } ?>
-                <?php if ((Mimin::filterRoute($this->context->id . '/tabcetak'))) { ?>
+                <?php if ((Mimin::filterRoute($this->context->id . '/vcetak'))) { ?>
 
-                    <li class="active">
+                    <li>
                         <a href="<?= Url::to(['simpel-keg/vcetak']) ?>" >
                             Cetak </a>
                     </li>
                 <?php } ?>
-                <?php if ((Mimin::filterRoute($this->context->id . '/tabuang'))) { ?>
+                <?php if ((Mimin::filterRoute($this->context->id . '/bendahara'))) { ?>
                     <li>
                         <a href="<?= Url::to(['simpel-keg/bendahara']) ?>" >
                             Bendahara </a>
                     </li>
                 <?php } ?>
-                <?php if ((Mimin::filterRoute($this->context->id . '/tabarsip'))) { ?>
+                <?php if ((Mimin::filterRoute($this->context->id . '/varsip'))) { ?>
                     <li >
                         <a href="<?= Url::to(['simpel-keg/varsip']) ?>" >
                             Arsip </a>
@@ -172,7 +172,7 @@ js;
                                                 case 110000:
                                                     ?>
                                                     <h6> <?=
-                                                        Html::a(HelperUnit::Apagu($sat->unit_id), Yii::$app->urlManager->createUrl(['simpel-keg/unit', 'unit' => $sat->unit_id]), [
+                                                        Html::a(HelperUnit::Apagu($sat->unit_id), Yii::$app->urlManager->createUrl(['simpel-keg/tabdinas', 'unit' => $sat->unit_id]), [
                                                             'title' => Yii::t('yii', 'Proses'),
                                                         ])
                                                         ?> </h6>  
@@ -182,7 +182,7 @@ js;
                                                 case 120000:
                                                     ?>
                                                     <h6> <?=
-                                                        Html::a(HelperUnit::Apagu($sat->unit_id), Yii::$app->urlManager->createUrl(['simpel-keg/unit', 'unit' => $sat->unit_id]), [
+                                                        Html::a(HelperUnit::Apagu($sat->unit_id), Yii::$app->urlManager->createUrl(['simpel-keg/tabdinas', 'unit' => $sat->unit_id]), [
                                                             'title' => Yii::t('yii', 'Proses'),
                                                         ])
                                                         ?> </h6>  
@@ -192,7 +192,7 @@ js;
                                                 case 130000:
                                                     ?>
                                                     <h6> <?=
-                                                        Html::a(HelperUnit::Apagu($sat->unit_id), Yii::$app->urlManager->createUrl(['simpel-keg/unit', 'unit' => $sat->unit_id]), [
+                                                        Html::a(HelperUnit::Apagu($sat->unit_id), Yii::$app->urlManager->createUrl(['simpel-keg/tabdinas', 'unit' => $sat->unit_id]), [
                                                             'title' => Yii::t('yii', 'Proses'),
                                                         ])
                                                         ?> </h6>  
@@ -212,7 +212,7 @@ js;
                                                 case 151000:
                                                     ?>
                                                     <h6> <?=
-                                                        Html::a(HelperUnit::Apagu($sat->unit_id), Yii::$app->urlManager->createUrl(['simpel-keg/unit', 'unit' => '161100']), [
+                                                        Html::a(HelperUnit::Apagu($sat->unit_id), Yii::$app->urlManager->createUrl(['simpel-keg/tabdinas', 'unit' => '161100']), [
                                                             'title' => Yii::t('yii', 'Proses'),
                                                         ])
                                                         ?> </h6>  
@@ -223,7 +223,7 @@ js;
                                                 default:
                                                     ?>
                                                     <h6> <?=
-                                                        Html::a(HelperUnit::Apagu($sat->unit_id), Yii::$app->urlManager->createUrl(['simpel-keg/unit', 'unit' => $sat->unit_id]), [
+                                                        Html::a(HelperUnit::Apagu($sat->unit_id), Yii::$app->urlManager->createUrl(['simpel-keg/tabdinas', 'unit' => $sat->unit_id]), [
                                                             'title' => Yii::t('yii', 'Proses'),
                                                         ])
                                                         ?> </h6> 
@@ -237,25 +237,7 @@ js;
                                     </td>
 
                                     <td width="120" align="center">
-                                        <?php
-                                        switch ($sat->unit_id) {
-                                            case 161100:
-                                                $hitung = "SELECT count(DISTINCT(a.detail_id)) FROM serasi2015_sql.news_detail_keg a LEFT JOIN serasi2015_sql.news_sub_mak_tahun b on a.suboutput_id=b.suboutput_id LEFT JOIN serasi2015_sql.news_nas_suboutput c on a.suboutput_id=c.suboutput_id LEFT JOIN fix_simpel.simpel_keg g on g.detail_id = a.detail_id LEFT JOIN pegawai.daf_unit d on c.unit_id=d.unit_parent_id where a.jenis_detail_id in (3,4,5) and g.detail_id IS NULL and d.unit_parent_id='151000'";
-                                                $count = Yii::$app->db->createCommand($hitung)->queryScalar();
-                                                echo $count;
-                                                break;
-                                            case 151000:
-                                                $hitung = "SELECT count(DISTINCT(a.detail_id)) FROM serasi2015_sql.news_detail_keg a LEFT JOIN serasi2015_sql.news_sub_mak_tahun b on a.suboutput_id=b.suboutput_id LEFT JOIN serasi2015_sql.news_nas_suboutput c on a.suboutput_id=c.suboutput_id LEFT JOIN fix_simpel.simpel_keg g on g.detail_id = a.detail_id LEFT JOIN pegawai.daf_unit d on c.unit_id=d.unit_parent_id where a.jenis_detail_id in (3,4,5) and g.detail_id IS NULL and d.unit_parent_id='161100'";
-                                                $count = Yii::$app->db->createCommand($hitung)->queryScalar();
-                                                echo $count;
-                                                break;
-                                            default:
-                                                $hitung = "SELECT count(DISTINCT(a.detail_id)) FROM serasi2015_sql.news_detail_keg a LEFT JOIN serasi2015_sql.news_sub_mak_tahun b on a.suboutput_id=b.suboutput_id LEFT JOIN serasi2015_sql.news_nas_suboutput c on a.suboutput_id=c.suboutput_id LEFT JOIN fix_simpel.simpel_keg g on g.detail_id = a.detail_id LEFT JOIN pegawai.daf_unit d on c.unit_id=d.unit_parent_id where a.jenis_detail_id in (3,4,5) and g.detail_id IS NULL and d.unit_parent_id='" . $sat->unit_id . "'";
-                                                $count = Yii::$app->db->createCommand($hitung)->queryScalar();
-                                                echo $count;
-                                                break;
-                                        }
-                                        ?>
+                                    <?= $count ?>
 
                                     </td>
                                     <td align="center" width="260">Rp. <?php
@@ -286,7 +268,7 @@ js;
             </div>
         </div>
     </div>
-</div>
+     </div>
 
 
 
@@ -351,6 +333,11 @@ Modal::end();
 
 
 
+<style type="text/css">
+    .edit{
+        background-color: green;
+    }
+</style>
 
 
 

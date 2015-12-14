@@ -28,7 +28,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     Daftar Perjalanan Dinas</a>
             </li>
             <li>
-                <a href="<?= Url::to(['simpel-keg/tabcetak']) ?>" >
+                <a href="<?= Url::to(['simpel-keg/vcetak']) ?>" >
                     Cetak </a>
             </li>
             <li>
@@ -115,7 +115,7 @@ $this->registerJS($js);
                                             'format' => 'html',
                                             'contentOptions' => ['style' => 'width:490px; z-index:200;'],
                                             'value' => function($data) {
-                                        return Html::a($data->nama_keg, Yii::$app->urlManager->createUrl(['simpel-keg/create', 'id' => $data->id_kegiatan]), [
+                                        return Html::a($data['nama_keg'], Yii::$app->urlManager->createUrl(['simpel-keg/create', 'id' => $data['id_kegiatan']]), [
                                                     'title' => Yii::t('yii', 'Proses'),
                                         ]);
                                     }
@@ -137,7 +137,7 @@ $this->registerJS($js);
                                             'contentOptions' => ['style' => 'width:140px; z-index:200;'],
                                             'format' => 'html',
                                             'value' => function($data) {
-                                         return MyHelper::CountAng($data->id_kegiatan);
+                                         return MyHelper::CountAng($data['id_kegiatan']);
 
                                     }
                                         ],

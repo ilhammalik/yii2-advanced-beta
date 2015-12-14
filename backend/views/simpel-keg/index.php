@@ -25,29 +25,29 @@ $this->params['breadcrumbs'][] = $this->title;
                     <a href="<?= Url::to(['simpel-keg/index']) ?>" >
                         Daftar Permohonan Dinas</a>
                 </li>
-                <?php if ((Mimin::filterRoute($this->context->id . '/tabdinas'))) { ?>
+                <?php if ((Mimin::filterRoute($this->context->id . '/dinas'))) { ?>
 
                     <li>
-                        <a href="<?= Url::to(['simpel-keg/tabdinas']) ?>" >
+                        <a href="<?= Url::to(['simpel-keg/dinas']) ?>" >
                             Daftar Perjalanan Dinas</a>
                     </li>
                 <?php } ?>
-                <?php if ((Mimin::filterRoute($this->context->id . '/tabcetak'))) { ?>
+                <?php if ((Mimin::filterRoute($this->context->id . '/vcetak'))) { ?>
 
                     <li>
-                        <a href="<?= Url::to(['simpel-keg/tabcetak']) ?>" >
+                        <a href="<?= Url::to(['simpel-keg/vcetak']) ?>" >
                             Cetak </a>
                     </li>
                 <?php } ?>
-                  <?php if ((Mimin::filterRoute($this->context->id . '/tabuang'))) { ?>
+                  <?php if ((Mimin::filterRoute($this->context->id . '/bendahara'))) { ?>
                 <li>
-                    <a href="<?= Url::to(['simpel-keg/tabuang']) ?>" >
+                    <a href="<?= Url::to(['simpel-keg/bendahara']) ?>" >
                         Bendahara </a>
                 </li>
                        <?php } ?>
-                 <?php if ((Mimin::filterRoute($this->context->id . '/tabarsip'))) { ?>
+                 <?php if ((Mimin::filterRoute($this->context->id . '/varsip'))) { ?>
                 <li >
-                    <a href="<?= Url::to(['simpel-keg/tabarsip']) ?>" >
+                    <a href="<?= Url::to(['simpel-keg/varsip']) ?>" >
                         Arsip </a>
                 </li>
                        <?php } ?>
@@ -138,7 +138,7 @@ js;
                     </tr>
                     <tr>
                         <th><?= $no ?></th>
-                        <th style="text-align:left;" colspan="3" scope="row"><h4>  <?= HelperUnit::Apagu($unit->unit_id) ?> </h4></th>
+                        <th style="text-align:left;" colspan="3" scope="row"><h6>  <?= HelperUnit::Apagu($unit->unit_id) ?> </h6></th>
                        
 
                     </tr>
@@ -170,45 +170,45 @@ js;
                          ?>
                         <tr>
                             <td width="40"></td>
-                            <td  width="250" bgcolor="gray" style="text-align:center;">
+                            <td  width="50" bgcolor="gray" style="text-align:center;">
                                 <div >
                                     <?php
                                     switch ($sat->unit_id) {
                                         case 110000: ?>
-                                           <h4> <?=  Html::a(HelperUnit::Apagu($sat->unit_id), Yii::$app->urlManager->createUrl(['simpel-keg/unit', 'unit' => $sat->unit_id]), [
+                                           <h6> <?=  Html::a(HelperUnit::Apagu($sat->unit_id), Yii::$app->urlManager->createUrl(['simpel-keg/unit', 'unit' => $sat->unit_id]), [
                                                     'title' => Yii::t('yii', 'Proses'),
-                                                    ]) ?> </h4>  
+                                                    ]) ?> </h6>  
 
                                         <?php     break;
                                         case 120000: ?>
-                                           <h4> <?=  Html::a(HelperUnit::Apagu($sat->unit_id), Yii::$app->urlManager->createUrl(['simpel-keg/unit', 'unit' => $sat->unit_id]), [
+                                           <h6> <?=  Html::a(HelperUnit::Apagu($sat->unit_id), Yii::$app->urlManager->createUrl(['simpel-keg/unit', 'unit' => $sat->unit_id]), [
                                                     'title' => Yii::t('yii', 'Proses'),
-                                                    ]) ?> </h4>  
+                                                    ]) ?> </h6>  
                                                     
                                        <?php     break;
                                        case 130000: ?>
-                                           <h4> <?=  Html::a(HelperUnit::Apagu($sat->unit_id), Yii::$app->urlManager->createUrl(['simpel-keg/unit', 'unit' => $sat->unit_id]), [
+                                           <h6> <?=  Html::a(HelperUnit::Apagu($sat->unit_id), Yii::$app->urlManager->createUrl(['simpel-keg/unit', 'unit' => $sat->unit_id]), [
                                                     'title' => Yii::t('yii', 'Proses'),
-                                                    ]) ?> </h4>  
+                                                    ]) ?> </h6>  
                                                     
                                        <?php     break;
                                        case 161100: ?>
-                                           <h4> <?=  Html::a('Inspektorat', Yii::$app->urlManager->createUrl(['simpel-keg/unit', 'unit' => '151000']), [
+                                           <h6> <?=  Html::a('Inspektorat', Yii::$app->urlManager->createUrl(['simpel-keg/unit', 'unit' => '151000']), [
                                                     'title' => Yii::t('yii', 'Proses'),
-                                                    ]) ?> </h4>  
+                                                    ]) ?> </h6>  
                                                     
                                        <?php     break;
                                           case 151000: ?>
-                                           <h4> <?=  Html::a(HelperUnit::Apagu($sat->unit_id), Yii::$app->urlManager->createUrl(['simpel-keg/unit', 'unit' => '161100']), [
+                                           <h6> <?=  Html::a(HelperUnit::Apagu($sat->unit_id), Yii::$app->urlManager->createUrl(['simpel-keg/unit', 'unit' => '161100']), [
                                                     'title' => Yii::t('yii', 'Proses'),
-                                                    ]) ?> </h4>  
+                                                    ]) ?> </h6>  
                                                     
                                        <?php     break;
                                         
                                         default: ?>
-                                        <h4> <?=  Html::a(HelperUnit::Apagu($sat->unit_id), Yii::$app->urlManager->createUrl(['simpel-keg/unit', 'unit' => $sat->unit_id]), [
+                                        <h6> <?=  Html::a(HelperUnit::Apagu($sat->unit_id), Yii::$app->urlManager->createUrl(['simpel-keg/unit', 'unit' => $sat->unit_id]), [
                                                     'title' => Yii::t('yii', 'Proses'),
-                                                    ]) ?> </h4> 
+                                                    ]) ?> </h6> 
                                         <?php    break;
                                     } ?>
                                     

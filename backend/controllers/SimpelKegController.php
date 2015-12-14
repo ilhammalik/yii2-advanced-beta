@@ -71,6 +71,46 @@ class SimpelKegController extends Controller {
         ]);
     }
 
+    public function actionDinas() {
+
+
+        return $this->render('v_dinas', [
+                    //'dataSerasi' => $dataSerasi,
+                    'dataLog' => $dataLog,
+        ]);
+    }
+
+
+    public function actionVcetak() {
+
+
+        return $this->render('v_cetak', [
+                    //'dataSerasi' => $dataSerasi,
+                    'dataLog' => $dataLog,
+        ]);
+    }
+
+
+    public function actionBendahara() {
+
+
+        return $this->render('v_bendahara', [
+                    //'dataSerasi' => $dataSerasi,
+                    'dataLog' => $dataLog,
+        ]);
+    }
+
+
+    public function actionVarsip() {
+
+
+        return $this->render('v_arsip', [
+                    //'dataSerasi' => $dataSerasi,
+                    'dataLog' => $dataLog,
+        ]);
+    }
+
+
     /**
      * Displays a single SimpelKeg model.
      * @param integer $id
@@ -84,19 +124,19 @@ class SimpelKegController extends Controller {
 
     public function actionUnit($unit) {
         $model = $this->findUnit($unit);
-           switch ($unit) {
+        switch ($unit) {
             case '161100':
                 $def = "a.jenis_detail_id in (3,4,5) and d.unit_id='" . $unit . "' group by a.detail_id order by a.renc_tgl_mulai desc";
                 break;
             case '151000':
                 $def = "a.jenis_detail_id in (3,4,5) and d.unit_id='" . $unit . "' group by a.detail_id order by a.renc_tgl_mulai desc";
                 break;
-            
+
             default:
                 $def = "a.jenis_detail_id in (3,4,5) and (b.kode_mak= 524114 or b.kode_mak= 524113 or b.kode_mak= 524111 or b.kode_mak= 524119 ) and g.detail_id IS NULL and d.unit_parent_id='" . $unit . "' group by a.detail_id order by a.renc_tgl_mulai desc";
                 break;
         }
-        $hitung = "SELECT count(DISTINCT(a.detail_id)) FROM serasi2015_sql.news_detail_keg a LEFT JOIN serasi2015_sql.news_sub_mak_tahun b on a.suboutput_id=b.suboutput_id LEFT JOIN serasi2015_sql.news_nas_suboutput c on a.suboutput_id=c.suboutput_id LEFT JOIN fix_simpel.simpel_keg g on g.detail_id = a.detail_id LEFT JOIN pegawai.daf_unit d on c.unit_id=d.unit_parent_id where a.jenis_detail_id in (3,4,5) and (b.kode_mak= 524114 or b.kode_mak= 524113 or b.kode_mak= 524111 or b.kode_mak= 524119 ) and g.detail_id IS NULL and d.unit_parent_id='".$unit."'";
+        $hitung = "SELECT count(DISTINCT(a.detail_id)) FROM serasi2015_sql.news_detail_keg a LEFT JOIN serasi2015_sql.news_sub_mak_tahun b on a.suboutput_id=b.suboutput_id LEFT JOIN serasi2015_sql.news_nas_suboutput c on a.suboutput_id=c.suboutput_id LEFT JOIN fix_simpel.simpel_keg g on g.detail_id = a.detail_id LEFT JOIN pegawai.daf_unit d on c.unit_id=d.unit_parent_id where a.jenis_detail_id in (3,4,5) and (b.kode_mak= 524114 or b.kode_mak= 524113 or b.kode_mak= 524111 or b.kode_mak= 524119 ) and g.detail_id IS NULL and d.unit_parent_id='" . $unit . "'";
         $count = Yii::$app->db->createCommand($hitung)->queryScalar();
         $sql = "SELECT  a.detail_id, a.jenis_detail_id, a.nama_detail, a.renc_tgl_selesai, a.renc_tgl_mulai, b.*, d.unit_id 
         FROM serasi2015_sql.news_detail_keg as a 
@@ -104,7 +144,7 @@ class SimpelKegController extends Controller {
          LEFT JOIN serasi2015_sql.news_nas_suboutput as c on a.suboutput_id=c.suboutput_id
          LEFT JOIN pegawai.daf_unit as d on c.unit_id3=d.unit_id
          LEFT JOIN fix_simpel.simpel_keg g on g.detail_id = a.detail_id
-        where ".$def;
+        where " . $def;
         // echo $sql;
         // die();
         $dataSerasi = new SqlDataProvider([
@@ -184,31 +224,40 @@ class SimpelKegController extends Controller {
     }
 
     //ilham menambahkan
-    public function actionTabdinas() {
+    public function actionTabdinas($unit) {
         //data gridview Arsip
-        $cari = isset($_GET['limit']) ? $_GET['limit'] : date('Y');
-        $dataDinas = new ActiveDataProvider([
-            'query' => SimpelKeg::find()->where('status=1 ')->orderBy('id_kegiatan desc')->limit(1),
+        $sql = "SELECT  * FROM simpel_keg a LEFT JOIN pegawai.daf_unit b on a.unit_id=b.unit_id WHERE status=1 and b.unit_parent_id='".$unit."'";
+        $count = Yii::$app->db->createCommand($sql)->queryScalar();
+        $dataDinas = new SqlDataProvider([
+            'sql' => $sql,
+            'totalCount' => count($count),
             'pagination' => [
-                'pageSize' => $cari,
+                'pageSize' => 10,
             ],
         ]);
         return $this->render('dinas', [
                     'dataDinas' => $dataDinas,
+                    'count'=>$count,
         ]);
     }
 
-    public function actionTabcetak() {
+    public function actionTabcetak($unit) {
         //data gridview Arsip
-        $dataCetak = new ActiveDataProvider([
-            'query' => SimpelKeg::find()->where('status=2 ')->orderBy('tgl_mulai desc'),
+        $sql = "SELECT  * FROM simpel_keg a LEFT JOIN pegawai.daf_unit b on a.unit_id=b.unit_id WHERE status=2 and b.unit_parent_id='".$unit."'";
+        $count = Yii::$app->db->createCommand($sql)->queryScalar();
+        $dataCetak = new SqlDataProvider([
+            'sql' => $sql,
+            'totalCount' => count($count),
+            'pagination' => [
+                'pageSize' => 10,
+            ],
         ]);
         return $this->render('cetak', [
                     'dataCetak' => $dataCetak,
         ]);
     }
 
-    public function actionTabuang() {
+    public function actionTabuang($unit) {
         //data gridview Arsip
         if ($_POST) {// membuat aritmatika if jika mendapatkan $_Post
             //mengambil data post checkbox bendahara
@@ -216,13 +265,19 @@ class SimpelKegController extends Controller {
                 $jumlah = count($_POST['selection']);
                 for ($i = 0; $i < $jumlah; $i++) {
                     echo $_POST['selection'][$i] . '<br/>';
-                    Yii::$app->db->createCommand()->update('simpel_keg', ['status' => '4', 'status_edit' => '0'], ['id_kegiatan' => $_POST['selection'][$i]])->execute();
+                    Yii::$app->db->createCommand()->update('simpel_keg', ['status' => '3', 'status_edit' => '0'], ['id_kegiatan' => $_POST['selection'][$i]])->execute();
                     return $this->redirect(['daftar-keg/tabarsip']);
                 }
             }
         }
-        $dataUang = new ActiveDataProvider([
-            'query' => SimpelKeg::find()->where('status=3 ')->orderBy('tgl_mulai desc'),
+        $sql = "SELECT  * FROM simpel_keg a LEFT JOIN pegawai.daf_unit b on a.unit_id=b.unit_id WHERE status=1 and b.unit_parent_id='".$unit."'";
+        $count = Yii::$app->db->createCommand($sql)->queryScalar();
+        $dataDinas = new SqlDataProvider([
+            'sql' => $sql,
+            'totalCount' => count($count),
+            'pagination' => [
+                'pageSize' => 10,
+            ],
         ]);
         return $this->render('bendahara', [
                     'dataUang' => $dataUang,
@@ -391,9 +446,12 @@ class SimpelKegController extends Controller {
 
     public function actionCe($id) {
         $model = $this->findModel($id);
+        $model2 = $this->findUnit($model->unit_id);
         Yii::$app->db->createCommand()->insert('simpel_log', ['user_id' => Yii::$app->user->id, 'nama_proses' => 'Proses <strong>Cetak</strong> ' . $model->nama_keg])->execute();
         Yii::$app->db->createCommand()->update('simpel_keg', ['status' => '2', 'status_edit' => '0'], ['id_kegiatan' => $id])->execute();
-        return $this->redirect(['simpel-keg/tabcetak']);
+        // echo $id;
+        // die();
+        return $this->redirect(['simpel-keg/tabcetak','unit'=>$model2->unit_parent_id]);
     }
 
     // fungsi ini berguna untuk menginput personil dn tgl pada modal cetak
@@ -409,7 +467,7 @@ class SimpelKegController extends Controller {
                 Yii::$app->db->createCommand()->update('simpel_keg', ['status' => 3], ['id_kegiatan' => $id])->execute();
             }
 
-            return $this->redirect(['tabuang']);
+            return $this->redirect(['tabuang','unit'=>$model2->unit_parent_id]);
         } else {
             return $this->renderAjax('kirim_isi', [
                         'model' => $model,
@@ -478,14 +536,14 @@ class SimpelKegController extends Controller {
                 if ($model3 > 1) {
                     $mpdf->SetDisplayMode('fullpage');
                     $mpdf->AddPage('P', '', '', '', '', 5, 5, 5, 1, 5, 5);
-                    
-                    
+
+
                     $mpdf->WriteHTML($content_english);
                 } else {
 
                     $mpdf->SetDisplayMode('fullpage');
                     $mpdf->AddPage('P', '', '', '', '', 5, 5, 5, 1, 5, 5);
-                    
+
                     $mpdf->WriteHTML($content_english);
                 }
                 $mpdf->Output('SURAT PERJALANAN DINAS (SPD)', I);
@@ -496,45 +554,43 @@ class SimpelKegController extends Controller {
 
                     if ($model->kode_mak == '524113') {
 
-                        
+
                         $mpdf->AddPage('L', '', '', '', '', 15, 15, 5, 1, 5, 5);
-                        
+
                         $mpdf->WriteHTML($formbukti);
                     } elseif ($model->kode_mak == '524114') {
 
                         $mpdf->SetDisplayMode('fullpage');
-                       
-                        $mpdf->AddPage('P', '', '', '', '', 5, 5, 5, 1, 5, 5);
-                        
-                        $mpdf->WriteHTML($con);
-                       
-                        $mpdf->AddPage('L', '', '', '', '', 15, 15, 5, 1, 5, 5);
-                        
-                        $mpdf->WriteHTML($content3);
 
+                        $mpdf->AddPage('P', '', '', '', '', 5, 5, 5, 1, 5, 5);
+
+                        $mpdf->WriteHTML($con);
+
+                        $mpdf->AddPage('L', '', '', '', '', 15, 15, 5, 1, 5, 5);
+
+                        $mpdf->WriteHTML($content3);
                     } elseif ($model->kode_mak == '524119') {
-                       
+
                         $mpdf->SetDisplayMode('fullpage');
                         $mpdf->AddPage('P', '', '', '', '', 5, 5, 5, 1, 5, 5);
-                        
+
                         $mpdf->WriteHTML($con);
-                       
+
                         $mpdf->AddPage('L', '', '', '', '', 15, 15, 5, 1, 5, 5);
-                        
+
                         $mpdf->WriteHTML($content3);
-                    
                     } elseif ($model->kode_mak == '524111') {
 
                         $mpdf->SetDisplayMode('fullpage');
                         $mpdf->AddPage('P', '', '', '', '', 5, 5, 5, 1, 5, 5);
-                        
+
                         $mpdf->WriteHTML($content);
                     }
                 } else {
                     $mpdf->SetDisplayMode('fullpage');
-                    
+
                     $mpdf->AddPage('P', '', '', '', '', 5, 5, 5, 1, 5, 5);
-                    
+
                     $mpdf->WriteHTML($content);
                 }
                 $mpdf->Output('SURAT PERJALANAN DINAS (SPD)', I);
@@ -560,8 +616,8 @@ class SimpelKegController extends Controller {
         ]);
         $mpdf = new mPDF('utf-8', 'A4-L');
         $mpdf->AddPage('P', '', '', '', '', 15, 15, 5, 1, 5, 5);
-                   
-        
+
+
         $mpdf->WriteHTML($content);
         $mpdf->Output('Pengeluaran RIll', I);
     }
@@ -576,7 +632,7 @@ class SimpelKegController extends Controller {
         ]);
         $mpdf = new mPDF('utf-8', 'A4-L');
         $mpdf->AddPage('P', '', '', '', '', 15, 15, 5, 1, 5, 5);
-        
+
         $mpdf->WriteHTML($content);
         $mpdf->Output();
     }
@@ -603,12 +659,12 @@ class SimpelKegController extends Controller {
         switch ($model->negara) {
             case 1:
                 $mpdf->AddPage('L', '', '', '', '', 15, 15, 5, 1, 5, 5);
-                
+
                 $mpdf->WriteHTML($content);
                 break;
             case 2:
                 $mpdf->AddPage('L', '', '', '', '', 15, 15, 5, 1, 5, 5);
-                
+
                 $mpdf->WriteHTML($content_luar);
                 break;
         }
@@ -630,7 +686,7 @@ class SimpelKegController extends Controller {
         ]);
 
         $mpdf = new mPDF('utf-8', 'A4-L');
-          $mpdf->AddPage('P', '', '', '', '', 15, 15, 5, 1, 5, 5);
+        $mpdf->AddPage('P', '', '', '', '', 15, 15, 5, 1, 5, 5);
         //$mpdf->SetAutoPageBreak(on,0);
         $mpdf->WriteHTML($content);
         $mpdf->Output('RINCIAN BIAYA PERJALANAN DINAS.pdf', I);
@@ -654,7 +710,7 @@ class SimpelKegController extends Controller {
 
         $mpdf = new mPDF('utf-8', 'A4-L');
         $mpdf->AddPage('P', '', '', '', '', 15, 15, 5, 1, 5, 5);
-        
+
         $mpdf->WriteHTML($html);
         $mpdf->Output('Kwitansi', I);
 
@@ -678,7 +734,7 @@ class SimpelKegController extends Controller {
 
         $mpdf = new mPDF('utf-8', 'A4-L');
         $mpdf->AddPage('P', '', '', '', '', 15, 15, 5, 1, 5, 5);
-        
+
         $mpdf->WriteHTML($html);
         $mpdf->Output('Kwitansi', I);
 
