@@ -230,7 +230,7 @@ Yang bepergian,</td>
 <table >
     <tbody>
         <tr>      
-        <td width="170"> Sudah terima dari  </td>
+        <td width="170"> Sudah terima dijakarta </td>
           
             <td width="20"> :</td>
             <td width="260" style="font-weight: bold;"> Badan Pengawas Tenaga Nuklir </td>

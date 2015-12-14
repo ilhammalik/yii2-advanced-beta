@@ -108,6 +108,39 @@ use common\components\MyHelper;
 <p style="margin-bottom: 0in; line-height: 100%"><br/>
 
 
+<table >
+    <tr>
+        <td  width="300"></td>
+        <td style="padding-top:30px;padding-left:-420px;"  align="center" width="300">
+        <br/>
+            Pejabat / Petugas yang mengesahkan
+        </td>
+        <td align="center" width="200"></td>
+        <td  align="left" width="300">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br/>Jakarta, <?=  MyHelper::Formattgl($model->tgl_selesai) ?><br/><br/><br/>
+            Pejabat Pembuat Komitmen,
+        </td>
+    </tr>
+
+</table>
+<table>
+    <tr>
+        <td  width="300"></td>
+        <td style="padding-top:30px;padding-left:-170px;" align="left" width="300">
+           <br/><br/><b><u><?= $model->bpp->nama_cetak ?></u></b><br/>
+            NIP. <?= $model->nip_bpp ?>
+        </td>
+        <td width="200">
+        </td>
+        <td style="padding-top:600px;"align="center" width="300">
+            <br/><br/><br/><br/><b><u><?= $model->ppk->nama_cetak ?></u></b><br/>
+            NIP. <?= $model->nip_ppk ?>
+        </td>
+    </tr>
+    
+    </table>
+
+ 
 
 </body>
 

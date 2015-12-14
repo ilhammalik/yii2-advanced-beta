@@ -354,24 +354,27 @@ foreach ($model2 as $mode) {
                 </tr>
                 <tr>
                     <td width="65%" style="padding-left: 65px;"><img src="<?= Url::to(['simpel-personil/qrcod','id'=>$mode->id_personil]) ?>" width="150px"/></td>
-                    <td style="padding-top:-30px;"colspan="3"><br/><u><b>Pejabat Pembuat Komitmen<br/>Authorizing Officer</b></u><br/><br/><br/><br/><br/></td>
+                    <td style="padding-top:-80px;"colspan="3"><br/><u><b>Pejabat Pembuat Komitmen<br/>Authorizing Officer</b></u><br/><br/><br/><br/><br/></td>
 
                 </tr>
 
                 <tr>
                     <td width="30%"></td>
-                    <td style="padding-top:10px;" colspan="3">
+                    <td style="padding-top:-20px;" colspan="3">
                         <h6 style="font-weight: bold;"><u><?= $model->ppk->nama ?></u></h6>
                     </td>
                 </tr>
                 <tr>
                     <td width="50%"></td>
-                    <td style="padding-top:10px;" ><h6 style="font-weight: bold;">NIP : <?= $model->ppk->nip ?></h6>
+                    <td style="padding-top:5px;" ><h6 style="font-weight: bold;">NIP : <?= $model->ppk->nip ?></h6>
                     </td>
 
                 </tr>
 
             </table>
+            <br/>
+            <br/>
+            <br/>
         </div>
        <p  style="text-align:center">-1-</p>
             <pagebreak>
@@ -1114,7 +1117,9 @@ foreach ($model2 as $mode) {
 
 </body>
 
-
+<br/>
+<br/>
+<br/>
             </div>
 
       <?php
