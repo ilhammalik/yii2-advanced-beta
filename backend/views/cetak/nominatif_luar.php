@@ -205,7 +205,39 @@ use \common\components\MyHelper;
         $no++;
     }
     ?>
-   
+     <tr>
+        <td colspan="6" align="right">Jumlah :</td>
+        <td align="center">
+        <?php $total = Yii::$app->db->createCommand("SELECT sum(jml) from simpel_rincian_biaya where  id_kegiatan='".$model->id_kegiatan."' and kat_biaya_id in (13) and bukti_kwitansi in(1,2)" )->queryScalar();
+                    echo number_format($total, 0 ,',','.');
+              ?> 
+        </td>
+        <td align="center">
+        <?php $total = Yii::$app->db->createCommand("SELECT sum(jml) from simpel_rincian_biaya where  id_kegiatan='".$model->id_kegiatan."' and kat_biaya_id in (11) and bukti_kwitansi in(1,2)" )->queryScalar();
+                    echo number_format($total, 0 ,',','.');
+              ?> 
+        </td>
+        <td align="center">
+        <?php $total = Yii::$app->db->createCommand("SELECT sum(jml) from simpel_rincian_biaya where  id_kegiatan='".$model->id_kegiatan."' and kat_biaya_id in (12) and bukti_kwitansi in(1,2)" )->queryScalar();
+                    echo number_format($total, 0 ,',','.');
+              ?> 
+        </td>
+        <td align="center">
+         
+        </td>
+        <td align="center">
+        <?php $total = Yii::$app->db->createCommand("SELECT sum(jml) from simpel_rincian_biaya where  id_kegiatan='".$model->id_kegiatan."' and kat_biaya_id in (8) and bukti_kwitansi in(1,2)" )->queryScalar();
+                    echo number_format($total, 0 ,',','.');
+              ?> 
+        </td>
+        <td align="center">
+        <?php $total = Yii::$app->db->createCommand("SELECT sum(jml) from simpel_rincian_biaya where  id_kegiatan='".$model->id_kegiatan."' and kat_biaya_id in (11,12,13,14,15,16) and bukti_kwitansi in(1,2)" )->queryScalar();
+                    echo number_format($total, 0 ,',','.');
+              ?> 
+        </td>
+       
+       
+    </tr>
     
 </table>
 

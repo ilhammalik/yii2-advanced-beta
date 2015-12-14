@@ -115,7 +115,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         </td>
                         <td width="80" align="center"><?= $data->keg->mak ?> </td>
                         <td align="center"><?= $data->keg->kotaTujuan->nama ?></td>
-                        <td align="center"><?= substr($data->tgl_berangkat, 8, 2) ?>&nbsp;&nbsp;s/d&nbsp;&nbsp;<?= substr($data->tgl_kembali, 8, 2) ?> &nbsp; <?= substr($data->tgl_kembali, 0, 4) ?></td>
+                        <td align="center"><?= substr($data->tgl_berangkat, 8, 2) ?>&nbsp;&nbsp;s/d&nbsp;&nbsp;<?= substr($data->tgl_kembali, 8, 2) ?> &nbsp; <?= MyHelper::BacaBulan(substr($data->tgl_kembali, 5, 2)) ?> <?= substr($data->tgl_kembali, 0, 4) ?></td>
                         <td align="center">
                             <?php
                                 $pergi = substr($data->tgl_berangkat, 8, 2);

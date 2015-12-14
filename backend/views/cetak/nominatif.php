@@ -80,7 +80,7 @@ use \common\components\MyHelper;
         </td>
         <td width="80" align="center"><?= MyHelper::Gole($data->pegawai->gol_id) ?> </td>
         <td align="center"><?= $model->kotaAsal->nama ?> </td>
-        <td align="center"><?= substr($data->tgl_berangkat, 8, 2) ?>&nbsp;&nbsp;s/d&nbsp;&nbsp;<?= substr($data->tgl_kembali, 8, 2) ?> &nbsp; <?= substr($data->tgl_kembali, 0, 4) ?></td>
+        <td align="center"><?= substr($data->tgl_berangkat, 8, 2) ?>&nbsp;&nbsp;s/d&nbsp;&nbsp;<?= substr($data->tgl_kembali, 8, 2) ?> &nbsp; <?= MyHelper::BacaBulan(substr($data->tgl_kembali, 5, 2)) ?>  <?= substr($data->tgl_kembali, 0, 4) ?></td>
         <td align="center">
             <?php
 
@@ -97,9 +97,9 @@ use \common\components\MyHelper;
                     if($key->kat_biaya_id == 1){
                         $sql = "SELECT sum(jml) from simpel_rincian_biaya where  personil_id='".$data->id_personil."' and kat_biaya_id in (1,2,3) and bukti_kwitansi in(1,2)" ;
                         $count = Yii::$app->db->createCommand($sql)->queryScalar(); ?>
-                        <td align="center"> <?= $count ?> </td>
+                        <td align="center"> <?=  number_format($count, 0 ,',','.') ?> </td>
                  <?php }else{ ?>
-                <td align="center"> <?= $key->jml ?> </td>
+                <td align="center"> <?= number_format($key->jml, 0 ,',','.') ?> </td>
             <?php   } }else{ ?>
             <td align="center"> -  </td>
             <?php    }
@@ -107,17 +107,54 @@ use \common\components\MyHelper;
       <?php  } ?>
        
         
- <td align="left" ><font >Rp. <?php $count = Yii::$app->db->createCommand("SELECT sum(jml) FROM simpel_rincian_biaya where personil_id='".$data->id_personil."' and kat_biaya_id in (1,2,3,4,5,6,8) and bukti_kwitansi in(1,2)" )->queryScalar();
+ <td align="center" ><font >
+<?php $count = Yii::$app->db->createCommand("SELECT sum(jml) FROM simpel_rincian_biaya where personil_id='".$data->id_personil."' and kat_biaya_id in (1,2,3,4,5,6,8) and bukti_kwitansi in(1,2)" )->queryScalar();
 echo number_format($count, 0 ,',','.');
   ?> 
 
  </font></td>
 
     </tr>
+    
        <?php
        $no++;
         }
     ?>
+    <tr>
+        <td colspan="6" align="right">Jumlah :</td>
+        <td align="center">
+        <?php $total = Yii::$app->db->createCommand("SELECT sum(jml) from simpel_rincian_biaya where  id_kegiatan='".$model->id_kegiatan."' and kat_biaya_id in (1,2,3) and bukti_kwitansi in(1,2)" )->queryScalar();
+                    echo number_format($total, 0 ,',','.');
+              ?> 
+        </td>
+        <td align="center">
+        <?php $total = Yii::$app->db->createCommand("SELECT sum(jml) from simpel_rincian_biaya where  id_kegiatan='".$model->id_kegiatan."' and kat_biaya_id in (4) and bukti_kwitansi in(1,2)" )->queryScalar();
+                    echo number_format($total, 0 ,',','.');
+              ?> 
+        </td>
+        <td align="center">
+        <?php $total = Yii::$app->db->createCommand("SELECT sum(jml) from simpel_rincian_biaya where  id_kegiatan='".$model->id_kegiatan."' and kat_biaya_id in (5) and bukti_kwitansi in(1,2)" )->queryScalar();
+                    echo number_format($total, 0 ,',','.');
+              ?> 
+        </td>
+        <td align="center">
+        <?php $total = Yii::$app->db->createCommand("SELECT sum(jml) from simpel_rincian_biaya where  id_kegiatan='".$model->id_kegiatan."' and kat_biaya_id in (6) and bukti_kwitansi in(1,2)" )->queryScalar();
+                    echo number_format($total, 0 ,',','.');
+              ?> 
+        </td>
+        <td align="center">
+        <?php $total = Yii::$app->db->createCommand("SELECT sum(jml) from simpel_rincian_biaya where  id_kegiatan='".$model->id_kegiatan."' and kat_biaya_id in (8) and bukti_kwitansi in(1,2)" )->queryScalar();
+                    echo number_format($total, 0 ,',','.');
+              ?> 
+        </td>
+        <td align="center">
+        <?php $total = Yii::$app->db->createCommand("SELECT sum(jml) from simpel_rincian_biaya where  id_kegiatan='".$model->id_kegiatan."' and kat_biaya_id in (1,2,3,4,5,6,8) and bukti_kwitansi in(1,2)" )->queryScalar();
+                    echo number_format($total, 0 ,',','.');
+              ?> 
+        </td>
+       
+       
+    </tr>
 </table>
 
 

@@ -90,8 +90,12 @@ $this->params['breadcrumbs'][] = $this->title;
                         <td align="center" width="300"><?= $data->keg->kotaTujuan->nama ?></td>
                         <td align="center" width="300">
                         <?php 
-                        $count = \backend\models\SimpelPersonil::find()->where('id_kegiatan='.$data->id_kegiatan.' and pegawai_id='.$data->pegawai_id)->count();
+                        //$count = \backend\models\SimpelPersonil::find()->where('id_kegiatan='.$data->id_kegiatan.' and pegawai_id='.$data->pegawai_id);
+                        if($data->id_kegiatan>0){
+                         $count = Yii::$app->db->createCommand("SELECT count(pegawai_id) from simpel_personil where id_kegiatan=".$data->id_kegiatan." and pegawai_id=".$data['pegawai_id'])->queryScalar();
                         echo $count;
+                        }
+                        
                         ?>
                         </td>
                         <td align="center" width="300">

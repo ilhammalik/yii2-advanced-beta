@@ -101,7 +101,7 @@ use yii\helpers\ArrayHelper;
                                                         'type' => DatePicker::TYPE_COMPONENT_PREPEND,
                                                         'pluginOptions' => [
                                                             'autoclose' => true,
-                                                            'format' => 'yyyy-mm-d'
+                                                            'format' => 'yyyy-mm-dd'
                                                         ]
                                                     ]);
                                                     ?>
@@ -115,7 +115,7 @@ use yii\helpers\ArrayHelper;
                                                         'type' => DatePicker::TYPE_COMPONENT_PREPEND,
                                                         'pluginOptions' => [
                                                             'autoclose' => true,
-                                                            'format' => 'yyyy-mm-d'
+                                                            'format' => 'yyyy-mm-dd'
                                                         ]
                                                     ]);
                                                     ?>

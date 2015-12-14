@@ -43,7 +43,7 @@ class SimpelRekapController extends Controller {
                 ->all();
 
         if ($countKokab > 0) {
-            echo "<option><center>- Pilih -  </center></option>";
+            echo "<option ><center>- Pilih -  </center></option>";
             foreach ($Kokab as $kota) {
                 echo "<option value='" . $kota->unit_id . "'>" . $kota->nama . "</option>";
             }
@@ -53,12 +53,12 @@ class SimpelRekapController extends Controller {
     }
 
     public function actionIndex() {
+      
         if (!empty($_GET['unit_id'])) {
             $find_query = "SELECT c.* FROM simpel_keg as a
                             LEFT JOIN pegawai.daf_unit b ON  a.unit_id = b.unit_id
                             LEFT JOIN simpel_personil c ON  a.id_kegiatan = c.id_kegiatan
-
-                          WHERE (unit_parent_id='" . $_GET['unit_id'] . "')  and tgl_mulai='" . $_GET['tgl_mulai'] . "' or tgl_kembali='" . $_GET['tgl_kembali'] . "' and c.status=4 group by pegawai_id ";
+                          WHERE (unit_parent_id='" . $_GET['unit_id'] . "')  and tgl_berangkat='" . $_GET['tgl_mulai'] . "' or tgl_kembali='" . $_GET['tgl_kembali'] . "' and c.status=4 group by pegawai_id";
             $query = SimpelPersonil::findBySql($find_query);
             $countQuery = count($query->all());
             $pages = new Pagination(['totalCount' => $countQuery]);
@@ -66,7 +66,6 @@ class SimpelRekapController extends Controller {
                     ->limit($pages->limit)
                     ->all();
         } else {
-           
             $unit = SimpelPersonil::find()->joinWith('keg')->where('simpel_keg.status = 4');
             $count = count($unit->all());
             $pages = new Pagination(['totalCount' => $count]);
