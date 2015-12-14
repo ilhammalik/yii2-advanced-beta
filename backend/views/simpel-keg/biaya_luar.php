@@ -11,7 +11,7 @@ $('#satuan1').on('keyup', function(){
 
   $('#jml1').val(hasil);
   $('#uraian1').val(" "+$('#simpelkeg-tgl_selesai').val());
- $('#uraian1').val("Asuransi tertanggung dari tanggal "+$('#dtg').html()+" sd "+$('#kmbl').html()+" @ Rp. "+$('#satuan4').val()+" x "+$('#volume4').val()+" = Rp. "+hasil+"");
+ $('#uraian1').val("Asuransi tertanggung dari tanggal "+$('#dtg').html()+" sd "+$('#kmbl').html()+" @ Rp. "+$('#satuan1').val()+" x "+$('#volume1').val()+" = Rp. "+hasil+"");
 
 
 });
@@ -72,7 +72,7 @@ $('#satuan5').on('keyup', function(){
   $('#jml5').val(hasil);
   $('#uraian5').val("Lumpsum 30% Tanggal ");
    
-  $('#uraian5').val("Lumpsum 30% dari tanggal "+$('#dtg').html()+" sd "+$('#kmbl').html()+" @ Rp. "+$('#satuan4').val()+" x "+$('#volume4').val()+" = Rp. "+hasil+"");
+  $('#uraian5').val("Lumpsum 30% dari tanggal "+$('#dtg').html()+" sd "+$('#kmbl').html()+" @ Rp. "+$('#satuan5').val()+" x "+$('#volume5').val()+" = Rp. "+hasil+"");
 
 });
 
@@ -87,7 +87,7 @@ $('#satuan6').on('keyup', function(){
   var hasil =  parseFloat(dat1*dat2*dat3*dat4);
 
   $('#jml6').val(hasil);
-  $('#uraian6').val("Lumpsum 40% Tanggal ");
+  $('#uraian6').val("Lumpsum 40% dari tanggal "+$('#dtg').html()+" sd "+$('#kmbl').html()+" @ Rp. "+$('#satuan6').val()+" x "+$('#volume6').val()+" = Rp. "+hasil+"");
 
 });
 

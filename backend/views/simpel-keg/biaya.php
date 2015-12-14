@@ -139,7 +139,7 @@ $('#satuan10').on('keyup', function(){
 
   $('#jml10').val(hasil);
   $('#uraian10').val("Ini Adalah Uraian Tranport "+hasil);
-  $('#uraian10').val(" Penginapan Lain 30% selama "+$('#idmakan').val()+"    hari di "+$('#kkmbl').html()+", "+$('#kprov').html()+" tgl. "+$('#dtg').html()+" sd "+$('#kmbl').html()+" @ Rp. "+$('#satuan9').val()+" x "+$('#volume9').val()+" = Rp. "+hasil+"");
+  $('#uraian10').val(" Penginapan Lain 30% selama "+$('#idmakan').val()+"    hari di "+$('#kkmbl').html()+", "+$('#kprov').html()+" tgl. "+$('#dtg').html()+" sd "+$('#kmbl').html()+" @ Rp. "+$('#satuan10').val()+" x "+$('#volume10').val()+" = Rp. "+hasil+"");
 
 });
 Modal;

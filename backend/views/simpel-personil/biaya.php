@@ -138,7 +138,7 @@ $('#satuan10').on('keyup', function(){
   var hasil =  parseInt(dat1*dat2);
 
   $('#jml10').val(hasil);
-  $('#uraian_rincian10').val(" Penginapan Lain 30% selama "+$('#idmakan').val()+"    hari di "+$('#kkmbl').html()+", "+$('#kprov').html()+" tgl. "+$('#dtg').html()+" sd "+$('#kmbl').html()+" @ Rp. "+$('#satuan9').val()+" x "+$('#volume9').val()+" = Rp. "+hasil+"");
+  $('#uraian_rincian10').val(" Penginapan Lain 30% selama "+$('#idmakan').val()+"    hari di "+$('#kkmbl').html()+", "+$('#kprov').html()+" tgl. "+$('#dtg').html()+" sd "+$('#kmbl').html()+" @ Rp. "+$('#satuan10').val()+" x "+$('#volume10').val()+" = Rp. "+hasil+"");
 
 });
 Modal;

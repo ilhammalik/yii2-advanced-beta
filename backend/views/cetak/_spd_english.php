@@ -14,6 +14,14 @@ use \common\components\MyHelper;
     margin-left: 10px;
     
 }
+.div2 {
+   
+    border: 2px solid black;
+   
+    max-width:1000px;
+    margin: auto;
+    
+}
     .bold{
         font-weight: bold;
     }
@@ -154,15 +162,15 @@ foreach ($model2 as $mode) {
             <tr>                
                 <td height="30" width='10'>1</td>
                 <td colspan="3" height="30" width="260"> <u>F Pembuat Komitmen</u><br/><i>Authorizing Officer</i></td>
-    <td valign="top" height="30" colspan="3"> <?= $model->ppk->nama ?></td>
+    <td valign="top" height="30" colspan="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?= $model->ppk->nama ?></td>
 
     </tr>
     <tr>
         <td height="30">2</td>
         <td  colspan="3" height="30" width="240"><u>Nama / Nip Pegawai yang melaksanakan Perjalanan Dinas</u><br/>Name / Employee Register Number of the assigned officer</td>
     <td valign="top" height="30" colspan="3">
-    <?= $mode->pegawai->nama ?> <br/>
-    NIP. <?= $mode->pegawai_id ?>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?= $mode->pegawai->nama ?> <br/>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?= $mode->pegawai_id ?>
     </td>
 
     </tr>
@@ -182,9 +190,9 @@ foreach ($model2 as $mode) {
     
     </td>
     <td valign="top" height="30" colspan="3">
-    <p style="padding-top:-10px;">  a. <?= MyHelper::Gole($mode->pegawai->gol_id) ?></p><br/>
-    <p style="padding-top:-10px;">  b. <?= MyHelper::Jab($mode->pegawai->struk_id) ?> </p><br/>
-    <p style="padding-top:-10px;">  c. <?= \common\components\Myhelper::Tingkat($mode->tingkat_id) ?></p><br/>
+    <p style="padding-top:-10px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  a. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?= MyHelper::Gole($mode->pegawai->gol_id) ?></p><br/>
+    <p style="padding-top:-10px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  b. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?= MyHelper::Jab($mode->pegawai->struk_id) ?> </p><br/>
+    <p style="padding-top:-10px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  c. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?= \common\components\Myhelper::Tingkat($mode->tingkat_id) ?></p><br/>
 
     </td>
 
@@ -194,7 +202,12 @@ foreach ($model2 as $mode) {
         <td>4</td>
         <td colspan="3" height="30">Maksud Perjalanan Dinas<br/> Purpose of Travel  </td>
 
-        <td colspan="3"><?= $model->nama_keg ?>,<br/></td>
+        <td colspan="3">
+      
+        <p style="text-align:right;margin-bottom: 0in; line-height: 100%">
+           <?= $model->nama_keg ?> 
+        </p>
+        </td>
 
     </tr>
 
@@ -202,7 +215,7 @@ foreach ($model2 as $mode) {
         <td>5</td>
         <td colspan="3" height="30"><u>Alat angkut yang dipergunakan</u><br/>Made of transportion</td>
 
-    <td colspan="3"><?= $mode->kend->nama ?></td>
+    <td colspan="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?= $mode->kend->nama ?></td>
 
     </tr>
 
@@ -219,8 +232,8 @@ foreach ($model2 as $mode) {
     </td>
 
     <td valign="top" colspan="3">
-          <p style="padding-top:-10px;">  a. <?= \common\components\Myhelper::Negara($model->kota_asal) ?></p><br/>
-    <p style="padding-top:-10px;">  b.  <?= \common\components\Myhelper::Negara($model->negara_tujuan) ?> </p><br/>
+          <p style="padding-top:-10px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  a.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?= \common\components\Myhelper::Negara($model->kota_asal) ?></p><br/>
+    <p style="padding-top:-10px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  b.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?= \common\components\Myhelper::Negara($model->negara_tujuan) ?> </p><br/>
     </td>
 
     </tr>
@@ -245,11 +258,11 @@ foreach ($model2 as $mode) {
 
     <td valign="top" colspan="3">
         <p style="padding-top:0px;"> 
-         a. <?php 
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <?php 
          $dat = substr($mode->tgl_kembali, 8 ,2)-substr($mode->tgl_berangkat, 8, 2);
          echo $dat+1 .' ( '.Myhelper::Terbilang($dat+1).' ) Hari' ; ?></p><br/>
-    <p style="padding-top:0px;">  b.  <?= MyHelper::Formattgl($mode->tgl_berangkat) ?> </p><br/>
-    <p style="padding-top:0px;">  c.  <?= MyHelper::Formattgl($mode->tgl_kembali) ?> </p><br/>
+    <p style="padding-top:0px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  b. &nbsp;&nbsp;&nbsp;&nbsp; <?= MyHelper::Formattgl($mode->tgl_berangkat) ?> </p><br/>
+    <p style="padding-top:0px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  c. &nbsp;&nbsp;&nbsp;&nbsp; <?= MyHelper::Formattgl($mode->tgl_kembali) ?> </p><br/>
     </td>
 
     </tr>
@@ -298,7 +311,7 @@ foreach ($model2 as $mode) {
             &nbsp;&nbsp; Code of Account 
             
             </td>
-            <td colspan="3"><p>a. &nbsp;&nbsp;&nbsp; <span style="font-wieght: bold;"></span>Badan Pengawas Tenaga Nuklir <br/><br/> <p> b. &nbsp;&nbsp;&nbsp; <?= $model->mak ?>  </p><br/></td>
+            <td colspan="3"><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a. &nbsp;&nbsp;&nbsp; <span style="font-wieght: bold;"></span>Badan Pengawas Tenaga Nuklir <br/><br/> <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; b. &nbsp;&nbsp;&nbsp; <?= $model->mak ?>  </p><br/></td>
 
             </tr>
 
@@ -314,11 +327,14 @@ foreach ($model2 as $mode) {
 
             </tbody>
             </table> 
-            <br/>
-            <br/>
+           
+            <div class="div2">
+              <br/>
+            <br/> 
+           
             <table  border="3" width="100%" >
                 <tr>
-                    <td style="padding-top: -20px"width="10%"><u><b>*) Coret yang tidak perlu</b></u><br/>Cross if not Applicable</td>
+                    <td style="padding-top: -20px"width="10%"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<u>*) Coret yang tidak perlu</b></u><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cross if not Applicable</td>
                     <td  style="padding-top: -30px"><u><b>Dikeluarkan di</b></u></td>
                 <td style="padding-top: -20px;padding-left: -30px;" >: </td>
                 <td style="padding-top: -30px;padding-left: -15px;"><br/><?= $model->kotaAsal->nama ?></td>
@@ -356,10 +372,14 @@ foreach ($model2 as $mode) {
                 </tr>
 
             </table>
+        </div>
+       <p  style="text-align:center">-1-</p>
             <pagebreak>
             <br/>
+            <p  style="text-align:center">-2-</p>
             <div class="div">
 <br/>
+        
 <br/>
 <table width="826" cellpadding="4" cellspacing="0">
     <colgroup><col width="27">
@@ -390,7 +410,7 @@ foreach ($model2 as $mode) {
         </td>
         <td width="203" style="border: none; padding: 0in">
             <p><br>
-                <?= Myhelper::Negara($model->kota_asal) ?>
+                <?= Myhelper::Negara($model->negara_tujuan) ?>
             </p>
         </td>
         <td rowspan="5" width="14" style="border: none; padding: 0in">

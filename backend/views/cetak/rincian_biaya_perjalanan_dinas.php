@@ -82,7 +82,7 @@ foreach ($model2 as $data) {
     </tbody>
     <tbody>
           <?php 
-                $rincian =  \backend\models\SimpelRincianBiaya::find()->where('personil_id='.$data->id_personil.' and bukti_kwitansi=1 and kat_biaya_id not in (19,2,3,13) ')->all();
+                $rincian =  \backend\models\SimpelRincianBiaya::find()->where('personil_id='.$data->id_personil.' and bukti_kwitansi=1 and kat_biaya_id not in (19,2,3) ')->all();
               $n = 1;
                 foreach ($rincian as $key) { ?>
                 <tr valign="top">
@@ -95,6 +95,14 @@ foreach ($model2 as $data) {
                         </p>
                           <?php 
                     switch ($key->kat_biaya_id) {
+                           case '1':
+                             $rinc =  \backend\models\SimpelRincianBiaya::find()->where('personil_id='.$data->id_personil.' and bukti_kwitansi=1 and kat_biaya_id in (2,3) ')->all();
+                             foreach ($rinc as $ke){
+                                    echo $ke->label; 
+                                    echo "<br/>";                       
+                                    echo "<br/>";                       
+                                }
+                             break;
                         case '4':
                             echo $key->uraian_rincian;                            break;
                             break;
@@ -110,18 +118,31 @@ foreach ($model2 as $data) {
                              case '8':
                             echo $key->uraian_rincian;                            break;
                             break;
-                          case '1':
-                             $rinc =  \backend\models\SimpelRincianBiaya::find()->where('personil_id='.$data->id_personil.' and bukti_kwitansi=1 and kat_biaya_id in (2,3) ')->all();
-                             foreach ($rinc as $ke){
-                                    echo $ke->label; 
-                                    echo "<br/>";                       
-                                    echo "<br/>";                       
-                                }
-                             break;
+                         case '9':
+                            echo $key->uraian_rincian;                            break;
+                            break;
+                         case '10':
+                            echo $key->uraian_rincian;                            break;
+                            break;
+                       
                           case '11':
                             echo $key->uraian_rincian;
                             break;
-                      
+                        case '12':
+                            echo $key->uraian_rincian;                            break;
+                            break;
+                            case '13':
+                            echo $key->uraian_rincian;                            break;
+                            break;
+                       case '14':
+                            echo $key->uraian_rincian;                            break;
+                            break;
+                        case '15':
+                            echo $key->uraian_rincian;                            break;
+                            break;
+                            case '16':
+                            echo $key->uraian_rincian;                            break;
+                            break;
                     }
                     ?>
                     <br/>

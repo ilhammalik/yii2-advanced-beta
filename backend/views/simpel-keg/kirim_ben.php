@@ -48,21 +48,30 @@ use yii\helpers\ArrayHelper;
                       <td>Rincian</td>
                        <td><?= Html::a('Cetak', ['rincianbpd', 'id' => $model->id_kegiatan], ['target'=>'_blank','class' => 'btn btn-primary']) ?></td>      
                     </tr>
-                    <tr>
-                      <th scope="row">4</th>
-                      <td>Kwitansi</td>
-                       <td><?= Html::a('Cetak', ['kwitansi', 'id' => $model->id_kegiatan], ['target'=>'_blank','class' => 'btn btn-primary']) ?></td>
-                    </tr>
+                    
                    
                          <?php
                      switch ($model->negara) {
                        case '1': ?>
-                   
+                   <tr>
+                      <th scope="row">4</th>
+                      <td>Kwitansi</td>
+                       <td><?= Html::a('Cetak', ['kwitansi', 'id' => $model->id_kegiatan], ['target'=>'_blank','class' => 'btn btn-primary']) ?></td>
+                    </tr>
                       <tr>
                       <th scope="row">5</th>
                       <td>Pengeluaran Rill</td>
                        <td><?= Html::a('Cetak', ['dpr', 'id' => $model->id_kegiatan], ['target'=>'_blank','class' => 'btn btn-primary']) ?></td>
                        <tr>
+                      
+                       <?php  break;
+                       case '2': ?>
+                   
+                      <tr>
+                      <th scope="row">4</th>
+                      <td>Kwitansi</td>
+                       <td><?= Html::a('Cetak', ['kwitansii', 'id' => $model->id_kegiatan], ['target'=>'_blank','class' => 'btn btn-primary']) ?></td>
+                    </tr>
                       
                        <?php  break;
                        

@@ -24,7 +24,7 @@ $('#satuan2').on('keyup', function(){
   var hasil =  parseFloat(dat1*dat2);
 
   $('#jml2').val(hasil);
-  $('#uraian_rincian2').val("Taksi");
+  $('#uraian_rincian2').val("Airort Tax");
 
 });
 

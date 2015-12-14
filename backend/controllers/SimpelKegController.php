@@ -636,7 +636,7 @@ class SimpelKegController extends Controller {
         $mpdf->Output('RINCIAN BIAYA PERJALANAN DINAS.pdf', I);
     }
 
-    //ilham menambahkan fungsi untuk kwitansi
+    //ilham menambahkan fungsi untuk kwitansi dalam
     public function actionKwitansi($id) {
 
         $this->layout = 'pdf';
@@ -646,6 +646,30 @@ class SimpelKegController extends Controller {
         $count = \backend\models\SimpelPersonil::find()->where('id_kegiatan=' . $id)->count();
 
         $html = $this->render('/cetak/kwitansi', [
+            'model' => $model,
+            'model2' => $model2,
+            'count' => $count,
+        ]);
+
+
+        $mpdf = new mPDF('utf-8', 'A4-L');
+        $mpdf->AddPage('P', '', '', '', '', 15, 15, 5, 1, 5, 5);
+        
+        $mpdf->WriteHTML($html);
+        $mpdf->Output('Kwitansi', I);
+
+        // return the pdf output as per the destination setting
+    }
+
+    public function actionKwitansii($id) {
+
+        $this->layout = 'pdf';
+        $model = $this->findModel($id);
+        // get your HTML raw content without any layouts or scripts
+        $model2 = \backend\models\SimpelPersonil::find()->where('id_kegiatan=' . $id)->all();
+        $count = \backend\models\SimpelPersonil::find()->where('id_kegiatan=' . $id)->count();
+
+        $html = $this->render('/cetak/kwitansi_luar', [
             'model' => $model,
             'model2' => $model2,
             'count' => $count,
