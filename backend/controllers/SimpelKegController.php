@@ -67,7 +67,6 @@ class SimpelKegController extends Controller {
 
         return $this->render('index', [
                     //'dataSerasi' => $dataSerasi,
-                    'dataLog' => $dataLog,
         ]);
     }
 
@@ -76,7 +75,6 @@ class SimpelKegController extends Controller {
 
         return $this->render('v_dinas', [
                     //'dataSerasi' => $dataSerasi,
-                    'dataLog' => $dataLog,
         ]);
     }
 
@@ -86,7 +84,7 @@ class SimpelKegController extends Controller {
 
         return $this->render('v_cetak', [
                     //'dataSerasi' => $dataSerasi,
-                    'dataLog' => $dataLog,
+                    
         ]);
     }
 
@@ -96,7 +94,6 @@ class SimpelKegController extends Controller {
 
         return $this->render('v_bendahara', [
                     //'dataSerasi' => $dataSerasi,
-                    'dataLog' => $dataLog,
         ]);
     }
 
@@ -106,7 +103,6 @@ class SimpelKegController extends Controller {
 
         return $this->render('v_arsip', [
                     //'dataSerasi' => $dataSerasi,
-                    'dataLog' => $dataLog,
         ]);
     }
 
