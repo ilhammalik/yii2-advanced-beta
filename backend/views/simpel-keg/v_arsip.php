@@ -170,7 +170,7 @@ js;
                                                 case 110000:
                                                     ?>
                                                     <h6> <?=
-                                                        Html::a(HelperUnit::Apagu($sat->unit_id), Yii::$app->urlManager->createUrl(['simpel-keg/unit', 'unit' => $sat->unit_id]), [
+                                                        Html::a(HelperUnit::Apagu($sat->unit_id), Yii::$app->urlManager->createUrl(['simpel-keg/tabarsip', 'unit' => $sat->unit_id]), [
                                                             'title' => Yii::t('yii', 'Proses'),
                                                         ])
                                                         ?> </h6>  
@@ -180,7 +180,7 @@ js;
                                                 case 120000:
                                                     ?>
                                                     <h6> <?=
-                                                        Html::a(HelperUnit::Apagu($sat->unit_id), Yii::$app->urlManager->createUrl(['simpel-keg/unit', 'unit' => $sat->unit_id]), [
+                                                        Html::a(HelperUnit::Apagu($sat->unit_id), Yii::$app->urlManager->createUrl(['simpel-keg/tabarsip', 'unit' => $sat->unit_id]), [
                                                             'title' => Yii::t('yii', 'Proses'),
                                                         ])
                                                         ?> </h6>  
@@ -190,7 +190,7 @@ js;
                                                 case 130000:
                                                     ?>
                                                     <h6> <?=
-                                                        Html::a(HelperUnit::Apagu($sat->unit_id), Yii::$app->urlManager->createUrl(['simpel-keg/unit', 'unit' => $sat->unit_id]), [
+                                                        Html::a(HelperUnit::Apagu($sat->unit_id), Yii::$app->urlManager->createUrl(['simpel-keg/tabarsip', 'unit' => $sat->unit_id]), [
                                                             'title' => Yii::t('yii', 'Proses'),
                                                         ])
                                                         ?> </h6>  
@@ -200,7 +200,7 @@ js;
                                                 case 161100:
                                                     ?>
                                                     <h6> <?=
-                                                        Html::a('Inspektorat', Yii::$app->urlManager->createUrl(['simpel-keg/unit', 'unit' => '151000']), [
+                                                        Html::a('Inspektorat', Yii::$app->urlManager->createUrl(['simpel-keg/tabarsip', 'unit' => '151000']), [
                                                             'title' => Yii::t('yii', 'Proses'),
                                                         ])
                                                         ?> </h6>  
@@ -210,7 +210,7 @@ js;
                                                 case 151000:
                                                     ?>
                                                     <h6> <?=
-                                                        Html::a(HelperUnit::Apagu($sat->unit_id), Yii::$app->urlManager->createUrl(['simpel-keg/unit', 'unit' => '161100']), [
+                                                        Html::a(HelperUnit::Apagu($sat->unit_id), Yii::$app->urlManager->createUrl(['simpel-keg/tabarsip', 'unit' => '161100']), [
                                                             'title' => Yii::t('yii', 'Proses'),
                                                         ])
                                                         ?> </h6>  
@@ -221,7 +221,7 @@ js;
                                                 default:
                                                     ?>
                                                     <h6> <?=
-                                                        Html::a(HelperUnit::Apagu($sat->unit_id), Yii::$app->urlManager->createUrl(['simpel-keg/unit', 'unit' => $sat->unit_id]), [
+                                                        Html::a(HelperUnit::Apagu($sat->unit_id), Yii::$app->urlManager->createUrl(['simpel-keg/tabarsip', 'unit' => $sat->unit_id]), [
                                                             'title' => Yii::t('yii', 'Proses'),
                                                         ])
                                                         ?> </h6> 
@@ -235,25 +235,26 @@ js;
                                     </td>
 
                                     <td width="120" align="center">
-                                        <?php
+                                               <?php
                                         switch ($sat->unit_id) {
                                             case 161100:
-                                                $hitung = "SELECT count(DISTINCT(a.detail_id)) FROM serasi2015_sql.news_detail_keg a LEFT JOIN serasi2015_sql.news_sub_mak_tahun b on a.suboutput_id=b.suboutput_id LEFT JOIN serasi2015_sql.news_nas_suboutput c on a.suboutput_id=c.suboutput_id LEFT JOIN fix_simpel.simpel_keg g on g.detail_id = a.detail_id LEFT JOIN pegawai.daf_unit d on c.unit_id=d.unit_parent_id where a.jenis_detail_id in (3,4,5) and g.detail_id IS NULL and d.unit_parent_id='151000'";
+                                                $hitung = "SELECT count(a.id_kegiatan) FROM simpel_keg a LEFT JOIN pegawai.daf_unit b on a.unit_id=b.unit_id WHERE status=4 and b.unit_parent_id='" . $sat->unit_id . "' ";
                                                 $count = Yii::$app->db->createCommand($hitung)->queryScalar();
                                                 echo $count;
                                                 break;
                                             case 151000:
-                                                $hitung = "SELECT count(DISTINCT(a.detail_id)) FROM serasi2015_sql.news_detail_keg a LEFT JOIN serasi2015_sql.news_sub_mak_tahun b on a.suboutput_id=b.suboutput_id LEFT JOIN serasi2015_sql.news_nas_suboutput c on a.suboutput_id=c.suboutput_id LEFT JOIN fix_simpel.simpel_keg g on g.detail_id = a.detail_id LEFT JOIN pegawai.daf_unit d on c.unit_id=d.unit_parent_id where a.jenis_detail_id in (3,4,5) and g.detail_id IS NULL and d.unit_parent_id='161100'";
+                                                $hitung = "SELECT count(a.id_kegiatan) FROM simpel_keg a LEFT JOIN pegawai.daf_unit b on a.unit_id=b.unit_id WHERE status=4 and b.unit_parent_id='" . $sat->unit_id . "' ";
                                                 $count = Yii::$app->db->createCommand($hitung)->queryScalar();
                                                 echo $count;
                                                 break;
                                             default:
-                                                $hitung = "SELECT count(DISTINCT(a.detail_id)) FROM serasi2015_sql.news_detail_keg a LEFT JOIN serasi2015_sql.news_sub_mak_tahun b on a.suboutput_id=b.suboutput_id LEFT JOIN serasi2015_sql.news_nas_suboutput c on a.suboutput_id=c.suboutput_id LEFT JOIN fix_simpel.simpel_keg g on g.detail_id = a.detail_id LEFT JOIN pegawai.daf_unit d on c.unit_id=d.unit_parent_id where a.jenis_detail_id in (3,4,5) and g.detail_id IS NULL and d.unit_parent_id='" . $sat->unit_id . "'";
+                                                $hitung = "SELECT count(a.id_kegiatan) FROM simpel_keg a LEFT JOIN pegawai.daf_unit b on a.unit_id=b.unit_id WHERE status=4 and b.unit_parent_id='" . $sat->unit_id . "' ";
                                                 $count = Yii::$app->db->createCommand($hitung)->queryScalar();
                                                 echo $count;
                                                 break;
                                         }
                                         ?>
+
 
                                     </td>
                                     <td align="center" width="260">Rp. <?php

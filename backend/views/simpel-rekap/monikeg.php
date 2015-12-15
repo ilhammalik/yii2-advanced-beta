@@ -86,11 +86,14 @@ $this->params['breadcrumbs'][] = $this->title;
                             // echo $da;
                             // die();
                             $count = Yii::$app->db->createCommand("SELECT count(pegawai_id) from simpel_personil where pegawai_id=".$key['pegawai_id']." and tgl_berangkat='".$tahun.'-'.$bln.'-'.$da."'")->queryScalar();
+                          
                             if($count > 0){ ?>
                                 <span class="label label-success" data-toggle="popover" data-html="true" title="Detail Tujuan Keberangkatan"
                                  data-content="
                                  <?php 
-                                 $data = \backend\models\SimpelPersonil::find()->where("pegawai_id=".$key['pegawai_id']."  and tgl_berangkat like '%".$_GET['tgl_mulai']."%'")->groupBy('id_kegiatan')->all();
+                                
+                                $tgl = isset( $_GET['tgl_mulai']) ?  $_GET['tgl_mulai'] : $key->tgl_berangkat;
+                                 $data = \backend\models\SimpelPersonil::find()->where("pegawai_id=".$key['pegawai_id']."  and tgl_berangkat like '%".$tgl."%'")->groupBy('id_kegiatan')->all();
                                  foreach ($data as $value) {
                                     echo '<b>'.$value->keg->kotaTujuan->nama.'</b> ';
                                         echo "<br/>";

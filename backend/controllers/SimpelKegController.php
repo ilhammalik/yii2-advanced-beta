@@ -67,6 +67,7 @@ class SimpelKegController extends Controller {
 
         return $this->render('index', [
                     //'dataSerasi' => $dataSerasi,
+                    'dataLog'=>$dataLog,
         ]);
     }
 
@@ -281,10 +282,18 @@ class SimpelKegController extends Controller {
         ]);
     }
 
-    public function actionTabarsip() {
+    public function actionTabarsip($unit) {
         //data gridview Arsip
-        $dataArsip = new ActiveDataProvider([
-            'query' => SimpelKeg::find()->where('status=4 ')->orderBy('tgl_mulai desc'),
+        $sql = "SELECT  * FROM simpel_keg a LEFT JOIN pegawai.daf_unit b on a.unit_id=b.unit_id WHERE a.status=4 and b.unit_parent_id='".$unit."'";
+        $count = Yii::$app->db->createCommand($sql)->queryScalar();
+        // echo $sql;
+        // die();
+        $dataArsip = new SqlDataProvider([
+            'sql' => $sql,
+            'totalCount' => count($count),
+            'pagination' => [
+                'pageSize' => 10,
+            ],
         ]);
         return $this->render('arsip', [
                     'dataArsip' => $dataArsip,

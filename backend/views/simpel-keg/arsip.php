@@ -23,19 +23,19 @@ $this->params['breadcrumbs'][] = $this->title;
                     Daftar Permohonan Dinas</a>
             </li>
             <li >
-                <a href="<?= Url::to(['simpel-keg/tabdinas']) ?>" >
+                <a href="<?= Url::to(['simpel-keg/dinas']) ?>" >
                     Daftar Perjalanan Dinas</a>
             </li>
             <li >
-                <a href="<?= Url::to(['simpel-keg/tabcetak']) ?>" >
+                <a href="<?= Url::to(['simpel-keg/vcetak']) ?>" >
                     Cetak </a>
             </li>
             <li>
-                <a href="<?= Url::to(['simpel-keg/tabuang']) ?>" >
+                <a href="<?= Url::to(['simpel-keg/bendahara']) ?>" >
                     Bendahara </a>
             </li>
             <li class="active">
-                <a href="<?= Url::to(['simpel-keg/tabarsip']) ?>" >
+                <a href="<?= Url::to(['simpel-keg/varsip']) ?>" >
                     Arsip </a>
             </li>
         </ul>
@@ -90,14 +90,14 @@ $this->registerJS($js);
                                             'format' => 'html',
                                             'contentOptions' => ['style' => 'width:490px; z-index:200;'],
                                             'value' => function($data) {
-                                        return $data->nama_keg;
+                                        return $data['nama_keg'];
                                     }
                                         ],
              [
                                             'header' => 'Negara',
                                             'format' => 'html',
                                             'value'=>function($data){
-                                                if($data->negara == 1){
+                                                if($data['negara'] == 1){
                                                     return 'Dalam Negri';
                                                 }else{
                                                     return 'Luar Negri' ;
@@ -123,7 +123,7 @@ $this->registerJS($js);
                                      'pass' => function ($url, $model) {
                                                                                         return Html::a(' <button type="button" class="btn btn-danger data-placement="top">
                                                                            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Back
-                                                                          </button>', Yii::$app->urlManager->createUrl(['simpel-keg/editkeg','id' => $model->id_kegiatan]), [
+                                                                          </button>', Yii::$app->urlManager->createUrl(['simpel-keg/editkeg','id' => $model['id_kegiatan']]), [
                                                                                                         'title' => Yii::t('yii', 'Proses'),
                                                                                                         'data-confirm' => Yii::t('yii', 'Apakah Anda Yakin Ingin Melakukan Proses?'),
 

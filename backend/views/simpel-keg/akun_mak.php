@@ -33,26 +33,26 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?php if ((Mimin::filterRoute($this->context->id . '/tabdinas'))) { ?>
 
                     <li>
-                        <a href="<?= Url::to(['simpel-keg/tabdinas']) ?>" >
+                        <a href="<?= Url::to(['simpel-keg/dinas']) ?>" >
                             Daftar Perjalanan Dinas</a>
                     </li>
                 <?php } ?>
                 <?php if ((Mimin::filterRoute($this->context->id . '/tabcetak'))) { ?>
 
                     <li>
-                        <a href="<?= Url::to(['simpel-keg/tabcetak']) ?>" >
+                        <a href="<?= Url::to(['simpel-keg/vcetak']) ?>" >
                             Cetak </a>
                     </li>
                 <?php } ?>
                 <?php if ((Mimin::filterRoute($this->context->id . '/tabuang'))) { ?>
                     <li>
-                        <a href="<?= Url::to(['simpel-keg/tabuang']) ?>" >
+                        <a href="<?= Url::to(['simpel-keg/bendahar']) ?>" >
                             Bendahara </a>
                     </li>
                 <?php } ?>
                 <?php if ((Mimin::filterRoute($this->context->id . '/tabarsip'))) { ?>
                     <li >
-                        <a href="<?= Url::to(['simpel-keg/tabarsip']) ?>" >
+                        <a href="<?= Url::to(['simpel-keg/varsip']) ?>" >
                             Arsip </a>
                     </li>
                 <?php } ?>

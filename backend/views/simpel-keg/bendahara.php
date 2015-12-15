@@ -25,19 +25,19 @@ $this->params['breadcrumbs'][] = $this->title;
                         Daftar Permohonan Dinas</a>
                 </li>
                 <li >
-                    <a href="<?= Url::to(['simpel-keg/tabdinas']) ?>" >
+                    <a href="<?= Url::to(['simpel-keg/dinas']) ?>" >
                         Daftar Perjalanan Dinas</a>
                 </li>
                 <li >
-                    <a href="<?= Url::to(['simpel-keg/tabcetak']) ?>" >
+                    <a href="<?= Url::to(['simpel-keg/vcetak']) ?>" >
                         Cetak </a>
                 </li>
                 <li class="active">
-                    <a href="<?= Url::to(['simpel-keg/tabuang']) ?>" >
+                    <a href="<?= Url::to(['simpel-keg/bendahara']) ?>" >
                         Bendahara </a>
                 </li>
                 <li >
-                    <a href="<?= Url::to(['simpel-keg/tabarsip']) ?>" >
+                    <a href="<?= Url::to(['simpel-keg/varsip']) ?>" >
                         Arsip </a>
                 </li>
             </ul>

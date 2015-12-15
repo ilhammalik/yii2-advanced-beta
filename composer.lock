@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "31ff4b0bca0024fa144078c0f5b56f56",
-    "content-hash": "012a479c3a0ca228aa02840753c5a421",
+    "hash": "7657eb85ffb29bd98349ea0b05b7f123",
+    "content-hash": "8cc154e35ff0f02e92e0b5014db2295e",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -343,6 +343,52 @@
             "time": "2013-11-30 08:25:19"
         },
         {
+            "name": "hscstudio/yii2-export",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/hscstudio/yii2-export.git",
+                "reference": "0dbb0430123ebae6bfefc194e9a7f2ba2fededdf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/hscstudio/yii2-export/zipball/0dbb0430123ebae6bfefc194e9a7f2ba2fededdf",
+                "reference": "0dbb0430123ebae6bfefc194e9a7f2ba2fededdf",
+                "shasum": ""
+            },
+            "require": {
+                "phpoffice/phpexcel": "1.8.0",
+                "yiisoft/yii2": "*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "hscstudio\\export\\": ""
+                },
+                "files": [
+                    "libraries/tbs/tbs_class.php",
+                    "libraries/tbs/plugins/tbs_plugin_opentbs.php",
+                    "libraries/mpdf60/mpdf.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Hafid Mukhlasin",
+                    "email": "hafidmukhlasin@gmail.com"
+                }
+            ],
+            "description": "Excel, Word, PDF",
+            "keywords": [
+                "extension",
+                "yii2"
+            ],
+            "time": "2015-06-07 07:27:43"
+        },
+        {
             "name": "hscstudio/yii2-mimin",
             "version": "dev-master",
             "source": {
@@ -352,7 +398,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hscstudio/yii2-mimin/zipball/30c71b3581d4ead713a18c6dd93a686361605b6a",
+                "url": "https://api.github.com/repos/hscstudio/yii2-mimin/zipball/5d732100733b0e5c0c34965dbc673d8046a33382",
                 "reference": "30c71b3581d4ead713a18c6dd93a686361605b6a",
                 "shasum": ""
             },
@@ -613,7 +659,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/yii2-mpdf/zipball/f65fe859e01374545276d40428d6ff75e4985050",
+                "url": "https://api.github.com/repos/kartik-v/yii2-mpdf/zipball/873a4f10ba961bbf3c63c9ede82a13d407f00acf",
                 "reference": "f65fe859e01374545276d40428d6ff75e4985050",
                 "shasum": ""
             },
@@ -1641,6 +1687,63 @@
                 "utf-8"
             ],
             "time": "2015-06-17 07:26:51"
+        },
+        {
+            "name": "phpoffice/phpexcel",
+            "version": "1.8.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/PHPOffice/PHPExcel.git",
+                "reference": "e69a5e4d0ffa7fb6f171859e0a04346e580df30b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/PHPOffice/PHPExcel/zipball/e69a5e4d0ffa7fb6f171859e0a04346e580df30b",
+                "reference": "e69a5e4d0ffa7fb6f171859e0a04346e580df30b",
+                "shasum": ""
+            },
+            "require": {
+                "ext-xml": "*",
+                "ext-xmlwriter": "*",
+                "php": ">=5.2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "PHPExcel": "Classes/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL"
+            ],
+            "authors": [
+                {
+                    "name": "Maarten Balliauw",
+                    "homepage": "http://blog.maartenballiauw.be"
+                },
+                {
+                    "name": "Mark Baker"
+                },
+                {
+                    "name": "Franck Lefevre",
+                    "homepage": "http://blog.rootslabs.net"
+                },
+                {
+                    "name": "Erik Tilt"
+                }
+            ],
+            "description": "PHPExcel - OpenXML - Read, Create and Write Spreadsheet documents in PHP - Spreadsheet engine",
+            "homepage": "http://phpexcel.codeplex.com",
+            "keywords": [
+                "OpenXML",
+                "excel",
+                "php",
+                "spreadsheet",
+                "xls",
+                "xlsx"
+            ],
+            "time": "2014-03-02 15:22:49"
         },
         {
             "name": "swiftmailer/swiftmailer",

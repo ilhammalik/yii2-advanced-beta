@@ -33,6 +33,15 @@ class SimpelRekapController extends Controller {
      * Lists all SimpelKeg models.
      * @return mixed
      */
+
+    public function actionCetakkeg(){
+        $this->layout = 'pdf';
+        $mpdf = new mPDF('utf-8', 'A4-L');
+        $mpdf->AddPage('P', '', '', '', '', 15, 15, 5, 1, 5, 5);
+        $mpdf->WriteHTML('Hello');
+        $mpdf->Output('cetak.pdf', D);
+    }
+
     public function actionLists($id) {
         $countKokab = \common\models\DaftarUnit::find()
                 ->where(['unit_parent_id' => $id])
@@ -65,6 +74,8 @@ class SimpelRekapController extends Controller {
             $models = $query->offset($pages->offset, $pages->pageSize = 10)
                     ->limit($pages->limit)
                     ->all();
+         
+
         } else {
            
             $unit = SimpelPersonil::find()->joinWith('keg')->where('simpel_keg.status = 4');
@@ -94,6 +105,17 @@ class SimpelRekapController extends Controller {
             $models = $query->offset($pages->offset, $pages->pageSize = 10)
                     ->limit($pages->limit)
                     ->all();
+
+            $content = $this->renderAjax('/cetak/rekap_keg', [
+                        'pages' => $pages,
+                        'models' => $models,
+                        ]);
+            print_r($_POST['cetak']);
+            die();
+            $mpdf = new mPDF('utf-8', 'A4-L');
+            $mpdf->AddPage('P', '', '', '', '', 15, 15, 5, 1, 5, 5);
+            $mpdf->WriteHTML($content);
+            $mpdf->Output('cetak.pdf', D);
         } else {
             $unit = SimpelPersonil::find()->joinWith('keg')->where('simpel_keg.status = 4');
             $count = count($unit->all());

@@ -40,7 +40,8 @@
         "kartik-v/yii2-widget-typeahead": "*",
         "kartik-v/yii2-mpdf": "dev-master",
         "mpdf/mpdf": "dev-master",
-        "hscstudio/yii2-mimin": "dev-master"
+        "hscstudio/yii2-mimin": "dev-master",
+        "hscstudio/yii2-export": "1.0.0"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",
