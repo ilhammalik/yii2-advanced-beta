@@ -110,7 +110,7 @@ $this->registerJS($js);
                                             'contentOptions' => ['style' => 'width:140px; z-index:200;'],
                                             'format' => 'html',
                                             'value' => function($data) {
-                                        return MyHelper::CountAng($data->id_kegiatan);
+                                        return MyHelper::CountAng($data['id_kegiatan']);
                                     }
                                         ],
 

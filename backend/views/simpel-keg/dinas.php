@@ -124,7 +124,7 @@ $this->registerJS($js);
                                             'header' => 'Negara',
                                             'format' => 'html',
                                             'value'=>function($data){
-                                                if($data->negara == 1){
+                                                if($data['negara'] == 1){
                                                     return 'Dalam Negri';
                                                 }else{
                                                     return 'Luar Negri' ;

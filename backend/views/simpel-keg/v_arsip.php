@@ -9,7 +9,12 @@ use yii\db\Query;
 use hscstudio\mimin\components\Mimin;
 use \common\models\DaftarUnit;
 use \common\components\HelperUnit;
-
+ /* 
+ * @property User $user
+ * 
+ * @author Ilham Malik Ibrahim <ilhammalik19@gmail.com> www.ipteku.com 2015
+ * @since 1.0
+ */
 $this->params['breadcrumbs'][] = 'Proses';
 $this->params['breadcrumbs'][] = 'Arsip';
 $this->params['breadcrumbs'][] = $this->title;

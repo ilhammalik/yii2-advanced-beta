@@ -10,9 +10,14 @@ use hscstudio\mimin\components\Mimin;
 use \common\models\DaftarUnit;
 use \common\components\HelperUnit;
 
+/*
+ * @property User $user
+ * 
+ * @author Ilham Malik Ibrahim <ilhammalik19@gmail.com> www.ipteku.com 2015
+ * @since 1.0
+ */
 $this->params['breadcrumbs'][] = 'Proses';
 $this->params['breadcrumbs'][] = 'Daftar Perjalanan Dinas';
-
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
@@ -64,30 +69,24 @@ $("#searchQuery").keyup(function(){
     }
 });
 
-
- 
 js;
         $this->registerJS($js);
         ?>
         <div class="wp-posts-index">
             <div class="row">
-
-
             </div>
             <br/>
             <div id="datadinasGridview">
-
                 <table class="table1" width="100%">
                     <thead>
                         <tr>
                             <th>No</th>
                             <th>Satuan Kerja</th>
                             <th width="120"  scope="col" abbr="Medium"><center>Jumlah Kegiatan</center></th>
-                    <th scope="col" abbr="Business"><center>Pagu</center></th>
+                            <th scope="col" abbr="Business"><center>Pagu</center></th>
                     </tr>
                     </thead>
                     <tfoot>
-
                     </tfoot>
                     <tbody>
                         <?php
@@ -138,10 +137,7 @@ js;
                             <tr>
                                 <th><?= $no ?></th>
                                 <th style="text-align:left;" colspan="3" scope="row"><h6>  <?= HelperUnit::Apagu($unit->unit_id) ?> </h6></th>
-
-
                             </tr>
-
                             <?php
                             switch ($unit->unit_id) {
                                 case 110000:
@@ -231,16 +227,28 @@ js;
                                                     break;
                                             }
                                             ?>
-
                                         </div>
-
                                     </td>
-
                                     <td width="120" align="center">
                                         <?php
-                                        echo $count;
+                                        switch ($sat->unit_id) {
+                                            case 161100:
+                                                $hitung = "SELECT count(a.id_kegiatan) FROM simpel_keg a LEFT JOIN pegawai.daf_unit b on a.unit_id=b.unit_id WHERE status=1 and b.unit_parent_id='" . $sat->unit_id . "' ";
+                                                $count = Yii::$app->db->createCommand($hitung)->queryScalar();
+                                                echo $count;
+                                                break;
+                                            case 151000:
+                                                $hitung = "SELECT count(a.id_kegiatan) FROM simpel_keg a LEFT JOIN pegawai.daf_unit b on a.unit_id=b.unit_id WHERE status=1 and b.unit_parent_id='" . $sat->unit_id . "' ";
+                                                $count = Yii::$app->db->createCommand($hitung)->queryScalar();
+                                                echo $count;
+                                                break;
+                                            default:
+                                                $hitung = "SELECT count(a.id_kegiatan) FROM simpel_keg a LEFT JOIN pegawai.daf_unit b on a.unit_id=b.unit_id WHERE status=1 and b.unit_parent_id='" . $sat->unit_id . "' ";
+                                                $count = Yii::$app->db->createCommand($hitung)->queryScalar();
+                                                echo $count;
+                                                break;
+                                        }
                                         ?>
-                                        jhhj
                                     </td>
                                     <td align="center" width="260">Rp. <?php
                                         $pag = number_format(HelperUnit::Pagu($sat->unit_id), 0, ",", ".");
@@ -265,14 +273,8 @@ js;
         </div>
     </div>
 </div>
-
-
-
 <?php
 $js = <<<Modal
-
-
-
 $(function () {
     $('.modalButtonn').click(function () {
         $('#modal').modal('show')
@@ -281,8 +283,6 @@ $(function () {
     });
 
 });
-
-
 $(function () {
     $('.modalLuar').click(function () {
         $('#luar').modal('show')
@@ -295,9 +295,6 @@ $(function () {
 Modal;
 $this->registerJs($js);
 ?>
-
-
-
 <?php
 Modal::begin([
     'header' => 'Perjalanan Dinas Dalam Negri',
@@ -311,8 +308,6 @@ echo "<div id='modalContent'></div>";
 
 Modal::end();
 ?> 
-
-
 <?php
 Modal::begin([
     'header' => 'Perjalanan Dinas luar Negri',
@@ -326,14 +321,6 @@ echo "<div id='modalContent'></div>";
 
 Modal::end();
 ?> 
-
-
-
-<style type="text/css">
-    .edit{
-        background-color: green;
-    }
-</style>
 
 
 

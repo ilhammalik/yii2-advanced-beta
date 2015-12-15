@@ -9,7 +9,12 @@ use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
 use kartik\date\DatePicker;
 use kartik\select2\Select2;
-
+ /* 
+ * @property User $user
+ * 
+ * @author Ilham Malik Ibrahim <ilhammalik19@gmail.com> www.ipteku.com 2015
+ * @since 1.0
+ */
 ?>
 <?php $form = ActiveForm::begin(); ?>
 <div class="row">
