@@ -72,12 +72,7 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
             <?= $this->render('_search') ?>
             <p align="right">
-            <?php Pjax::begin(); ?>
-             <?php $form = ActiveForm::begin([ 'action' => ['keg'],'method' => 'post']); ?>
-            <input type="hidden" name="cetak" value="cetak">
-             <?php echo Html::submitButton(Yii::t('app', 'Cetak'), ['class' => 'btn btn-primary']) ?>
-              <?php ActiveForm::end(); ?>
-             <?php Pjax::end(); ?>
+            <?= Html::a('Export PDF', ['export-pdf'], ['class'=>'btn btn-success']); ?>  
             </p>
         </div>
         <table width="1000"class="table table-responsive list table-bordered ">

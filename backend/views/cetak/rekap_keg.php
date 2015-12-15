@@ -4,4 +4,8 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 use yii\helpers\Url;
 ?>      
-<h1>Hello</h1>
+
+ <?php
+ foreach ($models as $data) {
+ 	$data->['id_personil'];
+ }

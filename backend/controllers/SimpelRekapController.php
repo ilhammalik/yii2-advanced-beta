@@ -12,7 +12,7 @@ use yii\filters\VerbFilter;
 use \mPDF;
 use kartik\mpdf\Pdf;
 use yii\data\Pagination;
-
+use yii\base\DynamicModel;
 /**
  * SimpelRekapController implements the CRUD actions for SimpelKeg model.
  */
@@ -34,12 +34,26 @@ class SimpelRekapController extends Controller {
      * @return mixed
      */
 
-    public function actionCetakkeg(){
-        $this->layout = 'pdf';
-        $mpdf = new mPDF('utf-8', 'A4-L');
-        $mpdf->AddPage('P', '', '', '', '', 15, 15, 5, 1, 5, 5);
-        $mpdf->WriteHTML('Hello');
+
+        public function actionExportPdf()
+    {       $find_query = "SELECT c.* FROM simpel_keg as a
+                            LEFT JOIN pegawai.daf_unit b ON  a.unit_id = b.unit_id
+                            LEFT JOIN simpel_personil c ON  a.id_kegiatan = c.id_kegiatan
+
+                          WHERE (unit_parent_id='" . $_GET['unit_id'] . "')  and tgl_mulai='" . $_GET['tgl_mulai'] . "' or tgl_kembali='" . $_GET['tgl_kembali'] . "' and c.status=4 group by pegawai_id ";
+            $query = SimpelPersonil::findBySql($find_query);
+            $countQuery = count($query->all());
+            $pages = new Pagination(['totalCount' => $countQuery]);
+            $models = $query->offset($pages->offset, $pages->pageSize = 10)
+                    ->limit($pages->limit)
+                    ->all();
+        $html = $this->renderPartial('/cetak/rekap_keg',['models'=>$models,'pages'=>$pages]);
+        $mpdf=new mPDF('c','A4','','' , 0 , 0 , 0 , 0 , 0 , 0);  
+        $mpdf->SetDisplayMode('fullpage');
+        $mpdf->list_indent_first_level = 0;  // 1 or 0 - whether to indent the first level of a list
+        $mpdf->WriteHTML($html);
         $mpdf->Output('cetak.pdf', D);
+        exit;
     }
 
     public function actionLists($id) {
@@ -93,7 +107,6 @@ class SimpelRekapController extends Controller {
     }
 
     public function actionKeg() {
-
         if (!empty($_GET['unit_id'])) {
             $find_query = "SELECT c.* FROM simpel_keg as a
                             LEFT JOIN pegawai.daf_unit b ON  a.unit_id = b.unit_id
@@ -106,16 +119,7 @@ class SimpelRekapController extends Controller {
                     ->limit($pages->limit)
                     ->all();
 
-            $content = $this->renderAjax('/cetak/rekap_keg', [
-                        'pages' => $pages,
-                        'models' => $models,
-                        ]);
-            print_r($_POST['cetak']);
-            die();
-            $mpdf = new mPDF('utf-8', 'A4-L');
-            $mpdf->AddPage('P', '', '', '', '', 15, 15, 5, 1, 5, 5);
-            $mpdf->WriteHTML($content);
-            $mpdf->Output('cetak.pdf', D);
+
         } else {
             $unit = SimpelPersonil::find()->joinWith('keg')->where('simpel_keg.status = 4');
             $count = count($unit->all());
