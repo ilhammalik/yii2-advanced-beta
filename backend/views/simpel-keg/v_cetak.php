@@ -240,7 +240,7 @@ js;
                                         <?php
                                         switch ($sat->unit_id) {
                                             case 161100:
-                                                $hitung = "SELECT count(DISTINCT(a.detail_id)) FROM serasi2015_sql.news_detail_keg a LEFT JOIN serasi2015_sql.news_sub_mak_tahun b on a.suboutput_id=b.suboutput_id LEFT JOIN serasi2015_sql.news_nas_suboutput c on a.suboutput_id=c.suboutput_id LEFT JOIN fix_simpel.simpel_keg g on g.detail_id = a.detail_id LEFT JOIN pegawai.daf_unit d on c.unit_id=d.unit_parent_id where a.jenis_detail_id in (3,4,5) and g.detail_id IS NULL and d.unit_parent_id='151000'";
+                                                $hitung = ""
                                                 $count = Yii::$app->db->createCommand($hitung)->queryScalar();
                                                 echo $count;
                                                 break;

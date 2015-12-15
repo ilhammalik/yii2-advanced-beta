@@ -237,8 +237,10 @@ js;
                                     </td>
 
                                     <td width="120" align="center">
-                                    <?= $count ?>
-
+                                        <?php
+                                        echo $count;
+                                        ?>
+                                        jhhj
                                     </td>
                                     <td align="center" width="260">Rp. <?php
                                         $pag = number_format(HelperUnit::Pagu($sat->unit_id), 0, ",", ".");
@@ -257,18 +259,12 @@ js;
                         <tr>
                             <td style="background-color: white;"  scope="row"></td>
                         </tr>
-
-
-
-
-
                     </tbody>
                 </table>
-
             </div>
         </div>
     </div>
-     </div>
+</div>
 
 
 
